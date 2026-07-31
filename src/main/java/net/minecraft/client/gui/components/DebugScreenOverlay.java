@@ -328,7 +328,7 @@ public class DebugScreenOverlay {
                 }
 
                 this.serverChunk = level.getChunkSource()
-                    .getChunkFuture(this.lastPos.x(), this.lastPos.z(), ChunkStatus.FULL, false)
+                    .getChunkFuture(this.lastPos.x().intValueExact(), this.lastPos.z().intValueExact(), ChunkStatus.FULL, false)
                     .thenApply(chunkResult -> (LevelChunk)chunkResult.orElse(null));
             }
 
@@ -341,7 +341,7 @@ public class DebugScreenOverlay {
     private @Nullable LevelChunk getClientChunk() {
         if (this.minecraft.level != null && this.lastPos != null) {
             if (this.clientChunk == null) {
-                this.clientChunk = this.minecraft.level.getChunk(this.lastPos.x(), this.lastPos.z());
+                this.clientChunk = this.minecraft.level.getChunk(this.lastPos.x().intValueExact(), this.lastPos.z().intValueExact());
             }
 
             return this.clientChunk;

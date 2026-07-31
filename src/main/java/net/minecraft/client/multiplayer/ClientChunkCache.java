@@ -56,14 +56,14 @@ public class ClientChunkCache extends ChunkSource {
         }
 
         ChunkPos pos = chunk.getPos();
-        return pos.x() == x && pos.z() == z;
+        return pos.x().intValueExact() == x && pos.z().intValueExact() == z;
     }
 
     public void drop(final ChunkPos pos) {
-        if (this.storage.inRange(pos.x(), pos.z())) {
-            int index = this.storage.getIndex(pos.x(), pos.z());
+        if (this.storage.inRange(pos.x().intValueExact(), pos.z().intValueExact())) {
+            int index = this.storage.getIndex(pos.x().intValueExact(), pos.z().intValueExact());
             LevelChunk currentChunk = this.storage.getChunk(index);
-            if (isValidChunk(currentChunk, pos.x(), pos.z())) {
+            if (isValidChunk(currentChunk, pos.x().intValueExact(), pos.z().intValueExact())) {
                 this.storage.drop(index, currentChunk);
             }
         }
@@ -148,8 +148,8 @@ public class ClientChunkCache extends ChunkSource {
                 LevelChunk chunk = this.storage.chunks.get(i);
                 if (chunk != null) {
                     ChunkPos pos = chunk.getPos();
-                    if (newStorage.inRange(pos.x(), pos.z())) {
-                        newStorage.replace(newStorage.getIndex(pos.x(), pos.z()), chunk);
+                    if (newStorage.inRange(pos.x().intValueExact(), pos.z().intValueExact())) {
+                        newStorage.replace(newStorage.getIndex(pos.x().intValueExact(), pos.z().intValueExact()), chunk);
                     }
                 }
             }
@@ -279,7 +279,7 @@ public class ClientChunkCache extends ChunkSource {
 
             for (int sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
                 this.removedEmptySections[this.updatingSetsIndex]
-                    .add(SectionPos.asLong(chunkPos.x(), chunk.getSectionYFromSectionIndex(sectionIndex), chunkPos.z()));
+                    .add(SectionPos.asLong(chunkPos.x().intValueExact(), chunk.getSectionYFromSectionIndex(sectionIndex), chunkPos.z().intValueExact()));
             }
         }
 
@@ -292,7 +292,7 @@ public class ClientChunkCache extends ChunkSource {
                 LevelChunkSection section = sections[sectionIndex];
                 if (section.hasOnlyAir()) {
                     this.addedEmptySections[this.updatingSetsIndex]
-                        .add(SectionPos.asLong(chunkPos.x(), chunk.getSectionYFromSectionIndex(sectionIndex), chunkPos.z()));
+                        .add(SectionPos.asLong(chunkPos.x().intValueExact(), chunk.getSectionYFromSectionIndex(sectionIndex), chunkPos.z().intValueExact()));
                 }
             }
         }
@@ -303,7 +303,7 @@ public class ClientChunkCache extends ChunkSource {
 
             for (int sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
                 LevelChunkSection section = sections[sectionIndex];
-                long sectionNode = SectionPos.asLong(chunkPos.x(), chunk.getSectionYFromSectionIndex(sectionIndex), chunkPos.z());
+                long sectionNode = SectionPos.asLong(chunkPos.x().intValueExact(), chunk.getSectionYFromSectionIndex(sectionIndex), chunkPos.z().intValueExact());
                 if (section.hasOnlyAir()) {
                     this.addedEmptySections[this.updatingSetsIndex].add(sectionNode);
                 } else {

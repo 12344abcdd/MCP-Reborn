@@ -509,7 +509,7 @@ public class ClientLevel extends Level implements BlockAndTintGetter, CacheSlot.
     }
 
     public void onChunkLoaded(final ChunkPos pos) {
-        this.tintCaches.forEach((resolver, cache) -> cache.invalidateForChunk(pos.x(), pos.z()));
+        this.tintCaches.forEach((resolver, cache) -> cache.invalidateForChunk(pos.x().intValueExact(), pos.z().intValueExact()));
         this.entityStorage.startTicking(pos);
     }
 

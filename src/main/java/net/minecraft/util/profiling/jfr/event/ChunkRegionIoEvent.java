@@ -53,8 +53,8 @@ public abstract class ChunkRegionIoEvent extends Event {
         this.regionPosZ = chunkPos.getRegionZ();
         this.localChunkPosX = chunkPos.getRegionLocalX();
         this.localChunkPosZ = chunkPos.getRegionLocalZ();
-        this.chunkPosX = chunkPos.x();
-        this.chunkPosZ = chunkPos.z();
+        this.chunkPosX = chunkPos.x().intValueExact();
+        this.chunkPosZ = chunkPos.z().intValueExact();
         this.levelId = info.level();
         this.dimension = info.dimension().identifier().toString();
         this.type = info.type();

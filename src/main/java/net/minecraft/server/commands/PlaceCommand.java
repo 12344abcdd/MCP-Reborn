@@ -252,7 +252,7 @@ public class PlaceCommand {
         ServerLevel level = source.getLevel();
         ConfiguredFeature<?, ?> feature = featureHolder.value();
         ChunkPos chunkPos = ChunkPos.containing(pos);
-        checkLoaded(level, new ChunkPos(chunkPos.x() - 1, chunkPos.z() - 1), new ChunkPos(chunkPos.x() + 1, chunkPos.z() + 1));
+        checkLoaded(level, new ChunkPos(chunkPos.x().intValueExact() - 1, chunkPos.z().intValueExact() - 1), new ChunkPos(chunkPos.x().intValueExact() + 1, chunkPos.z().intValueExact() + 1));
         if (!feature.place(level, level.getChunkSource().getGenerator(), level.getRandom(), pos)) {
             throw ERROR_FEATURE_FAILED.create();
         }

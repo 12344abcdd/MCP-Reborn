@@ -46,23 +46,28 @@ public class WorldBorder extends SavedData {
     }
 
     public boolean isWithinBounds(final BlockPos pos) {
-        return this.isWithinBounds(pos.getX(), pos.getZ());
+        //return this.isWithinBounds(pos.getX(), pos.getZ());
+        return true;
     }
 
     public boolean isWithinBounds(final Vec3 pos) {
-        return this.isWithinBounds(pos.x, pos.z);
+        //return this.isWithinBounds(pos.x, pos.z);
+        return true;
     }
 
     public boolean isWithinBounds(final ChunkPos pos) {
-        return this.isWithinBounds(pos.getMinBlockX(), pos.getMinBlockZ()) && this.isWithinBounds(pos.getMaxBlockX(), pos.getMaxBlockZ());
+        //return this.isWithinBounds(pos.getMinBlockX(), pos.getMinBlockZ()) && this.isWithinBounds(pos.getMaxBlockX(), pos.getMaxBlockZ());
+        return true;
     }
 
     public boolean isWithinBounds(final AABB aabb) {
-        return this.isWithinBounds(aabb.minX, aabb.minZ, aabb.maxX - 1.0E-5F, aabb.maxZ - 1.0E-5F);
+        //return this.isWithinBounds(aabb.minX, aabb.minZ, aabb.maxX - 1.0E-5F, aabb.maxZ - 1.0E-5F);
+        return true;
     }
 
     private boolean isWithinBounds(final double minX, final double minZ, final double maxX, final double maxZ) {
-        return this.isWithinBounds(minX, minZ) && this.isWithinBounds(maxX, maxZ);
+        //return this.isWithinBounds(minX, minZ) && this.isWithinBounds(maxX, maxZ);
+        return true;
     }
 
     public boolean isWithinBounds(final double x, final double z) {
@@ -71,7 +76,8 @@ public class WorldBorder extends SavedData {
     }
 
     public boolean isWithinBounds(final double x, final double z, final double margin) {
-        return x >= this.getMinX() - margin && x < this.getMaxX() + margin && z >= this.getMinZ() - margin && z < this.getMaxZ() + margin;
+        //return x >= this.getMinX() - margin && x < this.getMaxX() + margin && z >= this.getMinZ() - margin && z < this.getMaxZ() + margin;
+        return true;
     }
 
     public BlockPos clampToBounds(final BlockPos position) {
@@ -113,8 +119,9 @@ public class WorldBorder extends SavedData {
     }
 
     public boolean isInsideCloseToBorder(final Entity source, final AABB boundingBox) {
-        double bbMax = Math.max(Mth.absMax(boundingBox.getXsize(), boundingBox.getZsize()), 1.0);
-        return this.getDistanceToBorder(source) < bbMax * 2.0 && this.isWithinBounds(source.getX(), source.getZ(), bbMax);
+        //double bbMax = Math.max(Mth.absMax(boundingBox.getXsize(), boundingBox.getZsize()), 1.0);
+        //return this.getDistanceToBorder(source) < bbMax * 2.0 && this.isWithinBounds(source.getX(), source.getZ(), bbMax);
+        return false;
     }
 
     public BorderStatus getStatus() {

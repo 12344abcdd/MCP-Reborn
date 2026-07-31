@@ -1781,12 +1781,13 @@ public abstract class Entity
     }
 
     public void absSnapTo(final double x, final double y, final double z) {
-        double cx = Mth.clamp(x, -3.0E7, 3.0E7);
+        /*double cx = Mth.clamp(x, -3.0E7, 3.0E7);
         double cz = Mth.clamp(z, -3.0E7, 3.0E7);
         this.xo = cx;
         this.yo = y;
         this.zo = cz;
-        this.setPos(cx, y, cz);
+        this.setPos(cx, y, cz);*/
+        this.setPos(x, y, z);
     }
 
     public void snapTo(final Vec3 pos) {

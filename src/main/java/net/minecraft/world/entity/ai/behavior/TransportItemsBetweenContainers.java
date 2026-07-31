@@ -279,7 +279,7 @@ public class TransportItemsBetweenContainers extends Behavior<PathfinderMob> {
         double closestDistance = Float.MAX_VALUE;
 
         for (ChunkPos chunkPos : list) {
-            LevelChunk levelChunk = level.getChunkSource().getChunkNow(chunkPos.x(), chunkPos.z());
+            LevelChunk levelChunk = level.getChunkSource().getChunkNow(chunkPos.x().intValueExact(), chunkPos.z().intValueExact());
             if (levelChunk != null) {
                 for (BlockEntity potentialTarget : levelChunk.getBlockEntities().values()) {
                     if (potentialTarget instanceof ChestBlockEntity chestBlockEntity) {
