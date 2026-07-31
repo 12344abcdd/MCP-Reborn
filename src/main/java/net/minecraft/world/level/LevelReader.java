@@ -165,9 +165,10 @@ public interface LevelReader extends BlockAndLightGetter, CollisionGetter, Signa
     }
 
     default int getMaxLocalRawBrightness(final BlockPos pos, final int skyDarkening) {
-        return pos.getX() >= -30000000 && pos.getZ() >= -30000000 && pos.getX() < 30000000 && pos.getZ() < 30000000
+        /*return pos.getX() >= -30000000 && pos.getZ() >= -30000000 && pos.getX() < 30000000 && pos.getZ() < 30000000
             ? this.getRawBrightness(pos, skyDarkening)
-            : 15;
+            : 15;*/
+        return this.getRawBrightness(pos, skyDarkening);
     }
 
     default int getEffectiveSkyBrightness(final BlockPos pos) {

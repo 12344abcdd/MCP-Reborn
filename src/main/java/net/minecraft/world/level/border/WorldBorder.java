@@ -35,7 +35,7 @@ public class WorldBorder extends SavedData {
     private double centerX;
     private double centerZ;
     private int absoluteMaxSize = 29999984;
-    private WorldBorder.BorderExtent extent = new WorldBorder.StaticBorderExtent(5.999997E7F);
+    private WorldBorder.BorderExtent extent = new WorldBorder.StaticBorderExtent(Double.MAX_VALUE);
 
     public WorldBorder() {
         this(WorldBorder.Settings.DEFAULT);

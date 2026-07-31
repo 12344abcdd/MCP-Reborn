@@ -35,9 +35,9 @@ public abstract class GenerationChunkHolder {
 
     public GenerationChunkHolder(final ChunkPos pos) {
         this.pos = pos;
-        if (!pos.isValid()) {
-            throw new IllegalStateException("Trying to create chunk out of reasonable bounds: " + pos);
-        }
+//        if (!pos.isValid()) {
+//            throw new IllegalStateException("Trying to create chunk out of reasonable bounds: " + pos);
+//        }
     }
 
     public CompletableFuture<ChunkResult<ChunkAccess>> scheduleChunkGenerationTask(final ChunkStatus status, final ChunkMap scheduler) {

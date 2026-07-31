@@ -432,11 +432,11 @@ public class ServerGamePacketListenerImpl
     }
 
     private static double clampHorizontal(final double value) {
-        return Mth.clamp(value, -3.0E7, 3.0E7);
+        return value;
     }
 
     private static double clampVertical(final double value) {
-        return Mth.clamp(value, -2.0E7, 2.0E7);
+        return value;
     }
 
     @Override
@@ -451,9 +451,9 @@ public class ServerGamePacketListenerImpl
                 double oldX = vehicle.getX();
                 double oldY = vehicle.getY();
                 double oldZ = vehicle.getZ();
-                double targetX = clampHorizontal(packet.position().x());
-                double targetY = clampVertical(packet.position().y());
-                double targetZ = clampHorizontal(packet.position().z());
+                double targetX = packet.position().x();
+                double targetY = packet.position().y();
+                double targetZ = packet.position().z();
                 float targetYRot = Mth.wrapDegrees(packet.yRot());
                 float targetXRot = Mth.wrapDegrees(packet.xRot());
                 double xDist = targetX - this.vehicleFirstGoodX;
@@ -461,7 +461,7 @@ public class ServerGamePacketListenerImpl
                 double zDist = targetZ - this.vehicleFirstGoodZ;
                 double expectedDist = vehicle.getDeltaMovement().lengthSqr();
                 double movedDist = xDist * xDist + yDist * yDist + zDist * zDist;
-                if (movedDist - expectedDist > 100.0 && !this.isSingleplayerOwner()) {
+                if (movedDist - expectedDist > 1000 && !this.isSingleplayerOwner()) {
                     LOGGER.warn(
                         "{} (vehicle of {}) moved too quickly! {},{},{}", vehicle.getPlainTextName(), this.player.getPlainTextName(), xDist, yDist, zDist
                     );

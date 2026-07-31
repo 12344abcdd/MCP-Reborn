@@ -170,29 +170,35 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
     }
 
     public boolean isInWorldBounds(final BlockPos pos) {
-        return this.isInsideBuildHeight(pos) && isInWorldBoundsHorizontal(pos);
+        //return this.isInsideBuildHeight(pos) && isInWorldBoundsHorizontal(pos);
+        return true;
     }
 
     public boolean isInValidBounds(final BlockPos pos) {
-        return this.isInsideBuildHeight(pos) && isInValidBoundsHorizontal(pos);
+        //return this.isInsideBuildHeight(pos) && isInValidBoundsHorizontal(pos);
+        return true;
     }
 
     public static boolean isInSpawnableBounds(final BlockPos pos) {
-        return !isOutsideSpawnableHeight(pos.getY()) && isInWorldBoundsHorizontal(pos);
+        //return !isOutsideSpawnableHeight(pos.getY()) && isInWorldBoundsHorizontal(pos);
+        return true;
     }
 
     private static boolean isInWorldBoundsHorizontal(final BlockPos pos) {
-        return pos.getX() >= -30000000 && pos.getZ() >= -30000000 && pos.getX() < 30000000 && pos.getZ() < 30000000;
+        //return pos.getX() >= -30000000 && pos.getZ() >= -30000000 && pos.getX() < 30000000 && pos.getZ() < 30000000;
+        return true;
     }
 
     private static boolean isInValidBoundsHorizontal(final BlockPos pos) {
-        int chunkX = SectionPos.blockToSectionCoord(pos.getX());
+        /*int chunkX = SectionPos.blockToSectionCoord(pos.getX());
         int chunkZ = SectionPos.blockToSectionCoord(pos.getZ());
-        return ChunkPos.isValid(chunkX, chunkZ);
+        return ChunkPos.isValid(chunkX, chunkZ);*/
+        return true;
     }
 
     private static boolean isOutsideSpawnableHeight(final int y) {
-        return y < -20000000 || y >= 20000000;
+        //return y < -20000000 || y >= 20000000;
+        return true;
     }
 
     public LevelChunk getChunkAt(final BlockPos pos) {
@@ -344,14 +350,10 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
     @Override
     public int getHeight(final Heightmap.Types type, final int x, final int z) {
         int y;
-        if (x >= -30000000 && z >= -30000000 && x < 30000000 && z < 30000000) {
-            if (this.hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z))) {
-                y = this.getChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)).getHeight(type, x & 15, z & 15) + 1;
-            } else {
-                y = this.getMinY();
-            }
+        if (this.hasChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z))) {
+            y = this.getChunk(SectionPos.blockToSectionCoord(x), SectionPos.blockToSectionCoord(z)).getHeight(type, x & 15, z & 15) + 1;
         } else {
-            y = this.getSeaLevel() + 1;
+            y = this.getMinY();
         }
 
         return y;

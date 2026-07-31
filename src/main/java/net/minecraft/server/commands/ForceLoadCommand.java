@@ -141,66 +141,62 @@ public class ForceLoadCommand {
         int minZ = Math.min(from.z(), to.z());
         int maxX = Math.max(from.x(), to.x());
         int maxZ = Math.max(from.z(), to.z());
-        if (minX >= -30000000 && minZ >= -30000000 && maxX < 30000000 && maxZ < 30000000) {
-            int minChunkX = SectionPos.blockToSectionCoord(minX);
-            int minChunkZ = SectionPos.blockToSectionCoord(minZ);
-            int maxChunkX = SectionPos.blockToSectionCoord(maxX);
-            int maxChunkZ = SectionPos.blockToSectionCoord(maxZ);
-            long chunkCount = (maxChunkX - minChunkX + 1L) * (maxChunkZ - minChunkZ + 1L);
-            if (chunkCount > 256L) {
-                throw ERROR_TOO_MANY_CHUNKS.create(256, chunkCount);
-            }
+        int minChunkX = SectionPos.blockToSectionCoord(minX);
+        int minChunkZ = SectionPos.blockToSectionCoord(minZ);
+        int maxChunkX = SectionPos.blockToSectionCoord(maxX);
+        int maxChunkZ = SectionPos.blockToSectionCoord(maxZ);
+        long chunkCount = (maxChunkX - minChunkX + 1L) * (maxChunkZ - minChunkZ + 1L);
+        if (chunkCount > 256L) {
+            throw ERROR_TOO_MANY_CHUNKS.create(256, chunkCount);
+        }
 
-            ServerLevel level = source.getLevel();
-            ResourceKey<Level> dimension = level.dimension();
-            ChunkPos firstChanged = null;
-            int changedCount = 0;
+        ServerLevel level = source.getLevel();
+        ResourceKey<Level> dimension = level.dimension();
+        ChunkPos firstChanged = null;
+        int changedCount = 0;
 
-            for (int x = minChunkX; x <= maxChunkX; x++) {
-                for (int z = minChunkZ; z <= maxChunkZ; z++) {
-                    boolean changed = level.setChunkForced(x, z, add);
-                    if (changed) {
-                        changedCount++;
-                        if (firstChanged == null) {
-                            firstChanged = new ChunkPos(x, z);
-                        }
+        for (int x = minChunkX; x <= maxChunkX; x++) {
+            for (int z = minChunkZ; z <= maxChunkZ; z++) {
+                boolean changed = level.setChunkForced(x, z, add);
+                if (changed) {
+                    changedCount++;
+                    if (firstChanged == null) {
+                        firstChanged = new ChunkPos(x, z);
                     }
                 }
             }
-
-            ChunkPos finalFirstChanged = firstChanged;
-            int changedChunks = changedCount;
-            if (changedChunks == 0) {
-                throw (add ? ERROR_ALL_ADDED : ERROR_NONE_REMOVED).create();
-            }
-
-            if (changedChunks == 1) {
-                source.sendSuccess(
-                    () -> Component.translatable(
-                        "commands.forceload." + (add ? "added" : "removed") + ".single",
-                        Component.translationArg(finalFirstChanged),
-                        Component.translationArg(dimension.identifier())
-                    ),
-                    true
-                );
-            } else {
-                ChunkPos min = new ChunkPos(minChunkX, minChunkZ);
-                ChunkPos max = new ChunkPos(maxChunkX, maxChunkZ);
-                source.sendSuccess(
-                    () -> Component.translatable(
-                        "commands.forceload." + (add ? "added" : "removed") + ".multiple",
-                        changedChunks,
-                        Component.translationArg(dimension.identifier()),
-                        Component.translationArg(min),
-                        Component.translationArg(max)
-                    ),
-                    true
-                );
-            }
-
-            return changedChunks;
-        } else {
-            throw BlockPosArgument.ERROR_OUT_OF_WORLD.create();
         }
+
+        ChunkPos finalFirstChanged = firstChanged;
+        int changedChunks = changedCount;
+        if (changedChunks == 0) {
+            throw (add ? ERROR_ALL_ADDED : ERROR_NONE_REMOVED).create();
+        }
+
+        if (changedChunks == 1) {
+            source.sendSuccess(
+                () -> Component.translatable(
+                    "commands.forceload." + (add ? "added" : "removed") + ".single",
+                    Component.translationArg(finalFirstChanged),
+                    Component.translationArg(dimension.identifier())
+                ),
+                true
+            );
+        } else {
+            ChunkPos min = new ChunkPos(minChunkX, minChunkZ);
+            ChunkPos max = new ChunkPos(maxChunkX, maxChunkZ);
+            source.sendSuccess(
+                () -> Component.translatable(
+                    "commands.forceload." + (add ? "added" : "removed") + ".multiple",
+                    changedChunks,
+                    Component.translationArg(dimension.identifier()),
+                    Component.translationArg(min),
+                    Component.translationArg(max)
+                ),
+                true
+            );
+        }
+
+        return changedChunks;
     }
 }

@@ -1471,7 +1471,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
     }
 
     public int getAbsoluteMaxWorldSize() {
-        return 29999984;
+        return Integer.MAX_VALUE;
     }
 
     @Override

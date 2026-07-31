@@ -2155,7 +2155,8 @@ public abstract class Entity
             );
             this.needsSync = true;
             double maxHorizontalPosition = 3.0000512E7;
-            this.setPosRaw(Mth.clamp(pos.x, -3.0000512E7, 3.0000512E7), Mth.clamp(pos.y, -2.0E7, 2.0E7), Mth.clamp(pos.z, -3.0000512E7, 3.0000512E7));
+            //this.setPosRaw(Mth.clamp(pos.x, -3.0000512E7, 3.0000512E7), Mth.clamp(pos.y, -2.0E7, 2.0E7), Mth.clamp(pos.z, -3.0000512E7, 3.0000512E7));
+            this.setPosRaw(pos.x, pos.y, pos.z);
             this.setYRot(rotation.x);
             this.setXRot(rotation.y);
             this.setOldPosAndRot();

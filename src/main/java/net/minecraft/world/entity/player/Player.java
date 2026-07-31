@@ -258,12 +258,12 @@ public abstract class Player extends Avatar implements ContainerUser {
 
         this.updateIsUnderwater();
         super.tick();
-        int maxPositionOffset = 29999999;
-        double nx = Mth.clamp(this.getX(), -2.9999999E7, 2.9999999E7);
-        double nz = Mth.clamp(this.getZ(), -2.9999999E7, 2.9999999E7);
-        if (nx != this.getX() || nz != this.getZ()) {
-            this.setPos(nx, this.getY(), nz);
-        }
+//        int maxPositionOffset = 29999999;
+//        double nx = this.getX();
+//        double nz = this.getZ();
+//        if (nx != this.getX() || nz != this.getZ()) {
+//            this.setPos(nx, this.getY(), nz);
+//        }
 
         this.attackStrengthTicker++;
         this.itemSwapTicker++;
