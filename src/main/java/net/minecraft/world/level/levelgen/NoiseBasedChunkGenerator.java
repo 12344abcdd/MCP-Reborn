@@ -275,8 +275,8 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
         Set<Holder<Biome>> chunkBiomes = new ReferenceOpenHashSet<>();
         ChunkPos center = region.getCenter();
 
-        for (int z = center.z() - chunkRadius; z <= center.z() + chunkRadius; z++) {
-            for (int x = center.x() - chunkRadius; x <= center.x() + chunkRadius; x++) {
+        for (int z = center.z().intValueExact() - chunkRadius; z <= center.z().intValueExact() + chunkRadius; z++) {
+            for (int x = center.x().intValueExact() - chunkRadius; x <= center.x().intValueExact() + chunkRadius; x++) {
                 region.getChunk(x, z).collectBiomesInPalette(chunkBiomes);
             }
         }
@@ -325,8 +325,8 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
 
             for (int dx = -8; dx <= 8; dx++) {
                 for (int dz = -8; dz <= 8; dz++) {
-                    ChunkPos sourcePos = new ChunkPos(pos.x() + dx, pos.z() + dz);
-                    ChunkAccess carverCenterChunk = region.getChunk(sourcePos.x(), sourcePos.z());
+                    ChunkPos sourcePos = new ChunkPos(pos.x().intValueExact() + dx, pos.z().intValueExact() + dz);
+                    ChunkAccess carverCenterChunk = region.getChunk(sourcePos.x().intValueExact(), sourcePos.z().intValueExact());
                     BiomeGenerationSettings sourceBiomeGenerationSettings = carverCenterChunk.carverBiome(
                         () -> this.getBiomeGenerationSettings(
                             this.biomeSource
@@ -340,7 +340,7 @@ public final class NoiseBasedChunkGenerator extends ChunkGenerator {
 
                     for (Holder<ConfiguredWorldCarver<?>> carverHolder : carvers) {
                         ConfiguredWorldCarver<?> carver = carverHolder.value();
-                        random.setLargeFeatureSeed(seed + index, sourcePos.x(), sourcePos.z());
+                        random.setLargeFeatureSeed(seed + index, sourcePos.x().intValueExact(), sourcePos.z().intValueExact());
                         if (carver.isStartChunk(random)) {
                             carver.carve(context, chunk, correctBiomeManager::getBiome, random, aquifer, sourcePos, mask);
                         }

@@ -66,7 +66,7 @@ public abstract class TrackingDebugSynchronizer<T> {
         ChunkMap chunkMap = level.getChunkSource().chunkMap;
 
         for (UUID playerId : this.subscribedPlayers) {
-            if (level.getPlayerByUUID(playerId) instanceof ServerPlayer player && chunkMap.isChunkTracked(player, trackedChunk.x(), trackedChunk.z())) {
+            if (level.getPlayerByUUID(playerId) instanceof ServerPlayer player && chunkMap.isChunkTracked(player, trackedChunk.x().intValueExact(), trackedChunk.z().intValueExact())) {
                 player.connection.send(packet);
             }
         }

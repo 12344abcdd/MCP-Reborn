@@ -372,8 +372,8 @@ public interface VibrationSystem {
         private static boolean areAdjacentChunksTicking(final Level level, final BlockPos listenerPos) {
             ChunkPos listenerChunkPos = ChunkPos.containing(listenerPos);
 
-            for (int x = listenerChunkPos.x() - 1; x <= listenerChunkPos.x() + 1; x++) {
-                for (int z = listenerChunkPos.z() - 1; z <= listenerChunkPos.z() + 1; z++) {
+            for (int x = listenerChunkPos.x().intValueExact() - 1; x <= listenerChunkPos.x().intValueExact() + 1; x++) {
+                for (int z = listenerChunkPos.z().intValueExact() - 1; z <= listenerChunkPos.z().intValueExact() + 1; z++) {
                     if (!level.shouldTickBlocksAt(ChunkPos.pack(x, z)) || level.getChunkSource().getChunkNow(x, z) == null) {
                         return false;
                     }

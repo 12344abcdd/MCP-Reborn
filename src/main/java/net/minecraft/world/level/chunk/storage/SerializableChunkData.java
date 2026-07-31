@@ -412,9 +412,9 @@ public record SerializableChunkData(
 
     public CompoundTag write() {
         CompoundTag tag = NbtUtils.addCurrentDataVersion(new CompoundTag());
-        tag.putInt("xPos", this.chunkPos.x());
+        tag.putInt("xPos", this.chunkPos.x().intValueExact());
         tag.putInt("yPos", this.minSectionY);
-        tag.putInt("zPos", this.chunkPos.z());
+        tag.putInt("zPos", this.chunkPos.z().intValueExact());
         tag.putLong("LastUpdate", this.lastUpdateTime);
         tag.putLong("InhabitedTime", this.inhabitedTime);
         tag.putString("Status", BuiltInRegistries.CHUNK_STATUS.getKey(this.chunkStatus).toString());

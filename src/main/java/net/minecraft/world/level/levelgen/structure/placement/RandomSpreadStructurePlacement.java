@@ -78,7 +78,7 @@ public class RandomSpreadStructurePlacement extends StructurePlacement {
     @Override
     protected boolean isPlacementChunk(final ChunkGeneratorStructureState state, final int sourceX, final int sourceZ) {
         ChunkPos chunkPos = this.getPotentialStructureChunk(state.getLevelSeed(), sourceX, sourceZ);
-        return chunkPos.x() == sourceX && chunkPos.z() == sourceZ;
+        return chunkPos.x().intValueExact() == sourceX && chunkPos.z().intValueExact() == sourceZ;
     }
 
     @Override

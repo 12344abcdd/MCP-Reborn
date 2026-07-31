@@ -17,8 +17,8 @@ public abstract class ChunkTracker extends DynamicGraphMinFixedPoint {
     protected void checkNeighborsAfterUpdate(final long node, final int level, final boolean onlyDecrease) {
         if (!onlyDecrease || level < this.levelCount - 2) {
             ChunkPos pos = ChunkPos.unpack(node);
-            int x = pos.x();
-            int z = pos.z();
+            int x = pos.x().intValueExact();
+            int z = pos.z().intValueExact();
 
             for (int offsetX = -1; offsetX <= 1; offsetX++) {
                 for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
@@ -35,8 +35,8 @@ public abstract class ChunkTracker extends DynamicGraphMinFixedPoint {
     protected int getComputedLevel(final long node, final long knownParent, final int knownLevelFromParent) {
         int computedLevel = knownLevelFromParent;
         ChunkPos pos = ChunkPos.unpack(node);
-        int x = pos.x();
-        int z = pos.z();
+        int x = pos.x().intValueExact();
+        int z = pos.z().intValueExact();
 
         for (int offsetX = -1; offsetX <= 1; offsetX++) {
             for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {

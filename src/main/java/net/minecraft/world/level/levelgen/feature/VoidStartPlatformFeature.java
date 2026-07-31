@@ -25,7 +25,7 @@ public class VoidStartPlatformFeature extends Feature<NoneFeatureConfiguration> 
     public boolean place(final FeaturePlaceContext<NoneFeatureConfiguration> context) {
         WorldGenLevel level = context.level();
         ChunkPos currentChunkPos = ChunkPos.containing(context.origin());
-        if (checkerboardDistance(currentChunkPos.x(), currentChunkPos.z(), PLATFORM_ORIGIN_CHUNK.x(), PLATFORM_ORIGIN_CHUNK.z()) > 1) {
+        if (checkerboardDistance(currentChunkPos.x().intValueExact(), currentChunkPos.z().intValueExact(), PLATFORM_ORIGIN_CHUNK.x().intValueExact(), PLATFORM_ORIGIN_CHUNK.z().intValueExact()) > 1) {
             return true;
         }
 
