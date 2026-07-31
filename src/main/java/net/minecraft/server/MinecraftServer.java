@@ -375,8 +375,8 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
             public void moveTo(final ResourceKey<Level> dimension, final ChunkPos centerChunk) {
                 ServerLevel level = MinecraftServer.this.getLevel(dimension);
                 this.chunkMap = level != null ? level.getChunkSource().chunkMap : null;
-                this.centerChunkX = centerChunk.x();
-                this.centerChunkZ = centerChunk.z();
+                this.centerChunkX = centerChunk.x().intValueExact();
+                this.centerChunkZ = centerChunk.z().intValueExact();
             }
 
             @Override
@@ -509,7 +509,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
 
             for (int i = 0; i < Mth.square(11); i++) {
                 if (xChunkOffset >= -5 && xChunkOffset <= 5 && zChunkOffset >= -5 && zChunkOffset <= 5) {
-                    BlockPos testedPos = PlayerSpawnFinder.getSpawnPosInChunk(level, new ChunkPos(spawnChunk.x() + xChunkOffset, spawnChunk.z() + zChunkOffset));
+                    BlockPos testedPos = PlayerSpawnFinder.getSpawnPosInChunk(level, new ChunkPos(spawnChunk.x().intValueExact() + xChunkOffset, spawnChunk.z().intValueExact() + zChunkOffset));
                     if (testedPos != null) {
                         levelData.setSpawn(LevelData.RespawnData.of(level.dimension(), testedPos, 0.0F, 0.0F));
                         break;

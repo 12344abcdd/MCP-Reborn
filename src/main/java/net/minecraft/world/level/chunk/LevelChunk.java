@@ -289,7 +289,7 @@ public class LevelChunk extends ChunkAccess implements DebugValueSource {
         boolean isEmpty = section.hasOnlyAir();
         if (wasEmpty != isEmpty) {
             this.level.getChunkSource().getLightEngine().updateSectionStatus(pos, isEmpty);
-            this.level.getChunkSource().onSectionEmptinessChanged(this.chunkPos.x(), SectionPos.blockToSectionCoord(y), this.chunkPos.z(), isEmpty);
+            this.level.getChunkSource().onSectionEmptinessChanged(this.chunkPos.x().intValueExact(), SectionPos.blockToSectionCoord(y), this.chunkPos.z().intValueExact(), isEmpty);
         }
 
         if (LightEngine.hasDifferentLightProperties(oldState, state)) {

@@ -66,7 +66,8 @@ public class WorldBorder extends SavedData {
     }
 
     public boolean isWithinBounds(final double x, final double z) {
-        return this.isWithinBounds(x, z, 0.0);
+        //return this.isWithinBounds(x, z, 0.0);
+        return true;
     }
 
     public boolean isWithinBounds(final double x, final double z, final double margin) {

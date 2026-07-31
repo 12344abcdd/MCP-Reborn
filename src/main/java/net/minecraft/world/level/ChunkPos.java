@@ -23,7 +23,7 @@ public record ChunkPos(BigInteger x, BigInteger z) {
     }
 
     public static final Codec<ChunkPos> CODEC = Codec.INT_STREAM
-        .<ChunkPos>comapFlatMap(input -> Util.fixedSize(input, 2).map(ints -> new ChunkPos(ints[0], ints[1])), pos -> IntStream.of(pos.x, pos.z))
+        .<ChunkPos>comapFlatMap(input -> Util.fixedSize(input, 2).map(ints -> new ChunkPos(ints[0], ints[1])), pos -> IntStream.of(pos.x.intValueExact(), pos.z.intValueExact()))//临时
         .stable();
     public static final StreamCodec<ByteBuf, ChunkPos> STREAM_CODEC = new StreamCodec<ByteBuf, ChunkPos>() {
         public ChunkPos decode(final ByteBuf input) {
@@ -67,12 +67,16 @@ public record ChunkPos(BigInteger x, BigInteger z) {
         return isValid(this.x, this.z);
     }
 
-    public static boolean isValid(final BigInteger x, final BigInteger z) {
+    public static boolean isValid(final int x, final int z) {
         return Mth.absMax(x, z) <= ChunkPyramid.MAX_CHUNK_COORDINATE_VALUE;
     }
 
+    public static boolean isValid(final BigInteger x, final BigInteger z) {
+        return Mth.absMax(x, z).compareTo(BigInteger.valueOf(ChunkPyramid.MAX_CHUNK_COORDINATE_VALUE)) <= 0;
+    }
+
     public long pack() {
-        return pack(this.x, this.z);
+        return pack(this.x.intValue(), this.z.intValue());
     }
 
     public static long pack(final int x, final int z) {
@@ -100,9 +104,16 @@ public record ChunkPos(BigInteger x, BigInteger z) {
         return hash(this.x, this.z);
     }
 
+    @Deprecated
     public static int hash(final int x, final int z) {
         int xTransform = 1664525 * x + 1013904223;
         int zTransform = 1664525 * (z ^ -559038737) + 1013904223;
+        return xTransform ^ zTransform;
+    }
+
+    public static int hash(final BigInteger x, final BigInteger z) {
+        int xTransform = 1664525 * x.intValue() + 1013904223;
+        int zTransform = 1664525 * (z.intValue() ^ -559038737) + 1013904223;
         return xTransform ^ zTransform;
     }
 
@@ -115,11 +126,11 @@ public record ChunkPos(BigInteger x, BigInteger z) {
     }
 
     public int getMinBlockX() {
-        return SectionPos.sectionToBlockCoord(this.x);
+        return SectionPos.sectionToBlockCoord(this.x.intValueExact());
     }
 
     public int getMinBlockZ() {
-        return SectionPos.sectionToBlockCoord(this.z);
+        return SectionPos.sectionToBlockCoord(this.z.intValueExact());
     }
 
     public int getMaxBlockX() {
@@ -130,12 +141,14 @@ public record ChunkPos(BigInteger x, BigInteger z) {
         return this.getBlockZ(15);
     }
 
+    @Deprecated //临时
     public int getRegionX() {
-        return this.x >> 5;
+        return this.x.intValueExact() >> 5;
     }
 
+    @Deprecated
     public int getRegionZ() {
-        return this.z >> 5;
+        return this.z.intValueExact() >> 5;
     }
 
     public static int getRegionX(final long pos) {
@@ -146,12 +159,14 @@ public record ChunkPos(BigInteger x, BigInteger z) {
         return getZ(pos) >> 5;
     }
 
+    @Deprecated
     public int getRegionLocalX() {
-        return this.x & 31;
+        return this.x.intValueExact() & 31;
     }
 
+    @Deprecated
     public int getRegionLocalZ() {
-        return this.z & 31;
+        return this.z.intValueExact() & 31;
     }
 
     public BlockPos getBlockAt(final int x, final int y, final int z) {
@@ -159,11 +174,11 @@ public record ChunkPos(BigInteger x, BigInteger z) {
     }
 
     public int getBlockX(final int offset) {
-        return SectionPos.sectionToBlockCoord(this.x, offset);
+        return SectionPos.sectionToBlockCoord(this.x.intValueExact(), offset);
     }
 
     public int getBlockZ(final int offset) {
-        return SectionPos.sectionToBlockCoord(this.z, offset);
+        return SectionPos.sectionToBlockCoord(this.z.intValueExact(), offset);
     }
 
     public BlockPos getMiddleBlockPosition(final int y) {
@@ -184,15 +199,15 @@ public record ChunkPos(BigInteger x, BigInteger z) {
     }
 
     public int getChessboardDistance(final ChunkPos pos) {
-        return this.getChessboardDistance(pos.x, pos.z);
+        return this.getChessboardDistance(pos.x.intValueExact(), pos.z.intValueExact());
     }
 
     public int getChessboardDistance(final int x, final int z) {
-        return Mth.chessboardDistance(x, z, this.x, this.z);
+        return Mth.chessboardDistance(x, z, this.x.intValueExact(), this.z.intValueExact());
     }
 
     public int distanceSquared(final ChunkPos pos) {
-        return this.distanceSquared(pos.x, pos.z);
+        return this.distanceSquared(pos.x.intValueExact(), pos.z.intValueExact());
     }
 
     public int distanceSquared(final long pos) {
@@ -200,20 +215,20 @@ public record ChunkPos(BigInteger x, BigInteger z) {
     }
 
     private int distanceSquared(final int x, final int z) {
-        int deltaX = x - this.x;
-        int deltaZ = z - this.z;
+        int deltaX = x - this.x.intValueExact();
+        int deltaZ = z - this.z.intValueExact();
         return deltaX * deltaX + deltaZ * deltaZ;
     }
 
     public static Stream<ChunkPos> rangeClosed(final ChunkPos center, final int radius) {
-        return rangeClosed(new ChunkPos(center.x - radius, center.z - radius), new ChunkPos(center.x + radius, center.z + radius));
+        return rangeClosed(new ChunkPos(center.x.intValueExact() - radius, center.z.intValueExact() - radius), new ChunkPos(center.x.intValueExact() + radius, center.z.intValueExact() + radius));
     }
 
     public static Stream<ChunkPos> rangeClosed(final ChunkPos from, final ChunkPos to) {
-        int xSize = Math.abs(from.x - to.x) + 1;
-        int zSize = Math.abs(from.z - to.z) + 1;
-        final int xDiff = from.x < to.x ? 1 : -1;
-        final int zDiff = from.z < to.z ? 1 : -1;
+        int xSize = Math.abs(from.x.intValueExact() - to.x.intValueExact()) + 1;
+        int zSize = Math.abs(from.z.intValueExact() - to.z.intValueExact()) + 1;
+        final int xDiff = from.x.intValueExact() < to.x.intValueExact() ? 1 : -1;
+        final int zDiff = from.z.intValueExact() < to.z.intValueExact() ? 1 : -1;
         return StreamSupport.stream(new AbstractSpliterator<ChunkPos>(xSize * zSize, 64) {
             private @Nullable ChunkPos pos;
 
@@ -222,14 +237,14 @@ public record ChunkPos(BigInteger x, BigInteger z) {
                 if (this.pos == null) {
                     this.pos = from;
                 } else {
-                    int x = this.pos.x;
-                    int z = this.pos.z;
-                    if (x == to.x) {
-                        if (z == to.z) {
+                    int x = this.pos.x.intValueExact();
+                    int z = this.pos.z.intValueExact();
+                    if (x == to.x.intValueExact()) {
+                        if (z == to.z.intValueExact()) {
                             return false;
                         }
 
-                        this.pos = new ChunkPos(from.x, z + zDiff);
+                        this.pos = new ChunkPos(from.x.intValueExact(), z + zDiff);
                     } else {
                         this.pos = new ChunkPos(x + xDiff, z);
                     }

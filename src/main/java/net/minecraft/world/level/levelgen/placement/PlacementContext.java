@@ -28,7 +28,7 @@ public class PlacementContext extends WorldGenerationContext {
     }
 
     public CarvingMask getCarvingMask(final ChunkPos pos) {
-        return ((ProtoChunk)this.level.getChunk(pos.x(), pos.z())).getOrCreateCarvingMask();
+        return ((ProtoChunk)this.level.getChunk(pos.x().intValueExact(), pos.z().intValueExact())).getOrCreateCarvingMask();
     }
 
     public BlockState getBlockState(final BlockPos pos) {

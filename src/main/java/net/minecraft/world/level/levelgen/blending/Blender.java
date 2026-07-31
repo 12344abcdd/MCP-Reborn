@@ -77,8 +77,8 @@ public class Blender {
             for (int dx = -HEIGHT_BLENDING_RANGE_CHUNKS; dx <= HEIGHT_BLENDING_RANGE_CHUNKS; dx++) {
                 for (int dz = -HEIGHT_BLENDING_RANGE_CHUNKS; dz <= HEIGHT_BLENDING_RANGE_CHUNKS; dz++) {
                     if (dx * dx + dz * dz <= maxDistSq) {
-                        int chunkX = centerPos.x() + dx;
-                        int chunkZ = centerPos.z() + dz;
+                        int chunkX = centerPos.x().intValueExact() + dx;
+                        int chunkZ = centerPos.z().intValueExact() + dz;
                         BlendingData blendingData = BlendingData.getOrUpdateBlendingData(region, chunkX, chunkZ);
                         if (blendingData != null) {
                             heightAndBiomeData.put(ChunkPos.pack(chunkX, chunkZ), blendingData);
@@ -284,7 +284,7 @@ public class Blender {
                 }
 
                 for (Direction direction : Direction.Plane.HORIZONTAL) {
-                    if (region.getChunk(chunkPos.x() + direction.getStepX(), chunkPos.z() + direction.getStepZ()).isOldNoiseGeneration() != oldNoiseGeneration) {
+                    if (region.getChunk(chunkPos.x().intValueExact() + direction.getStepX(), chunkPos.z().intValueExact() + direction.getStepZ()).isOldNoiseGeneration() != oldNoiseGeneration) {
                         int minX = direction == Direction.EAST ? 15 : 0;
                         int maxX = direction == Direction.WEST ? 0 : 15;
                         int minZ = direction == Direction.SOUTH ? 15 : 0;
@@ -323,8 +323,8 @@ public class Blender {
             Builder<Direction8, BlendingData> builder = ImmutableMap.builder();
 
             for (Direction8 direction8 : Direction8.values()) {
-                int testChunkX = chunkPos.x() + direction8.getStepX();
-                int testChunkZ = chunkPos.z() + direction8.getStepZ();
+                int testChunkX = chunkPos.x().intValueExact() + direction8.getStepX();
+                int testChunkZ = chunkPos.z().intValueExact() + direction8.getStepZ();
                 BlendingData blendingData = region.getChunk(testChunkX, testChunkZ).getBlendingData();
                 if (blendingData != null) {
                     builder.put(direction8, blendingData);

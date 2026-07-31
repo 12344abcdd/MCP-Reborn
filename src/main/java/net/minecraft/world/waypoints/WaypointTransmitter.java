@@ -33,7 +33,7 @@ public interface WaypointTransmitter extends Waypoint {
     }
 
     static boolean isChunkVisible(final ChunkPos chunkPos, final ServerPlayer receiver) {
-        return receiver.getChunkTrackingView().isInViewDistance(chunkPos.x(), chunkPos.z());
+        return receiver.getChunkTrackingView().isInViewDistance(chunkPos.x().intValueExact(), chunkPos.z().intValueExact());
     }
 
     static boolean isReallyFar(final LivingEntity source, final ServerPlayer receiver) {

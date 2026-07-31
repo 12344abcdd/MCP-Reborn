@@ -89,7 +89,7 @@ public class StructureCheck {
             return storageCheckResult;
         }
 
-        if (!placement.applyAdditionalChunkRestrictions(pos.x(), pos.z(), this.seed)) {
+        if (!placement.applyAdditionalChunkRestrictions(pos.x().intValueExact(), pos.z().intValueExact(), this.seed)) {
             return StructureCheckResult.START_NOT_PRESENT;
         }
 

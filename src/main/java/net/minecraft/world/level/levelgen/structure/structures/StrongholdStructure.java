@@ -26,7 +26,7 @@ public class StrongholdStructure extends Structure {
         StrongholdPieces.StartPiece startRoom;
         do {
             builder.clear();
-            context.random().setLargeFeatureSeed(context.seed() + tries++, context.chunkPos().x(), context.chunkPos().z());
+            context.random().setLargeFeatureSeed(context.seed() + tries++, context.chunkPos().x().intValueExact(), context.chunkPos().z().intValueExact());
             StrongholdPieces.resetPieces();
             startRoom = new StrongholdPieces.StartPiece(context.random(), context.chunkPos().getBlockX(2), context.chunkPos().getBlockZ(2));
             builder.addPiece(startRoom);

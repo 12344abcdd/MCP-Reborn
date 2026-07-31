@@ -12,6 +12,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector3fc;
+import java.math.BigInteger;
 
 public class Mth {
     private static final long UUID_VERSION = 61440L;
@@ -123,8 +124,20 @@ public class Mth {
         }
     }
 
+    public static BigInteger max(final BigInteger a, final BigInteger b) {
+        return a.compareTo(b) >= 0 ? a : b;
+    }
+
+    public static BigInteger min(final BigInteger a, final BigInteger b) {
+        return a.compareTo(b) <= 0 ? a : b;
+    }
+
     public static int absMax(final int a, final int b) {
         return Math.max(Math.abs(a), Math.abs(b));
+    }
+
+    public static BigInteger absMax(final BigInteger a, final BigInteger b) {
+        return a.abs().max(b.abs());
     }
 
     public static float absMax(final float a, final float b) {

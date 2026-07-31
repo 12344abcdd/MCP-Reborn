@@ -71,17 +71,17 @@ public class BlockPos extends Vec3i {
         return asLong(getX(blockNode) + stepX, getY(blockNode) + stepY, getZ(blockNode) + stepZ);
     }
 
-    @Deprecated(forRemoval = true)
+    //@Deprecated(forRemoval = true)
     public static int getX(final long blockNode) {
         return (int)(blockNode << 64 - X_OFFSET - PACKED_HORIZONTAL_LENGTH >> 64 - PACKED_HORIZONTAL_LENGTH);
     }
 
-    @Deprecated(forRemoval = true)
+    //@Deprecated(forRemoval = true)
     public static int getY(final long blockNode) {
         return (int)(blockNode << 64 - PACKED_Y_LENGTH >> 64 - PACKED_Y_LENGTH);
     }
 
-    @Deprecated(forRemoval = true)
+    //@Deprecated(forRemoval = true)
     public static int getZ(final long blockNode) {
         return (int)(blockNode << 64 - Z_OFFSET - PACKED_HORIZONTAL_LENGTH >> 64 - PACKED_HORIZONTAL_LENGTH);
     }
@@ -106,12 +106,12 @@ public class BlockPos extends Vec3i {
         return new BlockPos(Math.max(a.getX(), b.getX()), Math.max(a.getY(), b.getY()), Math.max(a.getZ(), b.getZ()));
     }
 
-    @Deprecated(forRemoval = true)
+    //@Deprecated(forRemoval = true)
     public long asLong() {
         return asLong(this.getX(), this.getY(), this.getZ());
     }
 
-    @Deprecated(forRemoval = true)
+    //@Deprecated(forRemoval = true)
     public static long asLong(final int x, final int y, final int z) {
         long node = 0L;
         node |= (x & PACKED_X_MASK) << X_OFFSET;

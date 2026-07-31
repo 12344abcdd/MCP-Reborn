@@ -120,7 +120,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
     }
 
     public void retainData(final ChunkPos pos, final boolean retain) {
-        this.storage.retainData(SectionPos.getZeroNode(pos.x(), pos.z()), retain);
+        this.storage.retainData(SectionPos.getZeroNode(pos.x().intValueExact(), pos.z().intValueExact()), retain);
     }
 
     @Override
@@ -130,7 +130,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
 
     @Override
     public void setLightEnabled(final ChunkPos pos, final boolean enable) {
-        this.storage.setLightEnabled(SectionPos.getZeroNode(pos.x(), pos.z()), enable);
+        this.storage.setLightEnabled(SectionPos.getZeroNode(pos.x().intValueExact(), pos.z().intValueExact()), enable);
     }
 
     @Override

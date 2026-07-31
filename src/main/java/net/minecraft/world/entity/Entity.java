@@ -3817,7 +3817,7 @@ public abstract class Entity
             if (fx != this.blockPosition.getX() || fy != this.blockPosition.getY() || fz != this.blockPosition.getZ()) {
                 this.blockPosition = new BlockPos(fx, fy, fz);
                 this.inBlockState = null;
-                if (SectionPos.blockToSectionCoord(fx) != this.chunkPosition.x() || SectionPos.blockToSectionCoord(fz) != this.chunkPosition.z()) {
+                if (SectionPos.blockToSectionCoord(fx) != this.chunkPosition.x().intValueExact() || SectionPos.blockToSectionCoord(fz) != this.chunkPosition.z().intValueExact()) {
                     this.chunkPosition = ChunkPos.containing(this.blockPosition);
                 }
             }

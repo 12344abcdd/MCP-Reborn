@@ -3,6 +3,7 @@ package net.minecraft.world.level.chunk.storage;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Path;
 import java.util.BitSet;
 import java.util.LinkedHashMap;
@@ -18,6 +19,7 @@ import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.StreamTagVisitor;
 import net.minecraft.nbt.visitors.CollectFields;
 import net.minecraft.nbt.visitors.FieldSelector;
+import net.minecraft.util.Mth;
 import net.minecraft.util.Unit;
 import net.minecraft.util.Util;
 import net.minecraft.util.thread.PriorityConsecutiveExecutor;
@@ -42,18 +44,18 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
     }
 
     public boolean isOldChunkAround(final ChunkPos pos, final int range) {
-        ChunkPos from = new ChunkPos(pos.x() - range, pos.z() - range);
-        ChunkPos to = new ChunkPos(pos.x() + range, pos.z() + range);
+        ChunkPos from = new ChunkPos(pos.x().subtract(BigInteger.valueOf(range)), pos.z().subtract(BigInteger.valueOf(range)));
+        ChunkPos to = new ChunkPos(pos.x().add(BigInteger.valueOf(range)), pos.z().add(BigInteger.valueOf(range)));
 
         for (int regionX = from.getRegionX(); regionX <= to.getRegionX(); regionX++) {
             for (int regionZ = from.getRegionZ(); regionZ <= to.getRegionZ(); regionZ++) {
                 BitSet data = this.getOrCreateOldDataForRegion(regionX, regionZ).join();
                 if (!data.isEmpty()) {
                     ChunkPos minChunkPos = ChunkPos.minFromRegion(regionX, regionZ);
-                    int startChunkX = Math.max(from.x() - minChunkPos.x(), 0);
-                    int startChunkZ = Math.max(from.z() - minChunkPos.z(), 0);
-                    int endChunkX = Math.min(to.x() - minChunkPos.x(), 31);
-                    int endChunkZ = Math.min(to.z() - minChunkPos.z(), 31);
+                    int startChunkX = Mth.max(from.x().subtract(minChunkPos.x()), BigInteger.ZERO).intValueExact();
+                    int startChunkZ = Math.max(from.z().intValueExact() - minChunkPos.z().intValueExact(), 0);
+                    int endChunkX = Math.min(to.x().intValueExact() - minChunkPos.x().intValueExact(), 31);
+                    int endChunkZ = Math.min(to.z().intValueExact() - minChunkPos.z().intValueExact(), 31);
 
                     for (int x = startChunkX; x <= endChunkX; x++) {
                         for (int z = startChunkZ; z <= endChunkZ; z++) {

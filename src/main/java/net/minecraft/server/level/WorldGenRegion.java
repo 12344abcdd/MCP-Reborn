@@ -90,8 +90,8 @@ public class WorldGenRegion implements WorldGenLevel {
         this.dimensionType = level.dimensionType();
         this.biomeManager = new BiomeManager(this, BiomeManager.obfuscateSeed(this.seed));
         ChunkPos centerPos = center.getPos();
-        this.centerChunkX = centerPos.x();
-        this.centerChunkZ = centerPos.z();
+        this.centerChunkX = centerPos.x().intValueExact();
+        this.centerChunkZ = centerPos.z().intValueExact();
         this.writeRadius = generatingStep.blockStateWriteRadius();
     }
 

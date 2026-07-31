@@ -286,7 +286,7 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
             .filter(poiSection -> !poiSection.getSecond().map(PoiSection::isValid).orElse(false))
             .map(p -> p.getFirst().chunk())
             .filter(pos -> this.loadedChunks.add(pos.pack()))
-            .forEach(pos -> reader.getChunk(pos.x(), pos.z(), ChunkStatus.EMPTY));
+            .forEach(pos -> reader.getChunk(pos.x().intValueExact(), pos.z().intValueExact(), ChunkStatus.EMPTY));
     }
 
     private final class DistanceTracker extends SectionTracker {

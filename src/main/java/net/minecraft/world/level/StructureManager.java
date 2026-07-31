@@ -48,7 +48,7 @@ public class StructureManager {
     }
 
     public List<StructureStart> startsForStructure(final ChunkPos pos, final Predicate<Structure> matcher) {
-        Map<Structure, LongSet> allReferences = this.level.getChunk(pos.x(), pos.z(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
+        Map<Structure, LongSet> allReferences = this.level.getChunk(pos.x().intValueExact(), pos.z().intValueExact(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
         Builder<StructureStart> result = ImmutableList.builder();
 
         for (Entry<Structure, LongSet> entry : allReferences.entrySet()) {

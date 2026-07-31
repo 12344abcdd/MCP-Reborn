@@ -172,7 +172,7 @@ public class UpgradeData {
 
                     for (Direction direction : directions) {
                         neighbourPos.setWithOffset(pos, direction);
-                        if (SectionPos.blockToSectionCoord(pos.getX()) == chunkPos.x() && SectionPos.blockToSectionCoord(pos.getZ()) == chunkPos.z()) {
+                        if (SectionPos.blockToSectionCoord(pos.getX()) == chunkPos.x().intValueExact() && SectionPos.blockToSectionCoord(pos.getZ()) == chunkPos.z().intValueExact()) {
                             newState = updateState(newState, direction, level, pos, neighbourPos);
                         }
                     }
