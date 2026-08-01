@@ -34,7 +34,7 @@ public class WorldBorder extends SavedData {
     private int warningBlocks = 5;
     private double centerX;
     private double centerZ;
-    private int absoluteMaxSize = 29999984;
+    private int absoluteMaxSize = Integer.MAX_VALUE;
     private WorldBorder.BorderExtent extent = new WorldBorder.StaticBorderExtent(Double.MAX_VALUE);
 
     public WorldBorder() {
@@ -81,7 +81,8 @@ public class WorldBorder extends SavedData {
     }
 
     public BlockPos clampToBounds(final BlockPos position) {
-        return this.clampToBounds(position.getX(), position.getY(), position.getZ());
+        //return this.clampToBounds(position.getX(), position.getY(), position.getZ());
+        return position;
     }
 
     public BlockPos clampToBounds(final Vec3 position) {
@@ -101,7 +102,8 @@ public class WorldBorder extends SavedData {
     }
 
     public double getDistanceToBorder(final Entity entity) {
-        return this.getDistanceToBorder(entity.getX(), entity.getZ());
+        //return this.getDistanceToBorder(entity.getX(), entity.getZ());
+        return Double.MAX_VALUE;
     }
 
     public VoxelShape getCollisionShape() {
@@ -109,13 +111,14 @@ public class WorldBorder extends SavedData {
     }
 
     public double getDistanceToBorder(final double x, final double z) {
-        double fromNorth = z - this.getMinZ();
-        double fromSouth = this.getMaxZ() - z;
-        double fromWest = x - this.getMinX();
-        double fromEast = this.getMaxX() - x;
-        double min = Math.min(fromWest, fromEast);
-        min = Math.min(min, fromNorth);
-        return Math.min(min, fromSouth);
+//        double fromNorth = z - this.getMinZ();
+//        double fromSouth = this.getMaxZ() - z;
+//        double fromWest = x - this.getMinX();
+//        double fromEast = this.getMaxX() - x;
+//        double min = Math.min(fromWest, fromEast);
+//        min = Math.min(min, fromNorth);
+//        return Math.min(min, fromSouth);
+        return Double.MAX_VALUE;
     }
 
     public boolean isInsideCloseToBorder(final Entity source, final AABB boundingBox) {
@@ -475,8 +478,8 @@ public class WorldBorder extends SavedData {
         public static final WorldBorder.Settings DEFAULT = new WorldBorder.Settings(0.0, 0.0, 0.2, 5.0, 5, 300, 5.999997E7F, 0L, 0.0);
         public static final Codec<WorldBorder.Settings> CODEC = RecordCodecBuilder.create(
             i -> i.group(
-                    Codec.doubleRange(-2.9999984E7, 2.9999984E7).fieldOf("center_x").forGetter(WorldBorder.Settings::centerX),
-                    Codec.doubleRange(-2.9999984E7, 2.9999984E7).fieldOf("center_z").forGetter(WorldBorder.Settings::centerZ),
+                    Codec.doubleRange(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY).fieldOf("center_x").forGetter(WorldBorder.Settings::centerX),
+                    Codec.doubleRange(Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY).fieldOf("center_z").forGetter(WorldBorder.Settings::centerZ),
                     Codec.DOUBLE.fieldOf("damage_per_block").forGetter(WorldBorder.Settings::damagePerBlock),
                     Codec.DOUBLE.fieldOf("safe_zone").forGetter(WorldBorder.Settings::safeZone),
                     Codec.INT.fieldOf("warning_blocks").forGetter(WorldBorder.Settings::warningBlocks),

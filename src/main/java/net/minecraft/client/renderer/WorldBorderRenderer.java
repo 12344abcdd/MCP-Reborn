@@ -60,7 +60,7 @@ public class WorldBorderRenderer implements AutoCloseable {
         final float v1,
         final float v0
     ) {
-        try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION_TEX.getVertexSize() * 4 * 4)) {
+        /*try (ByteBufferBuilder byteBufferBuilder = ByteBufferBuilder.exactlySized(DefaultVertexFormat.POSITION_TEX.getVertexSize() * 4 * 4)) {
             double borderMinX = state.minX;
             double borderMaxX = state.maxX;
             double borderMinZ = state.minZ;
@@ -102,7 +102,7 @@ public class WorldBorderRenderer implements AutoCloseable {
             this.lastMinX = minX;
             this.lastMinZ = minZ;
             this.needsRebuild = false;
-        }
+        }*/
     }
 
     public void extract(

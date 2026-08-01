@@ -428,7 +428,8 @@ public class ServerGamePacketListenerImpl
     }
 
     private static boolean containsInvalidValues(final double x, final double y, final double z, final float yRot, final float xRot) {
-        return Double.isNaN(x) || Double.isNaN(y) || Double.isNaN(z) || !Floats.isFinite(xRot) || !Floats.isFinite(yRot);
+        //return Double.isNaN(x) || Double.isNaN(y) || Double.isNaN(z) || !Floats.isFinite(xRot) || !Floats.isFinite(yRot);
+        return false;
     }
 
     private static double clampHorizontal(final double value) {
