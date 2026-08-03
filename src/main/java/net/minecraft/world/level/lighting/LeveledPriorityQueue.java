@@ -1,18 +1,19 @@
 package net.minecraft.world.level.lighting;
 
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import net.minecraft.world.level.ChunkPos;
 
 public class LeveledPriorityQueue {
     private final int levelCount;
-    private final LongLinkedOpenHashSet[] queues;
+    private final ObjectLinkedOpenHashSet[] queues;
     private int firstQueuedLevel;
 
     public LeveledPriorityQueue(final int levelCount, final int minSize) {
         this.levelCount = levelCount;
-        this.queues = new LongLinkedOpenHashSet[levelCount];
+        this.queues = new ObjectLinkedOpenHashSet[levelCount];
 
         for (int i = 0; i < levelCount; i++) {
-            this.queues[i] = new LongLinkedOpenHashSet(minSize, 0.5F) {
+            this.queues[i] = new ObjectLinkedOpenHashSet(minSize, 0.5F) {
                 @Override
                 protected void rehash(final int newN) {
                     if (newN > minSize) {
@@ -25,9 +26,9 @@ public class LeveledPriorityQueue {
         this.firstQueuedLevel = levelCount;
     }
 
-    public long removeFirstLong() {
-        LongLinkedOpenHashSet queue = this.queues[this.firstQueuedLevel];
-        long result = queue.removeFirstLong();
+    public ChunkPos removeFirst() {
+        ObjectLinkedOpenHashSet queue = this.queues[this.firstQueuedLevel];
+        ChunkPos result = (ChunkPos) queue.removeFirst();
         if (queue.isEmpty()) {
             this.checkFirstQueuedLevel(this.levelCount);
         }
@@ -39,15 +40,15 @@ public class LeveledPriorityQueue {
         return this.firstQueuedLevel >= this.levelCount;
     }
 
-    public void dequeue(final long node, final int key, final int upperBound) {
-        LongLinkedOpenHashSet queue = this.queues[key];
+    public void dequeue(final ChunkPos node, final int key, final int upperBound) {
+        ObjectLinkedOpenHashSet queue = this.queues[key];
         queue.remove(node);
         if (queue.isEmpty() && this.firstQueuedLevel == key) {
             this.checkFirstQueuedLevel(upperBound);
         }
     }
 
-    public void enqueue(final long node, final int key) {
+    public void enqueue(final ChunkPos node, final int key) {
         this.queues[key].add(node);
         if (this.firstQueuedLevel > key) {
             this.firstQueuedLevel = key;

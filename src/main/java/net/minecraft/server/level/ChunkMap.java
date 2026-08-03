@@ -248,11 +248,11 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
         return this.lightEngine;
     }
 
-    public @Nullable ChunkHolder getUpdatingChunkIfPresent(final long key) {
+    public @Nullable ChunkHolder getUpdatingChunkIfPresent(final ChunkPos key) {
         return this.updatingChunkMap.get(key);
     }
 
-    protected @Nullable ChunkHolder getVisibleChunkIfPresent(final long key) {
+    protected @Nullable ChunkHolder getVisibleChunkIfPresent(final ChunkPos key) {
         return this.visibleChunkMap.get(key);
     }
 
@@ -261,7 +261,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
         return chunkHolder != null ? chunkHolder.getLatestStatus() : null;
     }
 
-    protected IntSupplier getChunkQueueLevel(final long pos) {
+    protected IntSupplier getChunkQueueLevel(final ChunkPos pos) {
         return () -> {
             ChunkHolder chunk = this.getVisibleChunkIfPresent(pos);
             return chunk == null
@@ -271,7 +271,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
     }
 
     public String getChunkDebugData(final ChunkPos pos) {
-        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos.pack());
+        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos);
         if (chunkHolder == null) {
             return "null";
         }
@@ -823,7 +823,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
     }
 
     private void markChunkPendingToSend(final ServerPlayer player, final ChunkPos pos) {
-        LevelChunk chunk = this.getChunkToSend(pos.pack());
+        LevelChunk chunk = this.getChunkToSend(pos);
         if (chunk != null) {
             markChunkPendingToSend(player, chunk);
         }
@@ -837,7 +837,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
         player.connection.chunkSender.dropChunk(player, pos);
     }
 
-    public @Nullable LevelChunk getChunkToSend(final long key) {
+    public @Nullable LevelChunk getChunkToSend(final ChunkPos key) {
         ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(key);
         return chunkHolder == null ? null : chunkHolder.getChunkToSend();
     }
@@ -1286,7 +1286,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
     public void waitForLightBeforeSending(final ChunkPos centerChunk, final int chunkRadius) {
         int affectedLightChunkRadius = chunkRadius + 1;
         ChunkPos.rangeClosed(centerChunk, affectedLightChunkRadius).forEach(chunkPos -> {
-            ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(chunkPos.pack());
+            ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(chunkPos);
             if (chunkHolder != null) {
                 chunkHolder.addSendDependency(this.lightEngine.waitForPendingTasks(chunkPos.x().intValueExact(), chunkPos.z().intValueExact()));
             }
@@ -1313,7 +1313,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
         }
 
         @Override
-        protected @Nullable ChunkHolder getChunk(final long node) {
+        protected @Nullable ChunkHolder getChunk(final ChunkPos node) {
             return ChunkMap.this.getUpdatingChunkIfPresent(node);
         }
 

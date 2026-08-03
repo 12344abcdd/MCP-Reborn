@@ -55,11 +55,11 @@ public abstract class DistanceManager {
         this.mainThreadExecutor = mainThreadExecutor;
     }
 
-    protected abstract boolean isChunkToRemove(final long node);
+    protected abstract boolean isChunkToRemove(final ChunkPos node);
 
-    protected abstract @Nullable ChunkHolder getChunk(final long node);
+    protected abstract @Nullable ChunkHolder getChunk(final ChunkPos node);
 
-    protected abstract @Nullable ChunkHolder updateChunkScheduling(final long node, final int level, final @Nullable ChunkHolder chunk, final int oldLevel);
+    protected abstract @Nullable ChunkHolder updateChunkScheduling(final ChunkPos node, final int level, final @Nullable ChunkHolder chunk, final int oldLevel);
 
     public boolean runAllUpdates(final ChunkMap scheduler) {
         this.naturalSpawnChunkCounter.runAllUpdates();
@@ -87,7 +87,7 @@ public abstract class DistanceManager {
                 LongIterator iterator = this.ticketsToRelease.iterator();
 
                 while (iterator.hasNext()) {
-                    long pos = iterator.nextLong();
+                    ChunkPos pos = iterator.next();
                     if (this.ticketStorage.getTickets(pos).stream().anyMatch(t -> t.getType() == TicketType.PLAYER_LOADING)) {
                         ChunkHolder chunk = scheduler.getUpdatingChunkIfPresent(pos);
                         if (chunk == null) {

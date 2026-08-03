@@ -194,7 +194,7 @@ public class SectionPos extends Vec3i {
     public static long getZeroNode(final long sectionNode) {
         return sectionNode & -1048576L;
     }
-
+    //BlockPos相关
     public static long sectionToChunk(final long sectionNode) {
         return ChunkPos.pack(x(sectionNode), z(sectionNode));
     }

@@ -8,10 +8,7 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
@@ -67,7 +64,7 @@ public class ServerChunkCache extends ChunkSource {
     private long lastInhabitedUpdate;
     private boolean spawnEnemies = true;
     private static final int CACHE_SIZE = 4;
-    private final long[] lastChunkPos = new long[4];
+    private final ChunkPos[] lastChunkPos = new ChunkPos[4];
     private final @Nullable ChunkStatus[] lastChunkStatus = new ChunkStatus[4];
     private final @Nullable ChunkAccess[] lastChunk = new ChunkAccess[4];
     private final List<LevelChunk> spawningChunks = new ObjectArrayList<>();
@@ -75,6 +72,10 @@ public class ServerChunkCache extends ChunkSource {
     @VisibleForDebug
     private NaturalSpawner.@Nullable SpawnState lastSpawnState;
 
+//    {
+//        Collections.addAll(this.lastChunkPos,null,null,null,null);
+//
+//    }
     public ServerChunkCache(
         final ServerLevel level,
         final LevelStorageSource.LevelStorageAccess levelStorage,
@@ -126,11 +127,11 @@ public class ServerChunkCache extends ChunkSource {
         return this.lightEngine;
     }
 
-    private @Nullable ChunkHolder getVisibleChunkIfPresent(final long key) {
+    private @Nullable ChunkHolder getVisibleChunkIfPresent(final ChunkPos key) {
         return this.chunkMap.getVisibleChunkIfPresent(key);
     }
 
-    private void storeInCache(final long pos, final @Nullable ChunkAccess chunk, final ChunkStatus status) {
+    private void storeInCache(final ChunkPos pos, final @Nullable ChunkAccess chunk, final ChunkStatus status) {
         for (int i = 3; i > 0; i--) {
             this.lastChunkPos[i] = this.lastChunkPos[i - 1];
             this.lastChunkStatus[i] = this.lastChunkStatus[i - 1];
@@ -150,7 +151,7 @@ public class ServerChunkCache extends ChunkSource {
 
         ProfilerFiller profiler = Profiler.get();
         profiler.incrementCounter("getChunk");
-        long pos = ChunkPos.pack(x, z);
+        ChunkPos pos = new ChunkPos(x, z);
 
         for (int i = 0; i < 4; i++) {
             if (pos == this.lastChunkPos[i] && targetStatus == this.lastChunkStatus[i]) {
@@ -181,10 +182,10 @@ public class ServerChunkCache extends ChunkSource {
         }
 
         Profiler.get().incrementCounter("getChunkNow");
-        long pos = ChunkPos.pack(x, z);
+        ChunkPos pos = new ChunkPos(x, z);
 
         for (int i = 0; i < 4; i++) {
-            if (pos == this.lastChunkPos[i] && this.lastChunkStatus[i] == ChunkStatus.FULL) {
+            if (pos.equals(this.lastChunkPos[i]) && this.lastChunkStatus[i] == ChunkStatus.FULL) {
                 return this.lastChunk[i] instanceof LevelChunk levelChunk ? levelChunk : null;
             }
         }
