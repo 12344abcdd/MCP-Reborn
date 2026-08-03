@@ -17,6 +17,8 @@ import it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
+
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -42,7 +44,7 @@ public abstract class DistanceManager {
     private final DistanceManager.PlayerTicketTracker playerTicketManager = new DistanceManager.PlayerTicketTracker(32);
     protected final Set<ChunkHolder> chunksToUpdateFutures = new ReferenceOpenHashSet<>();
     private final ThrottlingChunkTaskDispatcher ticketDispatcher;
-    private final LongSet ticketsToRelease = new LongOpenHashSet();
+    private final Set<ChunkPos> ticketsToRelease = new ObjectOpenHashSet<>();
     private final Executor mainThreadExecutor;
     private int simulationDistance = 10;
 
@@ -84,7 +86,7 @@ public abstract class DistanceManager {
             return true;
         } else {
             if (!this.ticketsToRelease.isEmpty()) {
-                LongIterator iterator = this.ticketsToRelease.iterator();
+                Iterator<ChunkPos> iterator = this.ticketsToRelease.iterator();
 
                 while (iterator.hasNext()) {
                     ChunkPos pos = iterator.next();

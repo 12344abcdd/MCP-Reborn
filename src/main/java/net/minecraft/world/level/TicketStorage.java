@@ -11,10 +11,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 //import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
@@ -96,7 +93,7 @@ public class TicketStorage extends SavedData {
     }
 
     public void activateAllDeactivatedTickets() {
-        for (Object2ObjectMap.Entry<ChunkPos,List<Ticket>> entry : Object2ObjectMap(this.deactivatedTickets)) {
+        for (Map.Entry<ChunkPos, List<Ticket>> entry : this.deactivatedTickets.entrySet()) {
             for (Ticket ticket : entry.getValue()) {
                 this.addTicket(entry.getKey(), ticket);
             }
@@ -215,14 +212,14 @@ public class TicketStorage extends SavedData {
 
     public void removeTicketWithRadius(final TicketType type, final ChunkPos chunkPos, final int radius) {
         Ticket ticket = new Ticket(type, ChunkLevel.byStatus(FullChunkStatus.FULL) - radius);
-        this.removeTicket(chunkPos.pack(), ticket);
+        this.removeTicket(chunkPos, ticket);
     }
 
     public void removeTicket(final Ticket ticket, final ChunkPos chunkPos) {
-        this.removeTicket(chunkPos.pack(), ticket);
+        this.removeTicket(chunkPos, ticket);
     }
 
-    public boolean removeTicket(final long key, final Ticket ticket) {
+    public boolean removeTicket(final ChunkPos key, final Ticket ticket) {
         List<Ticket> tickets = this.tickets.get(key);
         if (tickets == null) {
             return false;
@@ -236,7 +233,7 @@ public class TicketStorage extends SavedData {
             if (isTicketSameTypeAndLevel(ticket, t)) {
                 iterator.remove();
                 if (SharedConstants.DEBUG_VERBOSE_SERVER_EVENTS) {
-                    LOGGER.debug("RTI {} {}", ChunkPos.unpack(key), t);
+                    LOGGER.debug("RTI {} {}", key, t);
                 }
 
                 found = true;
@@ -307,22 +304,22 @@ public class TicketStorage extends SavedData {
         this.removeTicketIf((ticket, chunkPos) -> ticket.getType() != TicketType.UNKNOWN, this.deactivatedTickets);
     }
 
-    public void removeTicketIf(final TicketStorage.TicketPredicate predicate, final @Nullable Object2ObjectOpenHashMap<ChunkPos,List<Ticket>> removedTickets) {
-        ObjectIterator<Entry<List<Ticket>>> ticketsPerChunkIterator = this.tickets.long2ObjectEntrySet().fastIterator();
+    public void removeTicketIf(final TicketPredicate predicate, final @Nullable Object2ObjectOpenHashMap<ChunkPos,List<Ticket>> removedTickets) {
+        ObjectIterator<Object2ObjectMap.Entry<ChunkPos,List<Ticket>>> ticketsPerChunkIterator = this.tickets.object2ObjectEntrySet().iterator();
         boolean removedForced = false;
 
         while (ticketsPerChunkIterator.hasNext()) {
-            Entry<List<Ticket>> entry = ticketsPerChunkIterator.next();
+            Object2ObjectMap.Entry<ChunkPos,List<Ticket>> entry = ticketsPerChunkIterator.next();
             Iterator<Ticket> chunkTicketsIterator = entry.getValue().iterator();
-            long chunkPos = entry.getLongKey();
+            ChunkPos pos = entry.getKey();
             boolean removedSimulation = false;
             boolean removedLoading = false;
 
             while (chunkTicketsIterator.hasNext()) {
                 Ticket ticket = chunkTicketsIterator.next();
-                if (predicate.test(ticket, chunkPos)) {
+                if (predicate.test(ticket, pos)) {
                     if (removedTickets != null) {
-                        List<Ticket> tickets = removedTickets.computeIfAbsent(chunkPos, k -> new ObjectArrayList<>(entry.getValue().size()));
+                        List<Ticket> tickets = removedTickets.computeIfAbsent(pos, k -> new ObjectArrayList<>(entry.getValue().size()));
                         tickets.add(ticket);
                     }
 
@@ -343,11 +340,11 @@ public class TicketStorage extends SavedData {
 
             if (removedLoading || removedSimulation) {
                 if (removedLoading && this.loadingChunkUpdatedListener != null) {
-                    this.loadingChunkUpdatedListener.update(chunkPos, getTicketLevelAt(entry.getValue(), false), false);
+                    this.loadingChunkUpdatedListener.update(pos, getTicketLevelAt(entry.getValue(), false), false);
                 }
 
                 if (removedSimulation && this.simulationChunkUpdatedListener != null) {
-                    this.simulationChunkUpdatedListener.update(chunkPos, getTicketLevelAt(entry.getValue(), true), false);
+                    this.simulationChunkUpdatedListener.update(pos, getTicketLevelAt(entry.getValue(), true), false);
                 }
 
                 this.setDirty();
@@ -363,18 +360,18 @@ public class TicketStorage extends SavedData {
     }
 
     public void replaceTicketLevelOfType(final int newLevel, final TicketType ticketType) {
-        List<Pair<Ticket, Long>> affectedTickets = new ArrayList<>();
+        List<Pair<Ticket, ChunkPos>> affectedTickets = new ArrayList<>();
 
-        for (Entry<List<Ticket>> entry : this.tickets.long2ObjectEntrySet()) {
+        for (Object2ObjectMap.Entry<ChunkPos,List<Ticket>> entry : this.tickets.object2ObjectEntrySet()) {
             for (Ticket ticket : entry.getValue()) {
                 if (ticket.getType() == ticketType) {
-                    affectedTickets.add(Pair.of(ticket, entry.getLongKey()));
+                    affectedTickets.add(Pair.of(ticket, entry.getKey()));
                 }
             }
         }
 
-        for (Pair<Ticket, Long> pair : affectedTickets) {
-            Long key = pair.getSecond();
+        for (Pair<Ticket, ChunkPos> pair : affectedTickets) {
+            ChunkPos key = pair.getSecond();
             Ticket ticket = pair.getFirst();
             this.removeTicket(key, ticket);
             TicketType type = ticket.getType();
@@ -384,7 +381,7 @@ public class TicketStorage extends SavedData {
 
     public boolean updateChunkForced(final ChunkPos chunkPos, final boolean forced) {
         Ticket ticket = new Ticket(TicketType.FORCED, ChunkMap.FORCED_TICKET_LEVEL);
-        return forced ? this.addTicket(chunkPos, ticket) : this.removeTicket(chunkPos.pack(), ticket);
+        return forced ? this.addTicket(chunkPos, ticket) : this.removeTicket(chunkPos, ticket);
     }
 
     public ObjectOpenHashSet<ChunkPos> getForceLoadedChunks() {
@@ -394,7 +391,7 @@ public class TicketStorage extends SavedData {
     private ObjectOpenHashSet<ChunkPos> getAllChunksWithTicketThat(final Predicate<Ticket> ticketCheck) {
         ObjectOpenHashSet<ChunkPos> chunks = new ObjectOpenHashSet<>();
 
-        for (Object2ObjectMap.Entry<ChunkPos,List<Ticket>> entry : Object2ObjectOpenHashMap.Iterable(this.tickets)) {
+        for (Map.Entry<ChunkPos, List<Ticket>> entry : this.tickets.entrySet()) {
             for (Ticket ticket : entry.getValue()) {
                 if (ticketCheck.test(ticket)) {
                     chunks.add(entry.getKey());
