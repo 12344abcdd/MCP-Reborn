@@ -14,6 +14,9 @@ import java.util.PrimitiveIterator.OfLong;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectFunction;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.AbortableIterationConsumer;
 import net.minecraft.util.VisibleForDebug;
@@ -25,11 +28,11 @@ public class EntitySectionStorage<T extends EntityAccess> {
     public static final int CHONKY_ENTITY_SEARCH_GRACE = 2;
     public static final int MAX_NON_CHONKY_ENTITY_SIZE = 4;
     private final Class<T> entityClass;
-    private final Long2ObjectFunction<Visibility> intialSectionVisibility;
-    private final Long2ObjectMap<EntitySection<T>> sections = new Long2ObjectOpenHashMap<>();
+    private final Object2ObjectFunction<ChunkPos,Visibility> intialSectionVisibility;
+    private final Object2ObjectMap<ChunkPos,EntitySection<T>> sections = new Long2ObjectOpenHashMap<>();
     private final LongSortedSet sectionIds = new LongAVLTreeSet();
 
-    public EntitySectionStorage(final Class<T> entityClass, final Long2ObjectFunction<Visibility> intialSectionVisibility) {
+    public EntitySectionStorage(final Class<T> entityClass, final Object2ObjectFunction<ChunkPos,Visibility> intialSectionVisibility) {
         this.entityClass = entityClass;
         this.intialSectionVisibility = intialSectionVisibility;
     }
@@ -64,9 +67,9 @@ public class EntitySectionStorage<T extends EntityAccess> {
         }
     }
 
-    public LongStream getExistingSectionPositionsInChunk(final long chunkKey) {
-        int x = ChunkPos.getX(chunkKey);
-        int z = ChunkPos.getZ(chunkKey);
+    public LongStream getExistingSectionPositionsInChunk(final ChunkPos chunkKey) {
+        int x = chunkKey.x().intValueExact();
+        int z = chunkKey.z().intValueExact();
         LongSortedSet chunkSections = this.getChunkSections(x, z);
         if (chunkSections.isEmpty()) {
             return LongStream.empty();
@@ -82,15 +85,15 @@ public class EntitySectionStorage<T extends EntityAccess> {
         return this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L);
     }
 
-    public Stream<EntitySection<T>> getExistingSectionsInChunk(final long chunkKey) {
+    public Stream<EntitySection<T>> getExistingSectionsInChunk(final ChunkPos chunkKey) {
         return this.getExistingSectionPositionsInChunk(chunkKey).mapToObj(this.sections::get).filter(Objects::nonNull);
     }
 
-    private static long getChunkKeyFromSectionKey(final long sectionPos) {
-        return ChunkPos.pack(SectionPos.x(sectionPos), SectionPos.z(sectionPos));
+    private static ChunkPos getChunkKeyFromSectionKey(final long sectionPos) {
+        return new ChunkPos(SectionPos.x(sectionPos), SectionPos.z(sectionPos));
     }
 
-    public EntitySection<T> getOrCreateSection(final long key) {
+    public EntitySection<T> getOrCreateSection(final ChunkPos key) {
         return this.sections.computeIfAbsent(key, this::createSection);
     }
 
@@ -99,7 +102,7 @@ public class EntitySectionStorage<T extends EntityAccess> {
     }
 
     private EntitySection<T> createSection(final long sectionPos) {
-        long chunkPos = getChunkKeyFromSectionKey(sectionPos);
+        ChunkPos chunkPos = getChunkKeyFromSectionKey(sectionPos);
         Visibility chunkStatus = this.intialSectionVisibility.get(chunkPos);
         this.sectionIds.add(sectionPos);
         return new EntitySection<>(this.entityClass, chunkStatus);

@@ -1765,7 +1765,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
             this.entityManager.processPendingLoads();
 
             for (ChunkPos chunk : chunks) {
-                if (!this.areEntitiesLoaded(chunk.pack())) {
+                if (!this.areEntitiesLoaded(chunk)) {
                     return false;
                 }
             }
@@ -1798,7 +1798,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
     }
 
     public boolean isPositionEntityTicking(final BlockPos pos) {
-        return this.entityManager.canPositionTick(pos) && this.chunkSource.chunkMap.getDistanceManager().inEntityTickingRange(ChunkPos.pack(pos));
+        return this.entityManager.canPositionTick(pos) && this.chunkSource.chunkMap.getDistanceManager().inEntityTickingRange(pos);
     }
 
     public boolean areEntitiesActuallyLoadedAndTicking(final ChunkPos pos) {

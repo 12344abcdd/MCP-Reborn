@@ -20,6 +20,9 @@ import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.server.level.FullChunkStatus;
@@ -37,8 +40,8 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
     private final EntityLookup<T> visibleEntityStorage;
     private final EntitySectionStorage<T> sectionStorage;
     private final LevelEntityGetter<T> entityGetter;
-    private final Long2ObjectMap<Visibility> chunkVisibility = new Long2ObjectOpenHashMap<>();
-    private final Long2ObjectMap<PersistentEntitySectionManager.ChunkLoadStatus> chunkLoadStatuses = new Long2ObjectOpenHashMap<>();
+    private final Object2ObjectMap<ChunkPos,Visibility> chunkVisibility = new Object2ObjectOpenHashMap<>();
+    private final Object2ObjectMap<ChunkPos,ChunkLoadStatus> chunkLoadStatuses = new Object2ObjectOpenHashMap<>();
     private final LongSet chunksToUnload = new LongOpenHashSet();
     private final Queue<ChunkEntities<T>> loadingInbox = Queues.newConcurrentLinkedQueue();
 
@@ -302,7 +305,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
         return this.chunkVisibility.get(pos.pack()).isTicking();
     }
 
-    public boolean areEntitiesLoaded(final long chunkKey) {
+    public boolean areEntitiesLoaded(final ChunkPos chunkKey) {
         return this.chunkLoadStatuses.get(chunkKey) == PersistentEntitySectionManager.ChunkLoadStatus.LOADED;
     }
 
