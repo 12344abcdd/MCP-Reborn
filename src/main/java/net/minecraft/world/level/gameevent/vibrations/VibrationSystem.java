@@ -374,7 +374,7 @@ public interface VibrationSystem {
 
             for (int x = listenerChunkPos.x().intValueExact() - 1; x <= listenerChunkPos.x().intValueExact() + 1; x++) {
                 for (int z = listenerChunkPos.z().intValueExact() - 1; z <= listenerChunkPos.z().intValueExact() + 1; z++) {
-                    if (!level.shouldTickBlocksAt(ChunkPos.pack(x, z)) || level.getChunkSource().getChunkNow(x, z) == null) {
+                    if (!level.shouldTickBlocksAt(new ChunkPos(x, z)) || level.getChunkSource().getChunkNow(x, z) == null) {
                         return false;
                     }
                 }

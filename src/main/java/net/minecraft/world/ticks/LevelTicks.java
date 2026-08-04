@@ -6,8 +6,8 @@ import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import it.unimi.dsi.fastutil.objects.*;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -30,9 +30,9 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
 public class LevelTicks<T> implements LevelTickAccess<T> {
     private static final Comparator<LevelChunkTicks<?>> CONTAINER_DRAIN_ORDER = (o1, o2) -> ScheduledTick.INTRA_TICK_DRAIN_ORDER.compare(o1.peek(), o2.peek());
-    private final LongPredicate tickCheck;
-    private final Long2ObjectMap<LevelChunkTicks<T>> allContainers = new Long2ObjectOpenHashMap<>();
-    private final Long2LongMap nextTickForContainer = Util.make(new Long2LongOpenHashMap(), m -> m.defaultReturnValue(Long.MAX_VALUE));
+    private final Predicate<ChunkPos> tickCheck;
+    private final Object2ObjectMap<ChunkPos,LevelChunkTicks<T>> allContainers = new Object2ObjectOpenHashMap<>();
+    private final Object2LongMap<ChunkPos> nextTickForContainer = Util.make(new Object2LongOpenHashMap<>(), m -> m.defaultReturnValue(Long.MAX_VALUE));
     private final Queue<LevelChunkTicks<T>> containersToTick = new PriorityQueue<>(CONTAINER_DRAIN_ORDER);
     private final Queue<ScheduledTick<T>> toRunThisTick = new ArrayDeque<>();
     private final List<ScheduledTick<T>> alreadyRunThisTick = new ArrayList<>();
@@ -43,16 +43,15 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
         }
     };
 
-    public LevelTicks(final LongPredicate tickCheck) {
+    public LevelTicks(final Predicate<ChunkPos> tickCheck) {
         this.tickCheck = tickCheck;
     }
 
     public void addContainer(final ChunkPos pos, final LevelChunkTicks<T> container) {
-        long posKey = pos.pack();
-        this.allContainers.put(posKey, container);
+        this.allContainers.put(pos, container);
         ScheduledTick<T> nextTick = container.peek();
         if (nextTick != null) {
-            this.nextTickForContainer.put(posKey, nextTick.triggerTick());
+            this.nextTickForContainer.put(pos, nextTick.triggerTick());
         }
 
         container.setOnTickAdded(this.chunkScheduleUpdater);
@@ -98,7 +97,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
     }
 
     private void sortContainersToTick(final long currentTick) {
-        ObjectIterator<Entry> it = Long2LongMaps.fastIterator(this.nextTickForContainer);
+        ObjectIterator<Entry> it = Object2LongMaps.fastIterator(this.nextTickForContainer);
 
         while (it.hasNext()) {
             Entry entry = it.next();

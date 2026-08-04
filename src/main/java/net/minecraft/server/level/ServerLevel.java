@@ -8,10 +8,7 @@ import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.*;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.io.IOException;
 import java.io.Writer;
@@ -431,7 +428,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
                                 entity.checkDespawn();
                                 profiler.pop();
                                 if (entity instanceof ServerPlayer
-                                    || this.chunkSource.chunkMap.getDistanceManager().inEntityTickingRange(entity.chunkPosition().pack())) {
+                                    || this.chunkSource.chunkMap.getDistanceManager().inEntityTickingRange(entity.chunkPosition())) {
                                     Entity vehicle = entity.getVehicle();
                                     if (vehicle != null) {
                                         if (!vehicle.isRemoved() && vehicle.hasPassenger(entity)) {
@@ -470,7 +467,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
     }
 
     @Override
-    public boolean shouldTickBlocksAt(final long chunkPos) {
+    public boolean shouldTickBlocksAt(final ChunkPos chunkPos) {
         return this.chunkSource.chunkMap.getDistanceManager().inBlockTickingRange(chunkPos);
     }
 
@@ -1502,7 +1499,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
         return this.getServer().getRespawnData();
     }
 
-    public LongSet getForceLoadedChunks() {
+    public ObjectSet<ChunkPos> getForceLoadedChunks() {
         return this.chunkSource.getForceLoadedChunks();
     }
 
@@ -1792,11 +1789,11 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
         return "Chunks[S] W: " + this.chunkSource.gatherStats() + " E: " + this.entityManager.gatherStats();
     }
 
-    public boolean areEntitiesLoaded(final long chunkKey) {
+    public boolean areEntitiesLoaded(final ChunkPos chunkKey) {
         return this.entityManager.areEntitiesLoaded(chunkKey);
     }
 
-    public boolean isPositionTickingWithEntitiesLoaded(final long key) {
+    public boolean isPositionTickingWithEntitiesLoaded(final ChunkPos key) {
         return this.areEntitiesLoaded(key) && this.chunkSource.isPositionTicking(key);
     }
 
