@@ -570,7 +570,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
         return true;
     }
 
-    public boolean shouldTickBlocksAt(final long chunkPos) {
+    public boolean shouldTickBlocksAt(final ChunkPos chunkPos) {
         return true;
     }
 

@@ -66,11 +66,11 @@ public class SectionPos extends Vec3i {
         return of(chunk.getPos(), chunk.getMinSectionY());
     }
 
-    public static long offset(final long sectionNode, final Direction offset) {
+    public static ChunkPos offset(final ChunkPos sectionNode, final Direction offset) {
         return offset(sectionNode, offset.getStepX(), offset.getStepY(), offset.getStepZ());
     }
 
-    public static long offset(final long sectionNode, final int stepX, final int stepY, final int stepZ) {
+    public static ChunkPos offset(final ChunkPos sectionNode, final int stepX, final int stepY, final int stepZ) {
         return asLong(x(sectionNode) + stepX, y(sectionNode) + stepY, z(sectionNode) + stepZ);
     }
 

@@ -21,7 +21,7 @@ public class ThrottlingChunkTaskDispatcher extends ChunkTaskDispatcher {
     }
 
     @Override
-    protected void onRelease(final long key) {
+    protected void onRelease(final ChunkPos key) {
         this.chunkPositionsInExecution.remove(key);
     }
 

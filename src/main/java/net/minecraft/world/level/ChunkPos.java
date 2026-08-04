@@ -91,6 +91,10 @@ public record ChunkPos(BigInteger x, BigInteger z) {
         return pack(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
     }
 
+    public static ChunkPos toChunkPos(final BlockPos pos) {
+        return new ChunkPos(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
+    }
+
     public static int getX(final long pos) {
         return (int)(pos & 4294967295L);
     }

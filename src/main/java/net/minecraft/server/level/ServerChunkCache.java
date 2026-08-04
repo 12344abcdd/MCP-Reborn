@@ -5,6 +5,8 @@ import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -232,16 +234,15 @@ public class ServerChunkCache extends ChunkSource {
         final int x, final int z, final ChunkStatus targetStatus, final boolean loadOrGenerate
     ) {
         ChunkPos pos = new ChunkPos(x, z);
-        long key = pos.pack();
         int targetTicketLevel = ChunkLevel.byStatus(targetStatus);
-        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(key);
+        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos);
         if (loadOrGenerate) {
             this.addTicket(new Ticket(TicketType.UNKNOWN, targetTicketLevel), pos);
             if (this.chunkAbsent(chunkHolder, targetTicketLevel)) {
                 ProfilerFiller profiler = Profiler.get();
                 profiler.push("chunkLoad");
                 this.runDistanceManagerUpdates();
-                chunkHolder = this.getVisibleChunkIfPresent(key);
+                chunkHolder = this.getVisibleChunkIfPresent(pos);
                 profiler.pop();
                 if (this.chunkAbsent(chunkHolder, targetTicketLevel)) {
                     throw (IllegalStateException)Util.pauseInIde(new IllegalStateException("No chunk holder after ticket has been added"));
@@ -260,14 +261,14 @@ public class ServerChunkCache extends ChunkSource {
 
     @Override
     public boolean hasChunk(final int x, final int z) {
-        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(new ChunkPos(x, z).pack());
+        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(new ChunkPos(x, z));
         int targetTicketLevel = ChunkLevel.byStatus(ChunkStatus.FULL);
         return !this.chunkAbsent(chunkHolder, targetTicketLevel);
     }
 
     @Override
     public @Nullable LightChunk getChunkForLighting(final int x, final int z) {
-        long key = ChunkPos.pack(x, z);
+        ChunkPos key = new ChunkPos(x, z);
         ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(key);
         return chunkHolder == null ? null : chunkHolder.getChunkIfPresentUnchecked(ChunkStatus.INITIALIZE_LIGHT.getParent());
     }
@@ -292,7 +293,7 @@ public class ServerChunkCache extends ChunkSource {
         return true;
     }
 
-    public boolean isPositionTicking(final long chunkKey) {
+    public boolean isPositionTicking(final ChunkPos chunkKey) {
         if (!this.level.shouldTickBlocksAt(chunkKey)) {
             return false;
         }
@@ -415,7 +416,7 @@ public class ServerChunkCache extends ChunkSource {
     ) {
         ChunkPos chunkPos = chunk.getPos();
         chunk.incrementInhabitedTime(timeDiff);
-        if (this.distanceManager.inEntityTickingRange(chunkPos.pack())) {
+        if (this.distanceManager.inEntityTickingRange(chunkPos)) {
             this.level.tickThunder(chunk);
         }
 
@@ -426,7 +427,7 @@ public class ServerChunkCache extends ChunkSource {
         }
     }
 
-    private void getFullChunk(final long chunkKey, final Consumer<LevelChunk> output) {
+    private void getFullChunk(final ChunkPos chunkKey, final Consumer<LevelChunk> output) {
         ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(chunkKey);
         if (chunkHolder != null) {
             chunkHolder.getFullChunkFuture().getNow(ChunkHolder.UNLOADED_LEVEL_CHUNK).ifSuccess(output);
@@ -463,7 +464,7 @@ public class ServerChunkCache extends ChunkSource {
     public void blockChanged(final BlockPos pos) {
         int xc = SectionPos.blockToSectionCoord(pos.getX());
         int zc = SectionPos.blockToSectionCoord(pos.getZ());
-        ChunkHolder chunk = this.getVisibleChunkIfPresent(ChunkPos.pack(xc, zc));
+        ChunkHolder chunk = this.getVisibleChunkIfPresent(new ChunkPos(xc, zc));
         if (chunk != null && chunk.blockChanged(pos)) {
             this.chunkHoldersToBroadcast.add(chunk);
         }
@@ -472,7 +473,7 @@ public class ServerChunkCache extends ChunkSource {
     @Override
     public void onLightUpdate(final LightLayer layer, final SectionPos pos) {
         this.mainThreadProcessor.execute(() -> {
-            ChunkHolder chunk = this.getVisibleChunkIfPresent(pos.chunk().pack());
+            ChunkHolder chunk = this.getVisibleChunkIfPresent(pos.chunk());
             if (chunk != null && chunk.sectionLightChanged(layer, pos.y())) {
                 this.chunkHoldersToBroadcast.add(chunk);
             }
@@ -498,7 +499,7 @@ public class ServerChunkCache extends ChunkSource {
 
         this.addTicketWithRadius(type, pos, radius);
         this.runDistanceManagerUpdates();
-        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos.pack());
+        ChunkHolder chunkHolder = this.getVisibleChunkIfPresent(pos);
         Objects.requireNonNull(chunkHolder, "No chunk was scheduled for loading");
         return this.chunkMap.getChunkRangeFuture(chunkHolder, radius, distance -> ChunkStatus.FULL);
     }
@@ -517,7 +518,7 @@ public class ServerChunkCache extends ChunkSource {
     }
 
     @Override
-    public LongSet getForceLoadedChunks() {
+    public ObjectOpenHashSet<ChunkPos> getForceLoadedChunks() {
         return this.ticketStorage.getForceLoadedChunks();
     }
 

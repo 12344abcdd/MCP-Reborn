@@ -25,7 +25,7 @@ public abstract class DynamicGraphMinFixedPoint {
 
         this.levelCount = levelCount;
         this.priorityQueue = new LeveledPriorityQueue(levelCount, minQueueSize);
-        this.computedLevels = new Object2ByteOpenHashMap(minMapSize, 0.5F) {
+        this.computedLevels = new Object2ByteOpenHashMap<>(minMapSize, 0.5F) {
             @Override
             protected void rehash(final int newN) {
                 if (newN > minMapSize) {
