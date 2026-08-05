@@ -133,7 +133,7 @@ public abstract class DistanceManager {
         return ChunkLevel.isEntityTicking(this.simulationChunkTracker.getLevel(key));
     }
 
-    public boolean inBlockTickingRange(final ChunkPos key) {
+        public boolean inBlockTickingRange(final ChunkPos key) {
         return ChunkLevel.isBlockTicking(this.simulationChunkTracker.getLevel(key));
     }
 

@@ -2,12 +2,14 @@ package net.minecraft.server.level;
 
 import it.unimi.dsi.fastutil.longs.Long2ByteMap;
 import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ByteMap;
+import it.unimi.dsi.fastutil.objects.Object2ByteOpenHashMap;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.TicketStorage;
 
 public class SimulationChunkTracker extends ChunkTracker {
     public static final int MAX_LEVEL = 33;
-    protected final Long2ByteMap chunks = new Long2ByteOpenHashMap();
+    protected final Object2ByteMap<ChunkPos> chunks = new Object2ByteOpenHashMap<>();
     private final TicketStorage ticketStorage;
 
     public SimulationChunkTracker(final TicketStorage ticketStorage) {
@@ -18,21 +20,21 @@ public class SimulationChunkTracker extends ChunkTracker {
     }
 
     @Override
-    protected int getLevelFromSource(final long to) {
+    protected int getLevelFromSource(final ChunkPos to) {
         return this.ticketStorage.getTicketLevelAt(to, true);
     }
 
-    public int getLevel(final ChunkPos node) {
-        return this.getLevel(node.pack());
-    }
+//    public int getLevel(final ChunkPos node) {
+//        return this.getLevel(node);
+//    }
 
     @Override
-    protected int getLevel(final long node) {
+    public int getLevel(final ChunkPos node) {
         return this.chunks.get(node);
     }
 
     @Override
-    protected void setLevel(final long node, final int level) {
+    protected void setLevel(final ChunkPos node, final int level) {
         if (level >= 33) {
             this.chunks.remove(node);
         } else {

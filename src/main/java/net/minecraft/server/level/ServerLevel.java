@@ -1802,7 +1802,7 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
     }
 
     public boolean areEntitiesActuallyLoadedAndTicking(final ChunkPos pos) {
-        return this.entityManager.isTicking(pos) && this.entityManager.areEntitiesLoaded(pos.pack());
+        return this.entityManager.isTicking(pos) && this.entityManager.areEntitiesLoaded(pos);
     }
 
     public boolean anyPlayerCloseEnoughForSpawning(final BlockPos pos) {

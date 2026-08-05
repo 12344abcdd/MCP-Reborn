@@ -1,5 +1,6 @@
 package net.minecraft.server.level;
 
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.TicketStorage;
 
 public class LoadingChunkTracker extends ChunkTracker {
@@ -15,12 +16,12 @@ public class LoadingChunkTracker extends ChunkTracker {
     }
 
     @Override
-    protected int getLevelFromSource(final long to) {
+    protected int getLevelFromSource(final ChunkPos to) {
         return this.ticketStorage.getTicketLevelAt(to, false);
     }
 
     @Override
-    protected int getLevel(final long node) {
+    protected int getLevel(final ChunkPos node) {
         if (!this.distanceManager.isChunkToRemove(node)) {
             ChunkHolder chunk = this.distanceManager.getChunk(node);
             if (chunk != null) {
@@ -32,7 +33,7 @@ public class LoadingChunkTracker extends ChunkTracker {
     }
 
     @Override
-    protected void setLevel(final long node, final int level) {
+    protected void setLevel(final ChunkPos node, final int level) {
         ChunkHolder chunk = this.distanceManager.getChunk(node);
         int oldLevel = chunk == null ? MAX_LEVEL : chunk.getTicketLevel();
         if (oldLevel != level) {
