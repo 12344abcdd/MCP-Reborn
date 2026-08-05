@@ -20,6 +20,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+
 import net.minecraft.SharedConstants;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.TriState;
@@ -167,7 +169,7 @@ public abstract class DistanceManager {
         }
     }
 
-    public void forEachEntityTickingChunk(final LongConsumer consumer) {
+    public void forEachEntityTickingChunk(final Consumer consumer) {
         for (Entry entry : Long2ByteMaps.fastIterable(this.simulationChunkTracker.chunks)) {
             byte level = entry.getByteValue();
             long key = entry.getLongKey();

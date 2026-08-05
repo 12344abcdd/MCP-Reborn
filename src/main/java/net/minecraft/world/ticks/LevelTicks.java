@@ -97,11 +97,11 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
     }
 
     private void sortContainersToTick(final long currentTick) {
-        ObjectIterator<Entry> it = Object2LongMaps.fastIterator(this.nextTickForContainer);
+        ObjectIterator<Object2LongMap.Entry<ChunkPos>> it = Object2LongMaps.fastIterator(this.nextTickForContainer);
 
         while (it.hasNext()) {
-            Entry entry = it.next();
-            long chunkPos = entry.getLongKey();
+            Object2LongMap.Entry<ChunkPos> entry = it.next();
+            ChunkPos chunkPos = entry.getKey();
             long nextTick = entry.getLongValue();
             if (nextTick <= currentTick) {
                 LevelChunkTicks<T> candidateContainer = this.allContainers.get(chunkPos);
@@ -146,7 +146,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
     }
 
     private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
-        this.nextTickForContainer.put(ChunkPos.pack(nextTick.pos()), nextTick.triggerTick());
+        this.nextTickForContainer.put(new ChunkPos(nextTick.pos()), nextTick.triggerTick());
     }
 
     private void drainFromCurrentContainer(
