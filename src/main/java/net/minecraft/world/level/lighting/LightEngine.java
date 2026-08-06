@@ -29,7 +29,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
     private final LongArrayFIFOQueue decreaseQueue = new LongArrayFIFOQueue();
     private final LongArrayFIFOQueue increaseQueue = new LongArrayFIFOQueue();
     private static final int CACHE_SIZE = 2;
-    private final long[] lastChunkPos = new long[2];
+    private final ChunkPos[] lastChunkPos = new ChunkPos[2];
     private final LightChunk[] lastChunk = new LightChunk[2];
 
     protected LightEngine(final LightChunkGetter chunkSource, final S storage) {
@@ -85,10 +85,10 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
     }
 
     protected @Nullable LightChunk getChunk(final int chunkX, final int chunkZ) {
-        long pos = ChunkPos.pack(chunkX, chunkZ);
+        ChunkPos pos = new ChunkPos(chunkX, chunkZ);
 
         for (int i = 0; i < 2; i++) {
-            if (pos == this.lastChunkPos[i]) {
+            if (pos.equals(this.lastChunkPos[i])) {
                 return this.lastChunk[i];
             }
         }

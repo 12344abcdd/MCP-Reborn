@@ -13,7 +13,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.entity.EntityAccess;
 
-public class SectionPos extends Vec3i {
+public class SectionPos extends Vec3i implements Pos {
     public static final int SECTION_BITS = 4;
     public static final int SECTION_SIZE = 16;
     public static final int SECTION_BLOCK_COUNT = 4096;
@@ -66,11 +66,11 @@ public class SectionPos extends Vec3i {
         return of(chunk.getPos(), chunk.getMinSectionY());
     }
 
-    public static ChunkPos offset(final ChunkPos sectionNode, final Direction offset) {
+    public static long offset(final long sectionNode, final Direction offset) {
         return offset(sectionNode, offset.getStepX(), offset.getStepY(), offset.getStepZ());
     }
 
-    public static ChunkPos offset(final ChunkPos sectionNode, final int stepX, final int stepY, final int stepZ) {
+    public static long offset(final long sectionNode, final int stepX, final int stepY, final int stepZ) {
         return asLong(x(sectionNode) + stepX, y(sectionNode) + stepY, z(sectionNode) + stepZ);
     }
 

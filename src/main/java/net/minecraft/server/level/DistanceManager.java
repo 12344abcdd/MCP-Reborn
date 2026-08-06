@@ -213,6 +213,11 @@ public abstract class DistanceManager {
         }
 
         @Override
+        protected int getLevel(long node) {
+            return this.chunks.get(node);
+        }
+
+        @Override
         protected void setLevel(final ChunkPos node, final int level) {
             byte oldLevel;
             if (level > this.maxDistance) {

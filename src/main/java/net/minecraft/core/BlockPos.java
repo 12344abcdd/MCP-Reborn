@@ -29,7 +29,7 @@ import net.minecraft.world.phys.Vec3;
 import org.apache.commons.lang3.Validate;
 
 @Immutable
-public class BlockPos extends Vec3i {
+public class BlockPos extends Vec3i implements Pos {
     public static final Codec<BlockPos> CODEC = Codec.INT_STREAM
         .<BlockPos>comapFlatMap(
             input -> Util.fixedSize(input, 3).map(ints -> new BlockPos(ints[0], ints[1], ints[2])), pos -> IntStream.of(pos.getX(), pos.getY(), pos.getZ())

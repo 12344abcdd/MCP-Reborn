@@ -303,11 +303,26 @@ public class PoiManager extends SectionStorage<PoiSection, PoiSection.Packed> {
         }
 
         @Override
+        protected int getLevel(ChunkPos node) {
+            return 0;
+        }
+
+        @Override
         protected int getLevel(final long node) {
             return this.levels.get(node);
         }
 
         @Override
+        protected void setLevel(ChunkPos node, int level) {
+            setLevel(ChunkPos.pack(node.x().intValueExact(), node.z().intValueExact()), level);
+        }
+
+        @Override
+        protected int computeLevelFromNeighbor(ChunkPos from, ChunkPos to, int fromLevel) {
+            return 0;
+        }
+
+        //@Override
         protected void setLevel(final long node, final int level) {
             if (level > 6) {
                 this.levels.remove(node);

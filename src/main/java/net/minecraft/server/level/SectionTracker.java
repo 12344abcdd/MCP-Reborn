@@ -9,14 +9,14 @@ public abstract class SectionTracker extends DynamicGraphMinFixedPoint {
         super(levelCount, minQueueSize, minMapSize);
     }
 
-    @Override
-    protected void checkNeighborsAfterUpdate(final ChunkPos node, final int level, final boolean onlyDecrease) {
+    //@Override
+    protected void checkNeighborsAfterUpdate(final long node, final int level, final boolean onlyDecrease) {
         if (!onlyDecrease || level < this.levelCount - 2) {
             for (int offsetX = -1; offsetX <= 1; offsetX++) {
                 for (int offsetY = -1; offsetY <= 1; offsetY++) {
                     for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
-                        ChunkPos neighbor = SectionPos.offset(node, offsetX, offsetY, offsetZ);
-                        if (!neighbor.equals(node)) {
+                        long neighbor = SectionPos.offset(node, offsetX, offsetY, offsetZ);
+                        if (neighbor!=node) {
                             this.checkNeighbor(node, neighbor, level, onlyDecrease);
                         }
                     }
@@ -54,14 +54,18 @@ public abstract class SectionTracker extends DynamicGraphMinFixedPoint {
         return computedLevel;
     }
 
-    @Override
-    protected int computeLevelFromNeighbor(final ChunkPos from, final ChunkPos to, final int fromLevel) {
+    //@Override
+    protected int computeLevelFromNeighbor(final long from, final long to, final int fromLevel) {
         return this.isSource(from) ? this.getLevelFromSource(to) : fromLevel + 1;
     }
 
-    protected abstract int getLevelFromSource(ChunkPos to);
+    protected abstract int getLevelFromSource(long to);
 
-    public void update(final ChunkPos node, final int newLevelFrom, final boolean onlyDecreased) {
-        this.checkEdge(ChunkPos.unpack(Long.MAX_VALUE), node, newLevelFrom, onlyDecreased);
+//    public void update(final ChunkPos node, final int newLevelFrom, final boolean onlyDecreased) {
+//        this.checkEdge(ChunkPos.unpack(Long.MAX_VALUE), node, newLevelFrom, onlyDecreased);
+//    }
+
+    public void update(final long node, final int newLevelFrom, final boolean onlyDecreased) {
+        this.checkEdge(Long.MAX_VALUE, node, newLevelFrom, onlyDecreased);
     }
 }

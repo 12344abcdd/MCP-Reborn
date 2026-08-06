@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Pos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -17,7 +18,7 @@ import net.minecraft.world.level.chunk.status.ChunkPyramid;
 import org.jspecify.annotations.Nullable;
 import java.math.BigInteger;
 
-public record ChunkPos(BigInteger x, BigInteger z) {
+public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
     public ChunkPos(int x, int z) {
         this(BigInteger.valueOf(x), BigInteger.valueOf(z));
     }

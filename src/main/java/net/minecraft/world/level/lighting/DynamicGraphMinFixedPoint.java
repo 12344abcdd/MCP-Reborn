@@ -7,15 +7,16 @@ import java.util.function.Predicate;
 
 import it.unimi.dsi.fastutil.objects.Object2ByteMap;
 import it.unimi.dsi.fastutil.objects.Object2ByteOpenHashMap;
+import net.minecraft.core.Pos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 
 public abstract class DynamicGraphMinFixedPoint {
-    public static final long SOURCE = Long.MAX_VALUE;
+    public static final Pos SOURCE = null;
     private static final int NO_COMPUTED_LEVEL = 255;
     protected final int levelCount;
     private final LeveledPriorityQueue priorityQueue;
-    private final Object2ByteMap computedLevels;
+    private final Object2ByteMap<Pos> computedLevels;
     private volatile boolean hasWork;
 
     protected DynamicGraphMinFixedPoint(final int levelCount, final int minQueueSize, final int minMapSize) {
@@ -163,11 +164,17 @@ public abstract class DynamicGraphMinFixedPoint {
         return node.equals(ChunkPos.unpack(Long.MAX_VALUE));
     }
 
+    protected boolean isSource(final long node) {
+        return node==Long.MAX_VALUE;
+    }
+
     protected abstract int getComputedLevel(final ChunkPos node, final ChunkPos knownParent, final int knownLevelFromParent);
 
     protected abstract void checkNeighborsAfterUpdate(final ChunkPos node, final int level, final boolean onlyDecrease);
 
     protected abstract int getLevel(ChunkPos node);
+
+    protected abstract int getLevel(long node);
 
     protected abstract void setLevel(ChunkPos node, int level);
 
