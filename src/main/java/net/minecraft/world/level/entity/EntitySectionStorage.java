@@ -17,6 +17,8 @@ import java.util.stream.StreamSupport;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectFunction;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.AbortableIterationConsumer;
 import net.minecraft.util.VisibleForDebug;
@@ -93,7 +95,7 @@ public class EntitySectionStorage<T extends EntityAccess> {
         return new ChunkPos(SectionPos.x(sectionPos), SectionPos.z(sectionPos));
     }
 
-    public EntitySection<T> getOrCreateSection(final ChunkPos key) {
+    public EntitySection<T> getOrCreateSection(final long key) {
         return this.sections.computeIfAbsent(key, this::createSection);
     }
 
@@ -108,9 +110,9 @@ public class EntitySectionStorage<T extends EntityAccess> {
         return new EntitySection<>(this.entityClass, chunkStatus);
     }
 
-    public LongSet getAllChunksWithExistingSections() {
-        LongSet chunks = new LongOpenHashSet();
-        this.sections.keySet().forEach((long sectionKey) -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
+    public ObjectSet<ChunkPos> getAllChunksWithExistingSections() {
+        ObjectSet<ChunkPos> chunks = new ObjectOpenHashSet<>();
+        this.sections.keySet().forEach((ChunkPos sectionKey) -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
         return chunks;
     }
 

@@ -146,7 +146,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
     }
 
     private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
-        this.nextTickForContainer.put(new ChunkPos(nextTick.pos()), nextTick.triggerTick());
+        this.nextTickForContainer.put(ChunkPos.toChunkPos(nextTick.pos()), nextTick.triggerTick());
     }
 
     private void drainFromCurrentContainer(

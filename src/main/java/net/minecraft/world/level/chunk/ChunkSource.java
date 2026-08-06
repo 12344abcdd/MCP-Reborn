@@ -3,6 +3,9 @@ package net.minecraft.world.level.chunk;
 import it.unimi.dsi.fastutil.longs.LongSet;
 import java.io.IOException;
 import java.util.function.BooleanSupplier;
+
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.lighting.LevelLightEngine;
@@ -50,7 +53,7 @@ public abstract class ChunkSource implements AutoCloseable, LightChunkGetter {
         return false;
     }
 
-    public LongSet getForceLoadedChunks() {
-        return LongSet.of();
+    public ObjectOpenHashSet<ChunkPos> getForceLoadedChunks() {
+        return ObjectOpenHashSet.of();
     }
 }

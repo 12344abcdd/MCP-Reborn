@@ -122,7 +122,7 @@ public class ThreadedLevelLightEngine extends LevelLightEngine implements AutoCl
     }
 
     private void addTask(final int chunkX, final int chunkZ, final ThreadedLevelLightEngine.TaskType type, final Runnable runnable) {
-        this.addTask(chunkX, chunkZ, this.chunkMap.getChunkQueueLevel(ChunkPos.pack(chunkX, chunkZ)), type, runnable);
+        this.addTask(chunkX, chunkZ, this.chunkMap.getChunkQueueLevel(new ChunkPos(chunkX, chunkZ)), type, runnable);
     }
 
     private void addTask(final int chunkX, final int chunkZ, final IntSupplier level, final ThreadedLevelLightEngine.TaskType type, final Runnable runnable) {
@@ -131,7 +131,7 @@ public class ThreadedLevelLightEngine extends LevelLightEngine implements AutoCl
             if (this.lightTasks.size() >= 1000) {
                 this.runUpdate();
             }
-        }, ChunkPos.pack(chunkX, chunkZ), level);
+        }, new ChunkPos(chunkX, chunkZ), level);
     }
 
     @Override

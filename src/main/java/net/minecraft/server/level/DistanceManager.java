@@ -23,6 +23,7 @@ import java.util.concurrent.Executor;
 import java.util.function.Consumer;
 
 import net.minecraft.SharedConstants;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.TriState;
 import net.minecraft.util.thread.TaskScheduler;
@@ -131,11 +132,15 @@ public abstract class DistanceManager {
         return Math.max(0, ChunkLevel.byStatus(FullChunkStatus.ENTITY_TICKING) - this.simulationDistance);
     }
 
-    public boolean inEntityTickingRange(final ChunkPos key) {
+    public boolean inEntityTickingRange(final ChunkPos key) {//BlockPos?
         return ChunkLevel.isEntityTicking(this.simulationChunkTracker.getLevel(key));
     }
 
-        public boolean inBlockTickingRange(final ChunkPos key) {
+    public boolean inEntityTickingRange(final BlockPos pos) {
+        return inEntityTickingRange(ChunkPos.toChunkPos(pos));
+    }
+
+    public boolean inBlockTickingRange(final ChunkPos key) {
         return ChunkLevel.isBlockTicking(this.simulationChunkTracker.getLevel(key));
     }
 
@@ -169,10 +174,10 @@ public abstract class DistanceManager {
         }
     }
 
-    public void forEachEntityTickingChunk(final Consumer consumer) {
-        for (Entry entry : Long2ByteMaps.fastIterable(this.simulationChunkTracker.chunks)) {
+    public void forEachEntityTickingChunk(final Consumer<ChunkPos> consumer) {
+        for (Object2ByteMap.Entry<ChunkPos> entry : Object2ByteMaps.fastIterable(this.simulationChunkTracker.chunks)) {
             byte level = entry.getByteValue();
-            long key = entry.getLongKey();
+            ChunkPos key = entry.getKey();
             if (ChunkLevel.isEntityTicking(level)) {
                 consumer.accept(key);
             }
@@ -239,7 +244,7 @@ public abstract class DistanceManager {
 
     private class PlayerTicketTracker extends DistanceManager.FixedPlayerDistanceChunkTracker {
         private int viewDistance;
-        private final Long2IntMap queueLevels = Long2IntMaps.synchronize(new Long2IntOpenHashMap());
+        private final Object2IntMap<ChunkPos> queueLevels = Object2IntMaps.synchronize(new Object2IntOpenHashMap<ChunkPos>());
         private final ObjectSet<ChunkPos> toUpdate = new ObjectOpenHashSet<>();
 
         protected PlayerTicketTracker(final int maxDistance) {
@@ -290,14 +295,14 @@ public abstract class DistanceManager {
         public void runAllUpdates() {
             super.runAllUpdates();
             if (!this.toUpdate.isEmpty()) {
-                LongIterator iterator = this.toUpdate.iterator();
+                ObjectIterator<ChunkPos> iterator = this.toUpdate.iterator();
 
                 while (iterator.hasNext()) {
-                    long node = iterator.nextLong();
+                    ChunkPos node = iterator.next();
                     int oldLevel = this.queueLevels.get(node);
                     int level = this.getLevel(node);
                     if (oldLevel != level) {
-                        DistanceManager.this.ticketDispatcher.onLevelChange(ChunkPos.unpack(node), () -> this.queueLevels.get(node), level, l -> {
+                        DistanceManager.this.ticketDispatcher.onLevelChange(node, () -> this.queueLevels.get(node), level, l -> {
                             if (l >= this.queueLevels.defaultReturnValue()) {
                                 this.queueLevels.remove(node);
                             } else {

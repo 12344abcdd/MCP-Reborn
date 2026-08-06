@@ -41,7 +41,7 @@ public class NoiseChunk implements DensityFunction.FunctionContext, DensityFunct
     private final NoiseChunk.@Nullable FlatCache blendAlpha;
     private final NoiseChunk.@Nullable FlatCache blendOffset;
     private final DensityFunctions.BeardifierOrMarker beardifier;
-    private long lastBlendingDataPos = ChunkPos.INVALID_CHUNK_POS;
+    private ChunkPos lastBlendingDataPos = ChunkPos.INVALID_CHUNK_POS;
     private Blender.BlendingOutput lastBlendingOutput = new Blender.BlendingOutput(1.0, 0.0);
     private final int noiseSizeXZ;
     private final int cellWidth;
@@ -360,8 +360,8 @@ public class NoiseChunk implements DensityFunction.FunctionContext, DensityFunct
     }
 
     private Blender.BlendingOutput getOrComputeBlendingOutput(final int blockX, final int blockZ) {
-        long pos2D = ChunkPos.pack(blockX, blockZ);
-        if (this.lastBlendingDataPos == pos2D) {
+        ChunkPos pos2D = new ChunkPos(blockX, blockZ);
+        if (this.lastBlendingDataPos.equals(pos2D)) {
             return this.lastBlendingOutput;
         }
 
@@ -530,7 +530,7 @@ public class NoiseChunk implements DensityFunction.FunctionContext, DensityFunct
 
     private static class Cache2D implements NoiseChunk.NoiseChunkDensityFunction, DensityFunctions.MarkerOrMarked {
         private final DensityFunction function;
-        private long lastPos2D = ChunkPos.INVALID_CHUNK_POS;
+        private ChunkPos lastPos2D = ChunkPos.INVALID_CHUNK_POS;
         private double lastValue;
 
         private Cache2D(final DensityFunction function) {
@@ -541,8 +541,8 @@ public class NoiseChunk implements DensityFunction.FunctionContext, DensityFunct
         public double compute(final DensityFunction.FunctionContext context) {
             int blockX = context.blockX();
             int blockZ = context.blockZ();
-            long pos2D = ChunkPos.pack(blockX, blockZ);
-            if (this.lastPos2D == pos2D) {
+            ChunkPos pos2D = new ChunkPos(blockX, blockZ);
+            if (this.lastPos2D.equals(pos2D)) {
                 return this.lastValue;
             }
 
