@@ -15,10 +15,7 @@ import java.util.stream.LongStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import it.unimi.dsi.fastutil.objects.Object2ObjectFunction;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
+import it.unimi.dsi.fastutil.objects.*;
 import net.minecraft.core.SectionPos;
 import net.minecraft.util.AbortableIterationConsumer;
 import net.minecraft.util.VisibleForDebug;
@@ -30,11 +27,11 @@ public class EntitySectionStorage<T extends EntityAccess> {
     public static final int CHONKY_ENTITY_SEARCH_GRACE = 2;
     public static final int MAX_NON_CHONKY_ENTITY_SIZE = 4;
     private final Class<T> entityClass;
-    private final Object2ObjectFunction<ChunkPos,Visibility> intialSectionVisibility;
-    private final Object2ObjectMap<ChunkPos,EntitySection<T>> sections = new Long2ObjectOpenHashMap<>();
-    private final LongSortedSet sectionIds = new LongAVLTreeSet();
+    private final Object2ObjectFunction<SectionPos,Visibility> intialSectionVisibility;
+    private final Object2ObjectMap<SectionPos,EntitySection<T>> sections = new Object2ObjectOpenHashMap<>();
+    private final ObjectSortedSet<SectionPos> sectionIds = new ObjectAVLTreeSet<>();
 
-    public EntitySectionStorage(final Class<T> entityClass, final Object2ObjectFunction<ChunkPos,Visibility> intialSectionVisibility) {
+    public EntitySectionStorage(final Class<T> entityClass, final Object2ObjectFunction<SectionPos,Visibility> intialSectionVisibility) {
         this.entityClass = entityClass;
         this.intialSectionVisibility = intialSectionVisibility;
     }
@@ -48,12 +45,12 @@ public class EntitySectionStorage<T extends EntityAccess> {
         int zMax = SectionPos.posToSectionCoord(bb.maxZ + 2.0);
 
         for (int x = xMin; x <= xMax; x++) {
-            long lowestAbsoluteSectionKey = SectionPos.asLong(x, 0, 0);
-            long highestAbsoluteSectionKey = SectionPos.asLong(x, -1, -1);
-            LongIterator it = this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L).iterator();
+            SectionPos lowestAbsoluteSectionKey = SectionPos.of(x, 0, 0);
+            SectionPos highestAbsoluteSectionKey = SectionPos.of(x, -1, -1);
+            ObjectIterator<SectionPos> it = this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L).iterator();
 
             while (it.hasNext()) {
-                long sectionKey = it.nextLong();
+                long sectionKey = it.next();
                 int y = SectionPos.y(sectionKey);
                 int z = SectionPos.z(sectionKey);
                 if (y >= yMin && y <= yMax && z >= zMin && z <= zMax) {
@@ -82,8 +79,8 @@ public class EntitySectionStorage<T extends EntityAccess> {
     }
 
     private LongSortedSet getChunkSections(final int x, final int z) {
-        long lowestAbsoluteSectionKey = SectionPos.asLong(x, 0, z);
-        long highestAbsoluteSectionKey = SectionPos.asLong(x, -1, z);
+        SectionPos lowestAbsoluteSectionKey = SectionPos.of(x, 0, z);
+        SectionPos highestAbsoluteSectionKey = SectionPos.of(x, -1, z);
         return this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L);
     }
 
@@ -91,19 +88,19 @@ public class EntitySectionStorage<T extends EntityAccess> {
         return this.getExistingSectionPositionsInChunk(chunkKey).mapToObj(this.sections::get).filter(Objects::nonNull);
     }
 
-    private static ChunkPos getChunkKeyFromSectionKey(final long sectionPos) {
-        return new ChunkPos(SectionPos.x(sectionPos), SectionPos.z(sectionPos));
+    private static ChunkPos getChunkKeyFromSectionKey(final SectionPos sectionPos) {
+        return new ChunkPos(sectionPos.x(), sectionPos.z());
     }
 
-    public EntitySection<T> getOrCreateSection(final long key) {
+    public EntitySection<T> getOrCreateSection(final SectionPos key) {
         return this.sections.computeIfAbsent(key, this::createSection);
     }
 
-    public @Nullable EntitySection<T> getSection(final long key) {
+    public @Nullable EntitySection<T> getSection(final SectionPos key) {
         return this.sections.get(key);
     }
 
-    private EntitySection<T> createSection(final long sectionPos) {
+    private EntitySection<T> createSection(final SectionPos sectionPos) {
         ChunkPos chunkPos = getChunkKeyFromSectionKey(sectionPos);
         Visibility chunkStatus = this.intialSectionVisibility.get(chunkPos);
         this.sectionIds.add(sectionPos);
@@ -112,7 +109,7 @@ public class EntitySectionStorage<T extends EntityAccess> {
 
     public ObjectSet<ChunkPos> getAllChunksWithExistingSections() {
         ObjectSet<ChunkPos> chunks = new ObjectOpenHashSet<>();
-        this.sections.keySet().forEach((ChunkPos sectionKey) -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
+        this.sections.keySet().forEach((SectionPos sectionKey) -> chunks.add(getChunkKeyFromSectionKey(sectionKey)));
         return chunks;
     }
 

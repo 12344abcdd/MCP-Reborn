@@ -54,7 +54,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
         this.entityGetter = new LevelEntityGetterAdapter<>(this.visibleEntityStorage, this.sectionStorage);
     }
 
-    private void removeSectionIfEmpty(final long sectionPos, final EntitySection<T> section) {
+    private void removeSectionIfEmpty(final SectionPos sectionPos, final EntitySection<T> section) {
         if (section.isEmpty()) {
             this.sectionStorage.remove(sectionPos);
         }
@@ -78,7 +78,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
             return false;
         }
 
-        long sectionKey = SectionPos.asLong(entity.blockPosition());
+        SectionPos sectionKey = SectionPos.of(entity.blockPosition());
         EntitySection<T> entitySection = this.sectionStorage.getOrCreateSection(sectionKey);
         entitySection.add(entity);
         entity.setLevelCallback(new PersistentEntitySectionManager.Callback(entity, sectionKey, entitySection));
@@ -369,10 +369,10 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
 
     private class Callback implements EntityInLevelCallback {
         private final T entity;
-        private long currentSectionKey;
+        private SectionPos currentSectionKey;
         private EntitySection<T> currentSection;
 
-        private Callback(final T entity, final long currentSectionKey, final EntitySection<T> currentSection) {
+        private Callback(final T entity, final SectionPos currentSectionKey, final EntitySection<T> currentSection) {
             this.entity = entity;
             this.currentSectionKey = currentSectionKey;
             this.currentSection = currentSection;
@@ -381,8 +381,8 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
         @Override
         public void onMove() {
             BlockPos pos = this.entity.blockPosition();
-            long newSectionPos = SectionPos.asLong(pos);
-            if (newSectionPos != this.currentSectionKey) {
+            SectionPos newSectionPos = SectionPos.of(pos);
+            if (!newSectionPos.equals(this.currentSectionKey)) {
                 Visibility previousStatus = this.currentSection.getStatus();
                 if (!this.currentSection.remove(this.entity)) {
                     PersistentEntitySectionManager.LOGGER
