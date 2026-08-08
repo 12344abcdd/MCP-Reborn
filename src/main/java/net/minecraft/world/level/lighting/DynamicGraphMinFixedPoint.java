@@ -11,12 +11,12 @@ import net.minecraft.core.Pos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 
-public abstract class DynamicGraphMinFixedPoint {
+public abstract class DynamicGraphMinFixedPoint<T extends Pos> {
     public static final Pos SOURCE = null;
     private static final int NO_COMPUTED_LEVEL = 255;
     protected final int levelCount;
-    private final LeveledPriorityQueue priorityQueue;
-    private final Object2ByteMap<Pos> computedLevels;
+    private final LeveledPriorityQueue<T> priorityQueue;
+    private final Object2ByteMap<T> computedLevels;
     private volatile boolean hasWork;
 
     protected DynamicGraphMinFixedPoint(final int levelCount, final int minQueueSize, final int minMapSize) {
@@ -25,7 +25,7 @@ public abstract class DynamicGraphMinFixedPoint {
         }
 
         this.levelCount = levelCount;
-        this.priorityQueue = new LeveledPriorityQueue(levelCount, minQueueSize);
+        this.priorityQueue = new LeveledPriorityQueue<>(levelCount, minQueueSize);
         this.computedLevels = new Object2ByteOpenHashMap<>(minMapSize, 0.5F) {
             @Override
             protected void rehash(final int newN) {
@@ -37,7 +37,7 @@ public abstract class DynamicGraphMinFixedPoint {
         this.computedLevels.defaultReturnValue((byte)-1);
     }
 
-    protected void removeFromQueue(final ChunkPos node) {
+    protected void removeFromQueue(final T node) {
         int computedLevel = this.computedLevels.remove(node) & 255;
         if (computedLevel != 255) {
             int level = this.getLevel(node);
@@ -47,15 +47,15 @@ public abstract class DynamicGraphMinFixedPoint {
         }
     }
 
-    public void removeIf(final Predicate pred) {
-        List nodesToRemove = new ArrayList<ChunkPos>();
+    public void removeIf(final Predicate<T> pred) {
+        List<T> nodesToRemove = new ArrayList<>();
         this.computedLevels.keySet().forEach((Object node) -> {
-            if (pred.test(node)) {
-                nodesToRemove.add(node);
+            if (pred.test((T) node)) {
+                nodesToRemove.add((T) node);
             }
         });
         nodesToRemove.forEach(chunk -> {
-            removeFromQueue((ChunkPos)chunk);
+            removeFromQueue(chunk);
         });
     }
 
@@ -63,16 +63,16 @@ public abstract class DynamicGraphMinFixedPoint {
         return Math.min(Math.min(level, computedLevel), this.levelCount - 1);
     }
 
-    protected void checkNode(final ChunkPos node) {
+    protected void checkNode(final T node) {
         this.checkEdge(node, node, this.levelCount - 1, false);
     }
 
-    protected void checkEdge(final ChunkPos from, final ChunkPos to, final int newLevelFrom, final boolean onlyDecreased) {
+    protected void checkEdge(final T from, final T to, final int newLevelFrom, final boolean onlyDecreased) {
         this.checkEdge(from, to, newLevelFrom, this.getLevel(to), this.computedLevels.get(to) & 255, onlyDecreased);
         this.hasWork = !this.priorityQueue.isEmpty();
     }
 
-    private void checkEdge(final ChunkPos from, final ChunkPos to, int newLevelFrom, int levelTo, int oldComputedLevel, final boolean onlyDecreased) {
+    private void checkEdge(final T from, final T to, int newLevelFrom, int levelTo, int oldComputedLevel, final boolean onlyDecreased) {
         if (!this.isSource(to)) {
             newLevelFrom = Mth.clamp(newLevelFrom, 0, this.levelCount - 1);
             levelTo = Mth.clamp(levelTo, 0, this.levelCount - 1);
@@ -104,7 +104,7 @@ public abstract class DynamicGraphMinFixedPoint {
         }
     }
 
-    protected final void checkNeighbor(final ChunkPos from, final ChunkPos to, final int level, final boolean onlyDecreased) {
+    protected final void checkNeighbor(final T from, final T to, final int level, final boolean onlyDecreased) {
         int storedOldComputedLevel = this.computedLevels.get(to) & 255;
         int levelFrom = Mth.clamp(this.computeLevelFromNeighbor(from, to, level), 0, this.levelCount - 1);
         if (onlyDecreased) {
@@ -135,7 +135,7 @@ public abstract class DynamicGraphMinFixedPoint {
 
         while (!this.priorityQueue.isEmpty() && count > 0) {
             count--;
-            ChunkPos node = this.priorityQueue.removeFirst();
+            T node = (T) this.priorityQueue.removeFirst();
             int level = Mth.clamp(this.getLevel(node), 0, this.levelCount - 1);
             int computedLevel = this.computedLevels.remove(node) & 255;
             if (computedLevel < level) {
@@ -160,23 +160,23 @@ public abstract class DynamicGraphMinFixedPoint {
         return this.computedLevels.size();
     }
 
-    protected boolean isSource(final ChunkPos node) {
-        return node.equals(ChunkPos.unpack(Long.MAX_VALUE));
+    protected boolean isSource(final T node) {
+        return node == null;
     }
 
-    protected boolean isSource(final long node) {
-        return node==Long.MAX_VALUE;
-    }
+//    protected boolean isSource(final long node) {
+//        return node==Long.MAX_VALUE;
+//    }
 
-    protected abstract int getComputedLevel(final ChunkPos node, final ChunkPos knownParent, final int knownLevelFromParent);
+    protected abstract int getComputedLevel(final T node, final T knownParent, final int knownLevelFromParent);
 
-    protected abstract void checkNeighborsAfterUpdate(final ChunkPos node, final int level, final boolean onlyDecrease);
+    protected abstract void checkNeighborsAfterUpdate(final T node, final int level, final boolean onlyDecrease);
 
-    protected abstract int getLevel(ChunkPos node);
+    protected abstract int getLevel(T node);
 
-    protected abstract int getLevel(long node);
+    //protected abstract int getLevel(long node);
 
-    protected abstract void setLevel(ChunkPos node, int level);
+    protected abstract void setLevel(T node, int level);
 
-    protected abstract int computeLevelFromNeighbor(ChunkPos from, ChunkPos to, final int fromLevel);
+    protected abstract int computeLevelFromNeighbor(T from, T to, final int fromLevel);
 }

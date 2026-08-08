@@ -212,10 +212,10 @@ public abstract class DistanceManager {
             return this.chunks.get(node);
         }
 
-        @Override
-        protected int getLevel(long node) {
-            return this.chunks.get(node);
-        }
+//        @Override
+//        protected int getLevel(long node) {
+//            return this.chunks.get(node);
+//        }
 
         @Override
         protected void setLevel(final ChunkPos node, final int level) {

@@ -1,11 +1,12 @@
 package net.minecraft.world.level.lighting;
 
 import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import net.minecraft.core.Pos;
 import net.minecraft.world.level.ChunkPos;
 
-public class LeveledPriorityQueue {
+public class LeveledPriorityQueue<T extends Pos> {
     private final int levelCount;
-    private final ObjectLinkedOpenHashSet[] queues;
+    private final ObjectLinkedOpenHashSet<T>[] queues;
     private int firstQueuedLevel;
 
     public LeveledPriorityQueue(final int levelCount, final int minSize) {
@@ -26,9 +27,9 @@ public class LeveledPriorityQueue {
         this.firstQueuedLevel = levelCount;
     }
 
-    public ChunkPos removeFirst() {
-        ObjectLinkedOpenHashSet queue = this.queues[this.firstQueuedLevel];
-        ChunkPos result = (ChunkPos) queue.removeFirst();
+    public Pos removeFirst() {
+        ObjectLinkedOpenHashSet<T> queue = this.queues[this.firstQueuedLevel];
+        Pos result = queue.removeFirst();
         if (queue.isEmpty()) {
             this.checkFirstQueuedLevel(this.levelCount);
         }
@@ -40,15 +41,15 @@ public class LeveledPriorityQueue {
         return this.firstQueuedLevel >= this.levelCount;
     }
 
-    public void dequeue(final ChunkPos node, final int key, final int upperBound) {
-        ObjectLinkedOpenHashSet queue = this.queues[key];
+    public void dequeue(final T node, final int key, final int upperBound) {
+        ObjectLinkedOpenHashSet<T> queue = this.queues[key];
         queue.remove(node);
         if (queue.isEmpty() && this.firstQueuedLevel == key) {
             this.checkFirstQueuedLevel(upperBound);
         }
     }
 
-    public void enqueue(final ChunkPos node, final int key) {
+    public void enqueue(final T node, final int key) {
         this.queues[key].add(node);
         if (this.firstQueuedLevel > key) {
             this.firstQueuedLevel = key;

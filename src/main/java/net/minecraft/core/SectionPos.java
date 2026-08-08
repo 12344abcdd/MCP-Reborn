@@ -38,6 +38,11 @@ public class SectionPos extends Vec3i implements Pos {
         super(x, y, z);
     }
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
     public static SectionPos of(final int x, final int y, final int z) {
         return new SectionPos(x, y, z);
     }
@@ -72,6 +77,10 @@ public class SectionPos extends Vec3i implements Pos {
 
     public static long offset(final long sectionNode, final int stepX, final int stepY, final int stepZ) {
         return asLong(x(sectionNode) + stepX, y(sectionNode) + stepY, z(sectionNode) + stepZ);
+    }
+
+    public static SectionPos offset(final SectionPos sectionNode, final int stepX, final int stepY, final int stepZ) {
+        return of(sectionNode.x() + stepX, sectionNode.y() + stepY, sectionNode.z() + stepZ);
     }
 
     public static int posToSectionCoord(final double pos) {
@@ -212,8 +221,8 @@ public class SectionPos extends Vec3i implements Pos {
         return new ChunkPos(this.x(), this.z());
     }
 
-    public static long asLong(final BlockPos pos) {
-        return asLong(blockToSectionCoord(pos.getX()), blockToSectionCoord(pos.getY()), blockToSectionCoord(pos.getZ()));
+    public static SectionPos toSectionPos(final BlockPos pos) {
+        return SectionPos.of(blockToSectionCoord(pos.getX()), blockToSectionCoord(pos.getY()), blockToSectionCoord(pos.getZ()));
     }
 
     public static long asLong(final int x, final int y, final int z) {

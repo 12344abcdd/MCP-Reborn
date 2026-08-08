@@ -27,6 +27,9 @@ import java.util.concurrent.CompletionException;
 import java.util.function.BiFunction;
 import java.util.function.BooleanSupplier;
 import java.util.function.Function;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.SectionPos;
@@ -44,7 +47,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final String SECTIONS_TAG = "Sections";
     private final SimpleRegionStorage simpleRegionStorage;
-    private final Long2ObjectMap<Optional<R>> storage = new Long2ObjectOpenHashMap<>();
+    private final Object2ObjectMap<SectionPos,Optional<R>> storage = new Object2ObjectOpenHashMap<>();
     private final LongLinkedOpenHashSet dirtyChunks = new LongLinkedOpenHashSet();
     private final Codec<P> codec;
     private final Function<R, P> packer;
@@ -117,11 +120,11 @@ public class SectionStorage<R, P> implements AutoCloseable {
         return !this.dirtyChunks.isEmpty();
     }
 
-    protected @Nullable Optional<R> get(final long sectionPos) {
+    protected @Nullable Optional<R> get(final SectionPos sectionPos) {
         return this.storage.get(sectionPos);
     }
 
-    protected Optional<R> getOrLoad(final long sectionPos) {
+    protected Optional<R> getOrLoad(final SectionPos sectionPos) {
         if (this.outsideStoredRange(sectionPos)) {
             return Optional.empty();
         } else {
@@ -129,7 +132,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
             if (r != null) {
                 return r;
             } else {
-                this.unpackChunk(SectionPos.of(sectionPos).chunk());
+                this.unpackChunk(sectionPos.chunk());
                 r = this.get(sectionPos);
                 if (r == null) {
                     throw (IllegalStateException)Util.pauseInIde(new IllegalStateException());
@@ -140,12 +143,12 @@ public class SectionStorage<R, P> implements AutoCloseable {
         }
     }
 
-    protected boolean outsideStoredRange(final long sectionPos) {
-        int y = SectionPos.sectionToBlockCoord(SectionPos.y(sectionPos));
+    protected boolean outsideStoredRange(final SectionPos sectionPos) {
+        int y = SectionPos.sectionToBlockCoord(sectionPos.y());
         return this.levelHeightAccessor.isOutsideBuildHeight(y);
     }
 
-    protected R getOrCreate(final long sectionPos) {
+    protected R getOrCreate(final SectionPos sectionPos) {
         if (this.outsideStoredRange(sectionPos)) {
             throw (IllegalArgumentException)Util.pauseInIde(new IllegalArgumentException("sectionPos out of bounds"));
         }
@@ -218,7 +221,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
             boolean versionChanged = packedChunk.versionChanged();
 
             for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
-                long key = getKey(pos, sectionY);
+                SectionPos key = getKey(pos, sectionY);
                 Optional<R> section = Optional.ofNullable(packedChunk.sectionsByY.get(sectionY))
                     .map(packed -> this.unpacker.apply((P)packed, () -> this.setDirty(key)));
                 this.storage.put(key, section);
@@ -250,7 +253,7 @@ public class SectionStorage<R, P> implements AutoCloseable {
         Map<T, T> sections = Maps.newHashMap();
 
         for (int sectionY = this.levelHeightAccessor.getMinSectionY(); sectionY <= this.levelHeightAccessor.getMaxSectionY(); sectionY++) {
-            long key = getKey(chunkPos, sectionY);
+            SectionPos key = getKey(chunkPos, sectionY);
             Optional<R> r = this.storage.get(key);
             if (r != null && !r.isEmpty()) {
                 DataResult<T> serializedSection = this.codec.encodeStart(ops, this.packer.apply(r.get()));
@@ -272,19 +275,19 @@ public class SectionStorage<R, P> implements AutoCloseable {
         );
     }
 
-    private static long getKey(final ChunkPos chunkPos, final int sectionY) {
-        return SectionPos.asLong(chunkPos.x().intValueExact(), sectionY, chunkPos.z().intValueExact());
+    private static SectionPos getKey(final ChunkPos chunkPos, final int sectionY) {
+        return SectionPos.of(chunkPos.x().intValueExact(), sectionY, chunkPos.z().intValueExact());
     }
 
-    protected void onSectionLoad(final long sectionPos) {
+    protected void onSectionLoad(final SectionPos sectionPos) {
     }
 
-    protected void setDirty(final long sectionPos) {
+    protected void setDirty(final SectionPos sectionPos) {
         Optional<R> r = this.storage.get(sectionPos);
         if (r != null && !r.isEmpty()) {
-            this.dirtyChunks.add(ChunkPos.pack(SectionPos.x(sectionPos), SectionPos.z(sectionPos)));
+            this.dirtyChunks.add(ChunkPos.pack(sectionPos.x(), sectionPos.z()));
         } else {
-            LOGGER.warn("No data for position: {}", SectionPos.of(sectionPos));
+            LOGGER.warn("No data for position: {}", sectionPos);
         }
     }
 

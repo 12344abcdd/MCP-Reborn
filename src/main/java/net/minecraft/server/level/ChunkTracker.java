@@ -3,7 +3,7 @@ package net.minecraft.server.level;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint;
 
-public abstract class ChunkTracker extends DynamicGraphMinFixedPoint {
+public abstract class ChunkTracker extends DynamicGraphMinFixedPoint<ChunkPos> {
     protected ChunkTracker(final int levelCount, final int minQueueSize, final int minMapSize) {
         super(levelCount, minQueueSize, minMapSize);
     }
