@@ -22,6 +22,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
+
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.client.renderer.chunk.CompiledSectionMesh;
 import net.minecraft.client.renderer.chunk.SectionMesh;
 import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
@@ -174,10 +177,10 @@ public class SectionOcclusionGraph {
         }, Util.backgroundExecutor());
     }
 
-    private void runPartialUpdate(final CameraRenderState camera, final LongSet loadedExpectedChunks) {
+    private void runPartialUpdate(final CameraRenderState camera, final ObjectSet<ChunkPos> loadedExpectedChunks) {
         SectionOcclusionGraph.GraphState state = this.currentGraph.get();
         loadedExpectedChunks.forEach(chunkNode -> {
-            LongList waitingSections = state.storage.sectionsWaitingForChunkLoads.remove(chunkNode);
+            ObjectList waitingSections = state.storage.sectionsWaitingForChunkLoads.remove(chunkNode);
             if (waitingSections != null) {
                 waitingSections.forEach(sectionNode -> {
                     SectionRenderDispatcher.RenderSection section = this.viewArea.getRenderSection(sectionNode);
@@ -209,7 +212,7 @@ public class SectionOcclusionGraph {
     }
 
     private void initializeQueueForFullUpdate(final BlockPos cameraPosition, final Queue<SectionOcclusionGraph.Node> queue) {
-        long cameraSectionNode = SectionPos.asLong(cameraPosition);
+        SectionPos cameraSectionNode = SectionPos.of(cameraPosition);
         int cameraSectionY = SectionPos.y(cameraSectionNode);
         SectionRenderDispatcher.RenderSection cameraSection = this.viewArea.getRenderSection(cameraSectionNode);
         if (cameraSection == null) {
@@ -223,7 +226,7 @@ public class SectionOcclusionGraph {
             for (int sectionX = -viewDistance; sectionX <= viewDistance; sectionX++) {
                 for (int sectionZ = -viewDistance; sectionZ <= viewDistance; sectionZ++) {
                     SectionRenderDispatcher.RenderSection renderSectionAt = this.viewArea
-                        .getRenderSection(SectionPos.asLong(sectionX + cameraSectionX, sectionY, sectionZ + cameraSectionZ));
+                        .getRenderSection(SectionPos.of(sectionX + cameraSectionX, sectionY, sectionZ + cameraSectionZ));
                     if (renderSectionAt != null && this.isInViewDistance(cameraSectionNode, renderSectionAt.getSectionNode())) {
                         Direction sourceDirection = isBelowTheWorld ? Direction.UP : Direction.DOWN;
                         SectionOcclusionGraph.Node node = new SectionOcclusionGraph.Node(renderSectionAt, sourceDirection, 0);
@@ -361,7 +364,7 @@ public class SectionOcclusionGraph {
         return new Frustum(frustum).offsetToFullyIncludeCameraCube(8);
     }
 
-    private boolean isInViewDistance(final long cameraSectionNode, final long sectionNode) {
+    private boolean isInViewDistance(final SectionPos cameraSectionNode, final SectionPos sectionNode) {
         return ChunkTrackingView.isInViewDistance(
             SectionPos.x(cameraSectionNode),
             SectionPos.z(cameraSectionNode),

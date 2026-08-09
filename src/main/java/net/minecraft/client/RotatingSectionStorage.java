@@ -91,10 +91,10 @@ public class RotatingSectionStorage<T extends RotatingSectionStorage.Value> impl
     }
 
     public @Nullable T getValueAt(final BlockPos pos) {
-        return this.getValue(SectionPos.asLong(pos));
+        return this.getValue(SectionPos.of(pos));
     }
 
-    public @Nullable T getValue(final long sectionNode) {
+    public @Nullable T getValue(final SectionPos sectionNode) {
         int sectionX = SectionPos.x(sectionNode);
         int sectionY = SectionPos.y(sectionNode);
         int sectionZ = SectionPos.z(sectionNode);
