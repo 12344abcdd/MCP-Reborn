@@ -166,6 +166,18 @@ public class SectionPos extends Vec3i implements Pos {
         return this.getZ();
     }
 
+    public static int x(SectionPos sectionPos) {
+        return sectionPos.getX();
+    }
+
+    public static int y(SectionPos sectionPos) {
+        return sectionPos.getY();
+    }
+
+    public static int z(SectionPos sectionPos) {
+        return sectionPos.getZ();
+    }
+
     public int minBlockX() {
         return sectionToBlockCoord(this.x());
     }

@@ -47,12 +47,12 @@ public class EntitySectionStorage<T extends EntityAccess> {
         for (int x = xMin; x <= xMax; x++) {
             SectionPos lowestAbsoluteSectionKey = SectionPos.of(x, 0, 0);
             SectionPos highestAbsoluteSectionKey = SectionPos.of(x, -1, -1);
-            ObjectIterator<SectionPos> it = this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L).iterator();
+            ObjectIterator<SectionPos> it = this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey.offset(0,1,0)).iterator();
 
             while (it.hasNext()) {
-                long sectionKey = it.next();
-                int y = SectionPos.y(sectionKey);
-                int z = SectionPos.z(sectionKey);
+                SectionPos sectionKey = it.next();
+                int y = sectionKey.y();
+                int z = sectionKey.z();
                 if (y >= yMin && y <= yMax && z >= zMin && z <= zMax) {
                     EntitySection<T> entitySection = this.sections.get(sectionKey);
                     if (entitySection != null
@@ -66,26 +66,26 @@ public class EntitySectionStorage<T extends EntityAccess> {
         }
     }
 
-    public LongStream getExistingSectionPositionsInChunk(final ChunkPos chunkKey) {
+    public Stream<SectionPos> getExistingSectionPositionsInChunk(final ChunkPos chunkKey) {
         int x = chunkKey.x().intValueExact();
         int z = chunkKey.z().intValueExact();
-        LongSortedSet chunkSections = this.getChunkSections(x, z);
+        ObjectSortedSet<SectionPos> chunkSections = this.getChunkSections(x, z);
         if (chunkSections.isEmpty()) {
-            return LongStream.empty();
+            return Stream.empty();
         }
 
-        OfLong iterator = chunkSections.iterator();
-        return StreamSupport.longStream(Spliterators.spliteratorUnknownSize(iterator, 1301), false);
+        ObjectBidirectionalIterator<SectionPos> iterator = chunkSections.iterator();
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, 1301), false);
     }
 
-    private LongSortedSet getChunkSections(final int x, final int z) {
+    private ObjectSortedSet<SectionPos> getChunkSections(final int x, final int z) {
         SectionPos lowestAbsoluteSectionKey = SectionPos.of(x, 0, z);
         SectionPos highestAbsoluteSectionKey = SectionPos.of(x, -1, z);
-        return this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey + 1L);
+        return this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey.offset(0,1,0));
     }
 
     public Stream<EntitySection<T>> getExistingSectionsInChunk(final ChunkPos chunkKey) {
-        return this.getExistingSectionPositionsInChunk(chunkKey).mapToObj(this.sections::get).filter(Objects::nonNull);
+        return this.getExistingSectionPositionsInChunk(chunkKey).map(this.sections::get).filter(Objects::nonNull);
     }
 
     private static ChunkPos getChunkKeyFromSectionKey(final SectionPos sectionPos) {
@@ -121,7 +121,7 @@ public class EntitySectionStorage<T extends EntityAccess> {
         this.forEachAccessibleNonEmptySection(bb, section -> section.getEntities(type, bb, consumer));
     }
 
-    public void remove(final long sectionKey) {
+    public void remove(final SectionPos sectionKey) {
         this.sections.remove(sectionKey);
         this.sectionIds.remove(sectionKey);
     }

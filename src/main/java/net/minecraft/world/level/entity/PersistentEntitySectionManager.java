@@ -323,7 +323,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
                     this.sectionStorage
                         .getExistingSectionPositionsInChunk(chunkKey)
                         .forEach(
-                            (long sectionKey) -> {
+                            (SectionPos sectionKey) -> {
                                 EntitySection<T> section = this.sectionStorage.getSection(sectionKey);
                                 if (section != null) {
                                     try {
@@ -386,7 +386,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
                 Visibility previousStatus = this.currentSection.getStatus();
                 if (!this.currentSection.remove(this.entity)) {
                     PersistentEntitySectionManager.LOGGER
-                        .warn("Entity {} wasn't found in section {} (moving to {})", this.entity, SectionPos.of(this.currentSectionKey), newSectionPos);
+                        .warn("Entity {} wasn't found in section {} (moving to {})", this.entity, this.currentSectionKey, newSectionPos);
                 }
 
                 PersistentEntitySectionManager.this.removeSectionIfEmpty(this.currentSectionKey, this.currentSection);
@@ -432,7 +432,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
         public void onRemove(final Entity.RemovalReason reason) {
             if (!this.currentSection.remove(this.entity)) {
                 PersistentEntitySectionManager.LOGGER
-                    .warn("Entity {} wasn't found in section {} (destroying due to {})", this.entity, SectionPos.of(this.currentSectionKey), reason);
+                    .warn("Entity {} wasn't found in section {} (destroying due to {})", this.entity, this.currentSectionKey, reason);
             }
 
             Visibility status = PersistentEntitySectionManager.getEffectiveStatus(this.entity, this.currentSection.getStatus());
