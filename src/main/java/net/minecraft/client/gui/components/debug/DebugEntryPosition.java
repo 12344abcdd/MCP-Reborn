@@ -4,6 +4,9 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.longs.LongSets;
 import java.util.List;
 import java.util.Locale;
+
+import it.unimi.dsi.fastutil.objects.ObjectSet;
+import it.unimi.dsi.fastutil.objects.ObjectSets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -44,7 +47,7 @@ public class DebugEntryPosition implements DebugScreenEntry {
                 case EAST -> "Towards positive X";
                 default -> "Invalid";
             };
-            LongSet chunks = serverOrClientLevel instanceof ServerLevel serverLevel ? serverLevel.getForceLoadedChunks() : LongSets.EMPTY_SET;
+            ObjectSet<ChunkPos> chunks = serverOrClientLevel instanceof ServerLevel serverLevel ? serverLevel.getForceLoadedChunks() : ObjectSets.EMPTY_SET;
             displayer.addToGroup(
                 GROUP,
                 List.of(

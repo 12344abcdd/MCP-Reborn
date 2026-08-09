@@ -38,7 +38,7 @@ public class SectionUpdateTracker {
         return this.storage.size();
     }
 
-    public SectionUpdateTracker.@Nullable SectionDirtyState getDirtyState(final long sectionNode) {
+    public SectionUpdateTracker.@Nullable SectionDirtyState getDirtyState(final SectionPos sectionNode) {
         return this.storage.getValue(sectionNode);
     }
 
