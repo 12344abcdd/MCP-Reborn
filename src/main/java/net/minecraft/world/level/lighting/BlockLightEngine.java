@@ -24,7 +24,7 @@ public final class BlockLightEngine extends LightEngine<BlockLightSectionStorage
 
     @Override
     protected void checkNode(final long blockNode) {
-        long sectionNode = SectionPos.blockToSection(blockNode);
+        SectionPos sectionNode = SectionPos.blockToSection(blockNode);
         if (this.storage.storingLightForSection(sectionNode)) {
             BlockState state = this.getState(this.mutablePos.set(blockNode));
             int lightEmission = this.getEmission(blockNode, state);

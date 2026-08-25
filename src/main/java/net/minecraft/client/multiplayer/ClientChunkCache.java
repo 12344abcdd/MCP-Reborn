@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
+
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.SectionPos;
 import net.minecraft.core.registries.Registries;
@@ -177,19 +179,19 @@ public class ClientChunkCache extends ChunkSource {
         Minecraft.getInstance().levelExtractor.setSectionDirty(pos.x(), pos.y(), pos.z());
     }
 
-    public LongOpenHashSet addedEmptySections() {
+    public ObjectOpenHashSet<SectionPos> addedEmptySections() {
         return this.storage.addedEmptySections[this.storage.updatingSetsIndex];
     }
 
-    public LongOpenHashSet removedEmptySections() {
+    public ObjectOpenHashSet<SectionPos> removedEmptySections() {
         return this.storage.removedEmptySections[this.storage.updatingSetsIndex];
     }
 
-    public LongOpenHashSet addedLoadedChunks() {
+    public ObjectOpenHashSet<ChunkPos> addedLoadedChunks() {
         return this.storage.addedLoadedChunks[this.storage.updatingSetsIndex];
     }
 
-    public LongOpenHashSet removedLoadedChunks() {
+    public ObjectOpenHashSet<ChunkPos> removedLoadedChunks() {
         return this.storage.removedLoadedChunks[this.storage.updatingSetsIndex];
     }
 
@@ -210,10 +212,10 @@ public class ClientChunkCache extends ChunkSource {
     private final class Storage {
         private static final int UPDATE_TRACKING_BUFFERS = 2;
         private final AtomicReferenceArray<@Nullable LevelChunk> chunks;
-        private final LongOpenHashSet[] addedEmptySections = new LongOpenHashSet[2];
-        private final LongOpenHashSet[] removedEmptySections = new LongOpenHashSet[2];
-        private final LongOpenHashSet[] addedLoadedChunks = new LongOpenHashSet[2];
-        private final LongOpenHashSet[] removedLoadedChunks = new LongOpenHashSet[2];
+        private final ObjectOpenHashSet[] addedEmptySections = new ObjectOpenHashSet[2];
+        private final ObjectOpenHashSet[] removedEmptySections = new ObjectOpenHashSet[2];
+        private final ObjectOpenHashSet[] addedLoadedChunks = new ObjectOpenHashSet[2];
+        private final ObjectOpenHashSet[] removedLoadedChunks = new ObjectOpenHashSet[2];
         private int updatingSetsIndex;
         private final int chunkRadius;
         private final int viewRange;
@@ -227,10 +229,10 @@ public class ClientChunkCache extends ChunkSource {
             this.chunks = new AtomicReferenceArray<>(this.viewRange * this.viewRange);
 
             for (int i = 0; i < 2; i++) {
-                this.addedEmptySections[i] = new LongOpenHashSet();
-                this.removedEmptySections[i] = new LongOpenHashSet();
-                this.addedLoadedChunks[i] = new LongOpenHashSet();
-                this.removedLoadedChunks[i] = new LongOpenHashSet();
+                this.addedEmptySections[i] = new ObjectOpenHashSet();
+                this.removedEmptySections[i] = new ObjectOpenHashSet();
+                this.addedLoadedChunks[i] = new ObjectOpenHashSet();
+                this.removedLoadedChunks[i] = new ObjectOpenHashSet();
             }
         }
 

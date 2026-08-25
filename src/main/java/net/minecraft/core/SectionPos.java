@@ -1,17 +1,17 @@
 package net.minecraft.core;
 
 import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.longs.LongConsumer;
-import java.util.Spliterators.AbstractSpliterator;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.entity.EntityAccess;
+
+import java.util.Spliterators.AbstractSpliterator;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class SectionPos extends Vec3i implements Pos {
     public static final int SECTION_BITS = 4;
@@ -72,6 +72,10 @@ public class SectionPos extends Vec3i implements Pos {
     }
 
     public static long offset(final long sectionNode, final Direction offset) {
+        return offset(sectionNode, offset.getStepX(), offset.getStepY(), offset.getStepZ());
+    }
+
+    public static SectionPos offset(final SectionPos sectionNode, final Direction offset) {
         return offset(sectionNode, offset.getStepX(), offset.getStepY(), offset.getStepZ());
     }
 
@@ -202,22 +206,26 @@ public class SectionPos extends Vec3i implements Pos {
         return sectionToBlockCoord(this.z(), 15);
     }
 
-    public static long blockToSection(final long blockNode) {
-        return asLong(
-            blockToSectionCoord(BlockPos.getX(blockNode)), blockToSectionCoord(BlockPos.getY(blockNode)), blockToSectionCoord(BlockPos.getZ(blockNode))
+    public static SectionPos blockToSection(final long blockNode) {
+        return of(blockToSectionCoord(BlockPos.getX(blockNode)), blockToSectionCoord(BlockPos.getY(blockNode)), blockToSectionCoord(BlockPos.getZ(blockNode))
         );
     }
 
-    public static long getZeroNode(final int x, final int z) {
-        return getZeroNode(asLong(x, 0, z));
+    public static SectionPos getZeroNode(final int x, final int z) {
+        return getZeroNode(of(x, 0, z));
     }
 
+    @Deprecated(forRemoval = true)
     public static long getZeroNode(final long sectionNode) {
         return sectionNode & -1048576L;
     }
-    //BlockPos相关
-    public static long sectionToChunk(final long sectionNode) {
-        return ChunkPos.pack(x(sectionNode), z(sectionNode));
+
+    public static SectionPos getZeroNode(final SectionPos sectionNode) {
+        return SectionPos.of(sectionNode.x(), 0, sectionNode.z());
+    }
+
+    public static ChunkPos sectionToChunk(final SectionPos sectionNode) {
+        return new ChunkPos(x(sectionNode), z(sectionNode));
     }
 
     public BlockPos origin() {
@@ -285,15 +293,15 @@ public class SectionPos extends Vec3i implements Pos {
         }, false);
     }
 
-    public static void aroundAndAtBlockPos(final BlockPos blockPos, final LongConsumer sectionConsumer) {
+    public static void aroundAndAtBlockPos(final BlockPos blockPos, final Consumer<SectionPos> sectionConsumer) {
         aroundAndAtBlockPos(blockPos.getX(), blockPos.getY(), blockPos.getZ(), sectionConsumer);
     }
 
-    public static void aroundAndAtBlockPos(final long blockPos, final LongConsumer sectionConsumer) {
+    public static void aroundAndAtBlockPos(final long blockPos, final Consumer<SectionPos> sectionConsumer) {
         aroundAndAtBlockPos(BlockPos.getX(blockPos), BlockPos.getY(blockPos), BlockPos.getZ(blockPos), sectionConsumer);
     }
 
-    public static void aroundAndAtBlockPos(final int blockX, final int blockY, final int blockZ, final LongConsumer sectionConsumer) {
+    public static void aroundAndAtBlockPos(final int blockX, final int blockY, final int blockZ, final Consumer<SectionPos> sectionConsumer) {
         int minSectionX = blockToSectionCoord(blockX - 1);
         int maxSectionX = blockToSectionCoord(blockX + 1);
         int minSectionY = blockToSectionCoord(blockY - 1);
@@ -301,12 +309,12 @@ public class SectionPos extends Vec3i implements Pos {
         int minSectionZ = blockToSectionCoord(blockZ - 1);
         int maxSectionZ = blockToSectionCoord(blockZ + 1);
         if (minSectionX == maxSectionX && minSectionY == maxSectionY && minSectionZ == maxSectionZ) {
-            sectionConsumer.accept(asLong(minSectionX, minSectionY, minSectionZ));
+            sectionConsumer.accept(of(minSectionX, minSectionY, minSectionZ));
         } else {
             for (int sectionX = minSectionX; sectionX <= maxSectionX; sectionX++) {
                 for (int sectionY = minSectionY; sectionY <= maxSectionY; sectionY++) {
                     for (int sectionZ = minSectionZ; sectionZ <= maxSectionZ; sectionZ++) {
-                        sectionConsumer.accept(asLong(sectionX, sectionY, sectionZ));
+                        sectionConsumer.accept(of(sectionX, sectionY, sectionZ));
                     }
                 }
             }

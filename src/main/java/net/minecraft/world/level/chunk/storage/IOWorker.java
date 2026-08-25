@@ -14,6 +14,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.nbt.StreamTagVisitor;
@@ -35,7 +37,7 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
     private final PriorityConsecutiveExecutor consecutiveExecutor;
     private final RegionFileStorage storage;
     private final SequencedMap<ChunkPos, IOWorker.PendingStore> pendingWrites = new LinkedHashMap<>();
-    private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> regionCacheForBlender = new Long2ObjectLinkedOpenHashMap<>();
+    private final Object2ObjectLinkedOpenHashMap<ChunkPos,CompletableFuture<BitSet>> regionCacheForBlender = new Object2ObjectLinkedOpenHashMap<>();
     private static final int REGION_CACHE_SIZE = 1024;
 
     protected IOWorker(final RegionStorageInfo info, final Path dir, final boolean sync) {
@@ -73,7 +75,7 @@ public class IOWorker implements AutoCloseable, ChunkScanAccess {
     }
 
     private CompletableFuture<BitSet> getOrCreateOldDataForRegion(final int regionX, final int regionZ) {
-        long regionPos = ChunkPos.pack(regionX, regionZ);
+        ChunkPos regionPos = ChunkPos.of(regionX, regionZ);
         synchronized (this.regionCacheForBlender) {
             CompletableFuture<BitSet> result = this.regionCacheForBlender.getAndMoveToFirst(regionPos);
             if (result == null) {

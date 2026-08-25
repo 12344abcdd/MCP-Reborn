@@ -9,6 +9,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Util;
 import net.minecraft.world.level.ChunkPos;
@@ -115,7 +118,7 @@ public class GameTestRunner {
                 private void testCompleted(final GameTestInfo testInfo) {
                     if (currentBatchTracker.isDone()) {
                         GameTestRunner.this.batchListeners.forEach(listener -> listener.testBatchFinished(currentBatch));
-                        LongSet forcedChunks = new LongArraySet(GameTestRunner.this.level.getForceLoadedChunks());
+                        ObjectSet<ChunkPos> forcedChunks = new ObjectArraySet<>(GameTestRunner.this.level.getForceLoadedChunks());
                         forcedChunks.forEach(pos -> GameTestRunner.this.level.setChunkForced(ChunkPos.getX(pos), ChunkPos.getZ(pos), false));
                         GameTestRunner.this.runBatch(batchIndex + 1);
                     }
@@ -135,7 +138,7 @@ public class GameTestRunner {
                 public void testFailed(final GameTestInfo testInfo, final GameTestRunner runner) {
                     if (GameTestRunner.this.haltOnError) {
                         GameTestRunner.this.endCurrentEnvironment();
-                        LongSet forcedChunks = new LongArraySet(GameTestRunner.this.level.getForceLoadedChunks());
+                        ObjectSet<ChunkPos> forcedChunks = new ObjectArraySet<>(GameTestRunner.this.level.getForceLoadedChunks());
                         forcedChunks.forEach(pos -> GameTestRunner.this.level.setChunkForced(ChunkPos.getX(pos), ChunkPos.getZ(pos), false));
                         GameTestTicker.SINGLETON.clear();
                     } else {

@@ -23,8 +23,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
+import it.unimi.dsi.fastutil.objects.*;
 import net.minecraft.client.renderer.chunk.CompiledSectionMesh;
 import net.minecraft.client.renderer.chunk.SectionMesh;
 import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
@@ -59,8 +58,8 @@ public class SectionOcclusionGraph {
     private @Nullable ViewArea viewArea;
     private final AtomicReference<SectionOcclusionGraph.@Nullable GraphState> currentGraph = new AtomicReference<>();
     private final AtomicBoolean needsFrustumUpdate = new AtomicBoolean(false);
-    private final LongOpenHashSet emptySections = new LongOpenHashSet();
-    private final LongOpenHashSet loadedChunks = new LongOpenHashSet();
+    private final ObjectOpenHashSet<SectionPos> emptySections = new ObjectOpenHashSet<>();
+    private final ObjectOpenHashSet<ChunkPos> loadedChunks = new ObjectOpenHashSet<>();
     private volatile @Nullable BlockingQueue<SectionRenderDispatcher.RenderSection> nextSectionsToPropagateFrom;
     private double prevCamX = Double.MIN_VALUE;
     private double prevCamY = Double.MIN_VALUE;
@@ -89,9 +88,9 @@ public class SectionOcclusionGraph {
         }
     }
 
-    public LongCollection expectedChunks() {
+    public ObjectCollection<ChunkPos> expectedChunks() {
         SectionOcclusionGraph.GraphState graphState = this.currentGraph.get();
-        return graphState != null ? graphState.storage.sectionsWaitingForChunkLoads.keySet() : LongSets.EMPTY_SET;
+        return graphState != null ? graphState.storage.sectionsWaitingForChunkLoads.keySet() : ObjectSets.EMPTY_SET;
     }
 
     public void invalidate() {
@@ -162,8 +161,8 @@ public class SectionOcclusionGraph {
 
     private void scheduleFullUpdate(final CameraRenderState camera) {
         this.needsFullUpdate = false;
-        LongOpenHashSet clonedEmptySections = this.emptySections.clone();
-        LongOpenHashSet clonedLoadedChunks = this.loadedChunks.clone();
+        ObjectOpenHashSet<SectionPos> clonedEmptySections = new ObjectOpenHashSet<>(this.emptySections);
+        ObjectOpenHashSet<ChunkPos> clonedLoadedChunks = new ObjectOpenHashSet<>(this.loadedChunks);
         this.fullUpdateTask = CompletableFuture.runAsync(() -> {
             SectionOcclusionGraph.GraphState newState = new SectionOcclusionGraph.GraphState(this.viewArea);
             this.nextSectionsToPropagateFrom = newState.sectionsToPropagateFrom;
@@ -180,7 +179,7 @@ public class SectionOcclusionGraph {
     private void runPartialUpdate(final CameraRenderState camera, final ObjectSet<ChunkPos> loadedExpectedChunks) {
         SectionOcclusionGraph.GraphState state = this.currentGraph.get();
         loadedExpectedChunks.forEach(chunkNode -> {
-            ObjectList waitingSections = state.storage.sectionsWaitingForChunkLoads.remove(chunkNode);
+            ObjectList<SectionPos> waitingSections = state.storage.sectionsWaitingForChunkLoads.remove(chunkNode);
             if (waitingSections != null) {
                 waitingSections.forEach(sectionNode -> {
                     SectionRenderDispatcher.RenderSection section = this.viewArea.getRenderSection(sectionNode);
@@ -248,7 +247,7 @@ public class SectionOcclusionGraph {
                 }
             }
 
-            toAdd.sort(Comparator.comparingDouble(c -> cameraPosition.distSqr(SectionPos.of(c.section.getSectionNode()).center())));
+            toAdd.sort(Comparator.comparingDouble(c -> cameraPosition.distSqr(c.section.getSectionNode().center())));
             queue.addAll(toAdd);
         } else {
             queue.add(new SectionOcclusionGraph.Node(cameraSection, null, 0));
@@ -261,20 +260,19 @@ public class SectionOcclusionGraph {
         final Queue<SectionOcclusionGraph.Node> queue,
         final boolean smartCull,
         final Consumer<SectionRenderDispatcher.RenderSection> onSectionAdded,
-        final LongOpenHashSet emptySections,
-        final LongOpenHashSet loadedChunks
+        final ObjectOpenHashSet<SectionPos> emptySections,
+        final ObjectOpenHashSet<ChunkPos> loadedChunks
     ) {
         SectionPos cameraSectionPos = SectionPos.of(cameraPos);
-        long cameraSectionNode = cameraSectionPos.asLong();
         BlockPos cameraSectionCenter = cameraSectionPos.center();
 
         while (!queue.isEmpty()) {
             SectionOcclusionGraph.Node node = queue.poll();
             SectionRenderDispatcher.RenderSection currentSection = node.section;
-            long sectionNode = currentSection.getSectionNode();
-            long chunkNode = ChunkPos.fromSectionNode(sectionNode);
+            SectionPos sectionNode = currentSection.getSectionNode();
+            ChunkPos chunkNode = ChunkPos.fromSectionNode(sectionNode);
             if (!loadedChunks.contains(chunkNode)) {
-                storage.sectionsWaitingForChunkLoads.computeIfAbsent(chunkNode, var0 -> new LongArrayList()).add(sectionNode);
+                storage.sectionsWaitingForChunkLoads.computeIfAbsent(chunkNode, var0 -> new ObjectArrayList<>()).add(sectionNode);
             } else {
                 if (!emptySections.contains(node.section.getSectionNode())) {
                     if (storage.sectionTree.add(node.section)) {
@@ -289,7 +287,7 @@ public class SectionOcclusionGraph {
                     || Math.abs(SectionPos.z(sectionNode) - cameraSectionPos.z()) > MINIMUM_ADVANCED_CULLING_SECTION_DISTANCE;
 
                 for (Direction direction : DIRECTIONS) {
-                    SectionRenderDispatcher.RenderSection renderSectionAt = this.getRelativeFrom(cameraSectionNode, currentSection, direction);
+                    SectionRenderDispatcher.RenderSection renderSectionAt = this.getRelativeFrom(cameraSectionPos, currentSection, direction);
                     if (renderSectionAt != null && (!smartCull || !node.hasDirection(direction.getOpposite()))) {
                         if (smartCull && node.hasSourceDirections()) {
                             SectionMesh sectionMesh = currentSection.getSectionMesh();
@@ -375,9 +373,9 @@ public class SectionOcclusionGraph {
     }
 
     private SectionRenderDispatcher.@Nullable RenderSection getRelativeFrom(
-        final long cameraSectionNode, final SectionRenderDispatcher.RenderSection renderSection, final Direction direction
+        final SectionPos cameraSectionNode, final SectionRenderDispatcher.RenderSection renderSection, final Direction direction
     ) {
-        long relative = renderSection.getNeighborSectionNode(direction);
+        SectionPos relative = renderSection.getNeighborSectionNode(direction);
         if (!this.isInViewDistance(cameraSectionNode, relative)) {
             return null;
         } else {
@@ -392,12 +390,10 @@ public class SectionOcclusionGraph {
         return this.currentGraph.get().storage.sectionToNodeMap.get(section);
     }
 
-    public void updateEmptySections(final LongOpenHashSet added, final LongOpenHashSet removed) {
+    public void updateEmptySections(final ObjectOpenHashSet<SectionPos> added, final ObjectOpenHashSet<SectionPos> removed) {
         this.emptySections.addAll(added);
-        LongIterator iter = removed.longIterator();
 
-        while (iter.hasNext()) {
-            long sectionNode = iter.nextLong();
+        for (SectionPos sectionNode : removed) {
             if (this.emptySections.remove(sectionNode)) {
                 SectionRenderDispatcher.RenderSection section = this.viewArea.getRenderSection(sectionNode);
                 if (section != null) {
@@ -408,7 +404,7 @@ public class SectionOcclusionGraph {
         }
     }
 
-    public void updateLoadedChunks(final LongOpenHashSet added, final LongOpenHashSet removed) {
+    public void updateLoadedChunks(final ObjectOpenHashSet<ChunkPos> added, final ObjectOpenHashSet<ChunkPos> removed) {
         this.loadedChunks.addAll(added);
         this.loadedChunks.removeAll(removed);
     }
@@ -428,12 +424,12 @@ public class SectionOcclusionGraph {
     private static class GraphStorage {
         public final SectionOcclusionGraph.SectionToNodeMap sectionToNodeMap;
         public final Octree sectionTree;
-        public final Long2ObjectMap<LongList> sectionsWaitingForChunkLoads;
+        public final Object2ObjectMap<ChunkPos,ObjectList<SectionPos>> sectionsWaitingForChunkLoads;
 
         public GraphStorage(final ViewArea viewArea) {
             this.sectionToNodeMap = new SectionOcclusionGraph.SectionToNodeMap(viewArea.size());
             this.sectionTree = new Octree(viewArea.getCameraSectionPos(), viewArea.getViewDistance(), viewArea.sectionCount(), viewArea.minY());
-            this.sectionsWaitingForChunkLoads = new Long2ObjectOpenHashMap<>();
+            this.sectionsWaitingForChunkLoads = new Object2ObjectOpenHashMap<>();
         }
     }
 
@@ -479,7 +475,7 @@ public class SectionOcclusionGraph {
 
         @Override
         public int hashCode() {
-            return Long.hashCode(this.section.getSectionNode());
+            return this.section.getSectionNode().hashCode();
         }
 
         @Override

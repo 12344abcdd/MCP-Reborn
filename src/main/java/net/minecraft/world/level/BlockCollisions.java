@@ -25,7 +25,7 @@ public class BlockCollisions<T> extends AbstractIterator<T> {
     private final CollisionGetter collisionGetter;
     private final boolean onlySuffocatingBlocks;
     private @Nullable BlockGetter cachedBlockGetter;
-    private long cachedBlockGetterPos;
+    private ChunkPos cachedBlockGetterPos;
     private final BiFunction<BlockPos.MutableBlockPos, VoxelShape, T> resultProvider;
 
     public BlockCollisions(
@@ -64,7 +64,7 @@ public class BlockCollisions<T> extends AbstractIterator<T> {
     private @Nullable BlockGetter getChunk(final int x, final int z) {
         int chunkX = SectionPos.blockToSectionCoord(x);
         int chunkZ = SectionPos.blockToSectionCoord(z);
-        long chunkPos = ChunkPos.pack(chunkX, chunkZ);
+        ChunkPos chunkPos = ChunkPos.of(chunkX, chunkZ);
         if (this.cachedBlockGetter != null && this.cachedBlockGetterPos == chunkPos) {
             return this.cachedBlockGetter;
         }

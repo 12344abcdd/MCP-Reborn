@@ -35,7 +35,7 @@ public class ChunkGenerationTask {
     public static ChunkGenerationTask create(final GeneratingChunkMap chunkMap, final ChunkStatus targetStatus, final ChunkPos pos) {
         int worstCaseRadius = ChunkPyramid.GENERATION_PYRAMID.getStepTo(targetStatus).getAccumulatedRadiusOf(ChunkStatus.EMPTY);
         StaticCache2D<GenerationChunkHolder> cache = StaticCache2D.create(
-            pos.x().intValueExact(), pos.z().intValueExact(), worstCaseRadius, (x, z) -> chunkMap.acquireGeneration(ChunkPos.pack(x, z))
+            pos.x().intValueExact(), pos.z().intValueExact(), worstCaseRadius, (x, z) -> chunkMap.acquireGeneration(new ChunkPos(x, z))
         );
         return new ChunkGenerationTask(chunkMap, targetStatus, pos, cache);
     }

@@ -13,11 +13,24 @@ public final class TranslucencyPointOfView {
     private int y;
     private int z;
 
+    @Deprecated(forRemoval = true)
     public static TranslucencyPointOfView of(final Vec3 cameraPos, final long sectionNode) {
         return new TranslucencyPointOfView().set(cameraPos, sectionNode);
     }
 
+    public static TranslucencyPointOfView of(final Vec3 cameraPos, final SectionPos sectionNode) {
+        return new TranslucencyPointOfView().set(cameraPos, sectionNode);
+    }
+
+    @Deprecated(forRemoval = true)
     public TranslucencyPointOfView set(final Vec3 cameraPos, final long sectionPos) {
+        this.x = getCoordinate(cameraPos.x(), SectionPos.x(sectionPos));
+        this.y = getCoordinate(cameraPos.y(), SectionPos.y(sectionPos));
+        this.z = getCoordinate(cameraPos.z(), SectionPos.z(sectionPos));
+        return this;
+    }
+
+    public TranslucencyPointOfView set(final Vec3 cameraPos, final SectionPos sectionPos) {
         this.x = getCoordinate(cameraPos.x(), SectionPos.x(sectionPos));
         this.y = getCoordinate(cameraPos.y(), SectionPos.y(sectionPos));
         this.z = getCoordinate(cameraPos.z(), SectionPos.z(sectionPos));

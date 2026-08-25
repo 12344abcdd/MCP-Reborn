@@ -110,7 +110,7 @@ public class Octree {
         }
 
         public boolean add(final SectionRenderDispatcher.RenderSection section) {
-            long sectionNode = section.getSectionNode();
+            SectionPos sectionNode = section.getSectionNode();
             boolean sectionXDiffNegative = SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode)) - this.bbCenterX < 0;
             boolean sectionYDiffNegative = SectionPos.sectionToBlockCoord(SectionPos.y(sectionNode)) - this.bbCenterY < 0;
             boolean sectionZDiffNegative = SectionPos.sectionToBlockCoord(SectionPos.z(sectionNode)) - this.bbCenterZ < 0;

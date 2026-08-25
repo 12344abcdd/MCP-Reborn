@@ -46,7 +46,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
 
     public PersistentEntitySectionManager(final Class<T> entityClass, final LevelCallback<T> callbacks, final EntityPersistentStorage<T> permanentStorage) {
         this.visibleEntityStorage = new EntityLookup<>();
-        this.sectionStorage = new EntitySectionStorage<>(entityClass, this.chunkVisibility);
+        this.sectionStorage = new EntitySectionStorage<>(entityClass, key -> this.chunkVisibility.getOrDefault(key, Visibility.HIDDEN));
         this.chunkVisibility.defaultReturnValue(Visibility.HIDDEN);
         this.chunkLoadStatuses.defaultReturnValue(PersistentEntitySectionManager.ChunkLoadStatus.FRESH);
         this.callbacks = callbacks;

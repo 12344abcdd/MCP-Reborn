@@ -42,7 +42,7 @@ public class SectionUpdateTracker {
         return this.storage.getValue(sectionNode);
     }
 
-    public boolean hasAllNeighbors(final ClientLevel level, final long sectionNode) {
+    public boolean hasAllNeighbors(final ClientLevel level, final SectionPos sectionNode) {
         return this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.WEST))
             && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.NORTH))
             && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, Direction.EAST))
@@ -53,7 +53,7 @@ public class SectionUpdateTracker {
             && this.doesChunkExistAt(level, SectionPos.offset(sectionNode, 1, 0, 1));
     }
 
-    private boolean doesChunkExistAt(final ClientLevel level, final long sectionNode) {
+    private boolean doesChunkExistAt(final ClientLevel level, final SectionPos sectionNode) {
         ChunkAccess chunk = level.getChunk(SectionPos.x(sectionNode), SectionPos.z(sectionNode), ChunkStatus.FULL, false);
         return chunk != null && level.getLightEngine().lightOnInColumn(SectionPos.getZeroNode(sectionNode));
     }
@@ -62,9 +62,9 @@ public class SectionUpdateTracker {
     public static class SectionDirtyState implements RotatingSectionStorage.Value {
         private boolean isDirty;
         private boolean isDirtyFromPlayer;
-        private long sectionNode;
+        private SectionPos sectionNode;
 
-        private SectionDirtyState(final boolean isDirty, final boolean isDirtyFromPlayer, final long sectionNode) {
+        private SectionDirtyState(final boolean isDirty, final boolean isDirtyFromPlayer, final SectionPos sectionNode) {
             this.isDirty = isDirty;
             this.isDirtyFromPlayer = isDirtyFromPlayer;
         }
@@ -81,7 +81,7 @@ public class SectionUpdateTracker {
         }
 
         @Override
-        public void setSectionNode(final long sectionNode) {
+        public void setSectionNode(final SectionPos sectionNode) {
             if (this.sectionNode != sectionNode) {
                 this.sectionNode = sectionNode;
                 this.isDirty = true;
@@ -90,7 +90,7 @@ public class SectionUpdateTracker {
         }
 
         @Override
-        public long getSectionNode() {
+        public SectionPos getSectionNode() {
             return this.sectionNode;
         }
 

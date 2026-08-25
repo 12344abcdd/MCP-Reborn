@@ -208,13 +208,13 @@ public class SectionRenderDispatcher {
         private SectionRenderDispatcher.RenderSection.@Nullable CompileTask lastCompileTask;
         private SectionRenderDispatcher.RenderSection.@Nullable ResortTransparencyTask lastResortTransparencyTask;
         private AABB bb;
-        private volatile long sectionNode = SectionPos.asLong(-1, -1, -1);
+        private volatile SectionPos sectionNode = SectionPos.of(-1, -1, -1);
         private final BlockPos.MutableBlockPos renderOrigin = new BlockPos.MutableBlockPos(-1, -1, -1);
         private long uploadedTime;
         private long fadeDuration;
         private boolean wasPreviouslyEmpty;
 
-        public RenderSection(final int index, final long sectionNode) {
+        public RenderSection(final int index, final SectionPos sectionNode) {
             this.index = index;
             this.setSectionNode(sectionNode);
         }
@@ -241,7 +241,7 @@ public class SectionRenderDispatcher {
         }
 
         @Override
-        public void setSectionNode(final long sectionNode) {
+        public void setSectionNode(final SectionPos sectionNode) {
             this.reset();
             this.sectionNode = sectionNode;
             int x = SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode));
@@ -275,11 +275,11 @@ public class SectionRenderDispatcher {
         }
 
         @Override
-        public long getSectionNode() {
+        public SectionPos getSectionNode() {
             return this.sectionNode;
         }
 
-        public long getNeighborSectionNode(final Direction direction) {
+        public SectionPos getNeighborSectionNode(final Direction direction) {
             return SectionPos.offset(this.sectionNode, direction);
         }
 
@@ -431,8 +431,7 @@ public class SectionRenderDispatcher {
                     return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;
                 }
 
-                long sectionNode = RenderSection.this.sectionNode;
-                SectionPos sectionPos = SectionPos.of(sectionNode);
+                SectionPos sectionPos = RenderSection.this.sectionNode;
                 if (this.isCancelled.get()) {
                     return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;
                 }
@@ -445,7 +444,7 @@ public class SectionRenderDispatcher {
                         .compile(sectionPos, this.region, RenderSection.this.createVertexSorting(sectionPos, cameraPos), buffers);
                 }
 
-                TranslucencyPointOfView translucencyPointOfView = TranslucencyPointOfView.of(cameraPos, sectionNode);
+                TranslucencyPointOfView translucencyPointOfView = TranslucencyPointOfView.of(cameraPos, sectionPos);
                 CompiledSectionMesh compiledSectionMesh = new CompiledSectionMesh(translucencyPointOfView, results);
                 if (results.renderedLayers.isEmpty()) {
                     SectionMesh oldMesh = RenderSection.this.setSectionMesh(compiledSectionMesh);
@@ -516,8 +515,8 @@ public class SectionRenderDispatcher {
                 MeshData.SortState state = this.compiledSectionMesh.getTransparencyState();
                 if (state != null && !this.compiledSectionMesh.isEmpty(ChunkSectionLayer.TRANSLUCENT)) {
                     Vec3 cameraPos = SectionRenderDispatcher.this.cameraPosition.get();
-                    long sectionNode = RenderSection.this.sectionNode;
-                    VertexSorting vertexSorting = RenderSection.this.createVertexSorting(SectionPos.of(sectionNode), cameraPos);
+                    SectionPos sectionNode = RenderSection.this.sectionNode;
+                    VertexSorting vertexSorting = RenderSection.this.createVertexSorting(sectionNode, cameraPos);
                     TranslucencyPointOfView translucencyPointOfView = TranslucencyPointOfView.of(cameraPos, sectionNode);
                     if (!this.compiledSectionMesh.isDifferentPointOfView(translucencyPointOfView) && !translucencyPointOfView.isAxisAligned()) {
                         return SectionRenderDispatcher.RenderSection.SectionTask.SectionTaskResult.CANCELLED;

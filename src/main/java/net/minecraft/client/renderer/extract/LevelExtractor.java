@@ -1,18 +1,10 @@
 package net.minecraft.client.renderer.extract;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import it.unimi.dsi.fastutil.longs.LongCollection;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.SortedSet;
+import it.unimi.dsi.fastutil.objects.ObjectCollection;
 import net.minecraft.SharedConstants;
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.Options;
-import net.minecraft.client.SectionUpdateTracker;
+import net.minecraft.client.*;
 import net.minecraft.client.gui.components.debug.DebugScreenEntries;
 import net.minecraft.client.multiplayer.ClientChunkCache;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -66,6 +58,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jspecify.annotations.Nullable;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.SortedSet;
 
 @OnlyIn(Dist.CLIENT)
 public class LevelExtractor implements ResourceManagerReloadListener {
@@ -140,7 +137,7 @@ public class LevelExtractor implements ResourceManagerReloadListener {
             this.levelRenderState.chunkLoadingRenderState.addedLoadedChunks = chunkCache.addedLoadedChunks();
             this.levelRenderState.chunkLoadingRenderState.removedLoadedChunks = chunkCache.removedLoadedChunks();
             chunkCache.flipUpdateTrackingSets();
-            LongCollection expectedChunks = this.levelRenderer.expectedChunks();
+            ObjectCollection<ChunkPos> expectedChunks = this.levelRenderer.expectedChunks();
             expectedChunks.forEach(expectedChunk -> {
                 if (chunkCache.hasChunk(ChunkPos.getX(expectedChunk), ChunkPos.getZ(expectedChunk))) {
                     this.levelRenderState.chunkLoadingRenderState.loadedExpectedChunks.add(expectedChunk);

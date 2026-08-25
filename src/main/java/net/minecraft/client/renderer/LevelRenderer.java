@@ -21,34 +21,19 @@ import com.mojang.blaze3d.textures.GpuTextureView;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongCollection;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectCollection;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.OptionalDouble;
 import net.minecraft.SharedConstants;
-import net.minecraft.client.Camera;
-import net.minecraft.client.CloudStatus;
-import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.*;
 import net.minecraft.client.Options;
-import net.minecraft.client.PrioritizeChunkUpdates;
-import net.minecraft.client.TextureFilteringMethod;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModel;
 import net.minecraft.client.renderer.block.dispatch.BlockStateModelPart;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayerGroup;
-import net.minecraft.client.renderer.chunk.ChunkSectionsToRender;
-import net.minecraft.client.renderer.chunk.CompiledSectionMesh;
-import net.minecraft.client.renderer.chunk.SectionCompiler;
-import net.minecraft.client.renderer.chunk.SectionMesh;
-import net.minecraft.client.renderer.chunk.SectionRenderDispatcher;
-import net.minecraft.client.renderer.chunk.TranslucencyPointOfView;
+import net.minecraft.client.renderer.chunk.*;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.state.EntityRenderState;
 import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
@@ -56,12 +41,7 @@ import net.minecraft.client.renderer.gizmos.DrawableGizmoPrimitives;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.OptionsRenderState;
-import net.minecraft.client.renderer.state.level.BlockBreakingRenderState;
-import net.minecraft.client.renderer.state.level.BlockOutlineRenderState;
-import net.minecraft.client.renderer.state.level.CameraRenderState;
-import net.minecraft.client.renderer.state.level.LevelRenderState;
-import net.minecraft.client.renderer.state.level.SectionUpdateRenderState;
-import net.minecraft.client.renderer.state.level.SkyRenderState;
+import net.minecraft.client.renderer.state.level.*;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.model.ModelManager;
@@ -77,6 +57,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Util;
 import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.dimension.DimensionType;
@@ -84,12 +65,14 @@ import net.minecraft.world.level.material.FogType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Matrix4fc;
-import org.joml.Vector4f;
-import org.joml.Vector4fc;
+import org.joml.*;
 import org.jspecify.annotations.Nullable;
+
+import java.lang.Math;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.OptionalDouble;
 
 @OnlyIn(Dist.CLIENT)
 public class LevelRenderer implements AutoCloseable {
@@ -973,9 +956,21 @@ public class LevelRenderer implements AutoCloseable {
         return this.nearbyVisibleSections;
     }
 
-    public LongCollection expectedChunks() {
+//    public ObjectCollection<ChunkPos> expectedChunks() {
+//        return this.sectionOcclusionGraph.expectedChunks().stream().map(SectionPos::chunk);
+//    }
+
+//    public ObjectCollection<ChunkPos> expectedChunks() {
+//        ObjectArrayList<ChunkPos> list = new ObjectArrayList<>();
+//        for (SectionPos sectionPos : this.sectionOcclusionGraph.expectedChunks()) {
+//            list.add(sectionPos.chunk());
+//        }
+//        return list;
+//    }
+    public ObjectCollection<ChunkPos> expectedChunks() {
         return this.sectionOcclusionGraph.expectedChunks();
     }
+
 
     public SectionOcclusionGraph sectionOcclusionGraph() {
         return this.sectionOcclusionGraph;

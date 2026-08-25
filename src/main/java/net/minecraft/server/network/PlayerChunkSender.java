@@ -7,6 +7,9 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.SharedConstants;
 import net.minecraft.network.protocol.game.ClientboundChunkBatchFinishedPacket;
 import net.minecraft.network.protocol.game.ClientboundChunkBatchStartPacket;
@@ -18,6 +21,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.LevelChunk;
+import org.apache.commons.compress.harmony.pack200.CPClass;
 import org.slf4j.Logger;
 
 public class PlayerChunkSender {
@@ -26,7 +30,7 @@ public class PlayerChunkSender {
     public static final float MAX_CHUNKS_PER_TICK = 64.0F;
     private static final float START_CHUNKS_PER_TICK = 9.0F;
     private static final int MAX_UNACKNOWLEDGED_BATCHES = 10;
-    private final LongSet pendingChunks = new LongOpenHashSet();
+    private final ObjectSet<ChunkPos> pendingChunks = new ObjectOpenHashSet<>();
     private final boolean memoryConnection;
     private float desiredChunksPerTick = 9.0F;
     private float batchQuota;
@@ -38,7 +42,7 @@ public class PlayerChunkSender {
     }
 
     public void markChunkPendingToSend(final LevelChunk chunk) {
-        this.pendingChunks.add(chunk.getPos().pack());
+        this.pendingChunks.add(chunk.getPos());
     }
 
     public void dropChunk(final ServerPlayer player, final ChunkPos pos) {
@@ -88,24 +92,23 @@ public class PlayerChunkSender {
         List<LevelChunk> chunks;
         if (!this.memoryConnection && this.pendingChunks.size() > maxBatchSize) {
             chunks = this.pendingChunks
-                .stream()
-                .collect(Comparators.least(maxBatchSize, Comparator.comparingInt(playerPos::distanceSquared)))
-                .stream()
-                .mapToLong(Long::longValue)
-                .mapToObj(chunkMap::getChunkToSend)
-                .filter(Objects::nonNull)
-                .toList();
+                    .stream()
+                    .collect(Comparators.least(maxBatchSize, Comparator.comparingLong(playerPos::distanceSquared)))
+                    .stream()
+                    .map(chunkMap::getChunkToSend)
+                    .filter(Objects::nonNull)
+                    .toList();
         } else {
             chunks = this.pendingChunks
-                .longStream()
-                .mapToObj(chunkMap::getChunkToSend)
-                .filter(Objects::nonNull)
-                .sorted(Comparator.comparingInt(chunkx -> playerPos.distanceSquared(chunkx.getPos())))
-                .toList();
+                    .stream()
+                    .map(chunkMap::getChunkToSend)
+                    .filter(Objects::nonNull)
+                    .sorted(Comparator.comparingLong(chunkx -> playerPos.distanceSquared(chunkx.getPos())))
+                    .toList();
         }
 
         for (LevelChunk chunk : chunks) {
-            this.pendingChunks.remove(chunk.getPos().pack());
+            this.pendingChunks.remove(chunk.getPos());
         }
 
         return chunks;

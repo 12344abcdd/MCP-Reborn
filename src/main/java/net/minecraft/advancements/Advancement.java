@@ -132,7 +132,7 @@ public record Advancement(
             return this;
         }
 
-        @Deprecated(forRemoval = true)
+        @Deprecated(forRemoval = false)
         public Advancement.Builder parent(final Identifier parent) {
             this.parent = Optional.of(parent);
             return this;

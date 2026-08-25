@@ -575,7 +575,7 @@ public abstract class Level implements LevelAccessor, AutoCloseable {
     }
 
     public boolean shouldTickBlocksAt(final BlockPos pos) {
-        return this.shouldTickBlocksAt(ChunkPos.unpack(ChunkPos.pack(pos)));
+        return this.shouldTickBlocksAt(ChunkPos.of(pos));
     }
 
     public void explode(

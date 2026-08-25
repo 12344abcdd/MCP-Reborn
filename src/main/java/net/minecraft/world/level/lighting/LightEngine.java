@@ -115,7 +115,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
         this.blockNodesToCheck.add(pos.asLong());
     }
 
-    public void queueSectionData(final long pos, final @Nullable DataLayer data) {
+    public void queueSectionData(final SectionPos pos, final @Nullable DataLayer data) {
         this.storage.queueSectionData(pos, data);
     }
 
@@ -125,7 +125,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
 
     @Override
     public void updateSectionStatus(final SectionPos pos, final boolean sectionEmpty) {
-        this.storage.updateSectionStatus(pos.asLong(), sectionEmpty);
+        this.storage.updateSectionStatus(pos, sectionEmpty);
     }
 
     @Override
@@ -200,7 +200,7 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
 
     @Override
     public @Nullable DataLayer getDataLayerData(final SectionPos pos) {
-        return this.storage.getDataLayerData(pos.asLong());
+        return this.storage.getDataLayerData(pos);
     }
 
     @Override
@@ -208,11 +208,11 @@ public abstract class LightEngine<M extends DataLayerStorageMap<M>, S extends La
         return this.storage.getLightValue(pos.asLong());
     }
 
-    public String getDebugData(final long sectionNode) {
+    public String getDebugData(final SectionPos sectionNode) {
         return this.getDebugSectionType(sectionNode).display();
     }
 
-    public LayerLightSectionStorage.SectionType getDebugSectionType(final long sectionNode) {
+    public LayerLightSectionStorage.SectionType getDebugSectionType(final SectionPos sectionNode) {
         return this.storage.getDebugSectionType(sectionNode);
     }
 

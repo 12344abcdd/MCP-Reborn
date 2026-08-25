@@ -2,6 +2,9 @@ package net.minecraft.world.level.lighting;
 
 import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenCustomHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.SectionPos;
@@ -14,7 +17,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
         super(
             LightLayer.SKY,
             chunkSource,
-            new SkyLightSectionStorage.SkyDataLayerStorageMap(new Long2ObjectOpenHashMap<>(), new Long2IntOpenHashMap(), Integer.MAX_VALUE)
+            new SkyLightSectionStorage.SkyDataLayerStorageMap(new Object2ObjectOpenHashMap<>(), new Object2IntOpenHashMap<>(), Integer.MAX_VALUE)
         );
     }
 
@@ -24,7 +27,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
     }
 
     protected int getLightValue(long blockNode, final boolean updating) {
-        long sectionNode = SectionPos.blockToSection(blockNode);
+        SectionPos sectionNode = SectionPos.blockToSection(blockNode);
         int sectionY = SectionPos.y(sectionNode);
         SkyLightSectionStorage.SkyDataLayerStorageMap sections = updating ? this.updatingSectionData : this.visibleSectionData;
         int topSection = sections.topSections.get(SectionPos.getZeroNode(sectionNode));
@@ -54,14 +57,14 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
     }
 
     @Override
-    protected void onNodeAdded(final long sectionNode) {
+    protected void onNodeAdded(final SectionPos sectionNode) {
         int y = SectionPos.y(sectionNode);
         if (this.updatingSectionData.currentLowestY > y) {
             this.updatingSectionData.currentLowestY = y;
             this.updatingSectionData.topSections.defaultReturnValue(this.updatingSectionData.currentLowestY);
         }
 
-        long zeroNode = SectionPos.getZeroNode(sectionNode);
+        SectionPos zeroNode = SectionPos.getZeroNode(sectionNode);
         int oldTop = this.updatingSectionData.topSections.get(zeroNode);
         if (oldTop < y + 1) {
             this.updatingSectionData.topSections.put(zeroNode, y + 1);
@@ -69,11 +72,11 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
     }
 
     @Override
-    protected void onNodeRemoved(final long sectionNode) {
-        long zeroNode = SectionPos.getZeroNode(sectionNode);
+    protected void onNodeRemoved(final SectionPos sectionNode) {
+        SectionPos zeroNode = SectionPos.getZeroNode(sectionNode);
         int y = SectionPos.y(sectionNode);
         if (this.updatingSectionData.topSections.get(zeroNode) == y + 1) {
-            long newTopSection;
+            SectionPos newTopSection;
             for (newTopSection = sectionNode;
                 !this.storingLightForSection(newTopSection) && this.hasLightDataAtOrBelow(y);
                 newTopSection = SectionPos.offset(newTopSection, Direction.DOWN)
@@ -90,7 +93,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
     }
 
     @Override
-    protected DataLayer createDataLayer(final long sectionNode) {
+    protected DataLayer createDataLayer(final SectionPos sectionNode) {
         DataLayer queuedLayer = this.queuedSections.get(sectionNode);
         if (queuedLayer != null) {
             return queuedLayer;
@@ -98,7 +101,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
 
         int topSection = this.updatingSectionData.topSections.get(SectionPos.getZeroNode(sectionNode));
         if (topSection != this.updatingSectionData.currentLowestY && SectionPos.y(sectionNode) < topSection) {
-            long aboveSection = SectionPos.offset(sectionNode, Direction.UP);
+            SectionPos aboveSection = SectionPos.offset(sectionNode, Direction.UP);
 
             DataLayer aboveData;
             while ((aboveData = this.getDataLayer(aboveSection, true)) == null) {
@@ -130,13 +133,13 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
         return sectionY >= this.updatingSectionData.currentLowestY;
     }
 
-    protected boolean isAboveData(final long sectionNode) {
-        long zeroNode = SectionPos.getZeroNode(sectionNode);
+    protected boolean isAboveData(final SectionPos sectionNode) {
+        SectionPos zeroNode = SectionPos.getZeroNode(sectionNode);
         int topSection = this.updatingSectionData.topSections.get(zeroNode);
         return topSection == this.updatingSectionData.currentLowestY || SectionPos.y(sectionNode) >= topSection;
     }
 
-    protected int getTopSectionY(final long zeroNode) {
+    protected int getTopSectionY(final SectionPos zeroNode) {
         return this.updatingSectionData.topSections.get(zeroNode);
     }
 
@@ -146,9 +149,9 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
 
     protected static final class SkyDataLayerStorageMap extends DataLayerStorageMap<SkyLightSectionStorage.SkyDataLayerStorageMap> {
         private int currentLowestY;
-        private final Long2IntOpenHashMap topSections;
+        private final Object2IntOpenHashMap<SectionPos> topSections;
 
-        public SkyDataLayerStorageMap(final Long2ObjectOpenHashMap<DataLayer> map, final Long2IntOpenHashMap topSections, final int currentLowestY) {
+        public SkyDataLayerStorageMap(final Object2ObjectOpenHashMap<SectionPos,DataLayer> map, final Object2IntOpenHashMap<SectionPos> topSections, final int currentLowestY) {
             super(map);
             this.topSections = topSections;
             topSections.defaultReturnValue(currentLowestY);

@@ -76,32 +76,48 @@ public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
         return Mth.absMax(x, z).compareTo(BigInteger.valueOf(ChunkPyramid.MAX_CHUNK_COORDINATE_VALUE)) <= 0;
     }
 
+    public static ChunkPos of(final int x, final int z) {
+        return new ChunkPos(x, z);
+    }
+
     public long pack() {
-        return pack(this.x.intValue(), this.z.intValue());
+        return pack(this.x.intValueExact(), this.z.intValueExact());
     }
 
     public static long pack(final int x, final int z) {
         return x & 4294967295L | (z & 4294967295L) << 32;
     }
+//
+//    public static long fromSectionNode(final long sectionNode) {
+//        return pack(SectionPos.x(sectionNode), SectionPos.z(sectionNode));
+//    }
 
-    public static long fromSectionNode(final long sectionNode) {
-        return pack(SectionPos.x(sectionNode), SectionPos.z(sectionNode));
+    public static ChunkPos fromSectionNode(final SectionPos sectionNode) {
+        return new ChunkPos(SectionPos.x(sectionNode), SectionPos.z(sectionNode));
     }
 
-    public static long pack(final BlockPos pos) {
-        return pack(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
-    }
+//    public static long pack(final BlockPos pos) {
+//        return pack(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
+//    }
 
-    public static ChunkPos toChunkPos(final BlockPos pos) {
+    public static ChunkPos of(final BlockPos pos) {
         return new ChunkPos(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
     }
 
-    public static int getX(final long pos) {
-        return (int)(pos & 4294967295L);
+//    public static int getX(final long pos) {
+//        return (int)(pos & 4294967295L);
+//    }
+//
+//    public static int getZ(final long pos) {
+//        return (int)(pos >>> 32 & 4294967295L);
+//    }
+
+    public static int getX(final ChunkPos pos) {
+        return pos.x.intValueExact();
     }
 
-    public static int getZ(final long pos) {
-        return (int)(pos >>> 32 & 4294967295L);
+    public static int getZ(final ChunkPos pos) {
+        return pos.z.intValueExact();
     }
 
     @Override
@@ -156,11 +172,11 @@ public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
         return this.z.intValueExact() >> 5;
     }
 
-    public static int getRegionX(final long pos) {
+    public static int getRegionX(final ChunkPos pos) {
         return getX(pos) >> 5;
     }
 
-    public static int getRegionZ(final long pos) {
+    public static int getRegionZ(final ChunkPos pos) {
         return getZ(pos) >> 5;
     }
 
@@ -215,9 +231,9 @@ public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
         return this.distanceSquared(pos.x.intValueExact(), pos.z.intValueExact());
     }
 
-    public int distanceSquared(final long pos) {
-        return this.distanceSquared(getX(pos), getZ(pos));
-    }
+//    public int distanceSquared(final ChunkPos pos) {
+//        return this.distanceSquared(getX(pos), getZ(pos));
+//    }
 
     private int distanceSquared(final int x, final int z) {
         int deltaX = x - this.x.intValueExact();

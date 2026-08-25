@@ -1,6 +1,7 @@
 package net.minecraft.world.level.lighting;
 
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
 import net.minecraft.world.level.LightLayer;
@@ -9,12 +10,12 @@ import net.minecraft.world.level.chunk.LightChunkGetter;
 
 public class BlockLightSectionStorage extends LayerLightSectionStorage<BlockLightSectionStorage.BlockDataLayerStorageMap> {
     protected BlockLightSectionStorage(final LightChunkGetter chunkSource) {
-        super(LightLayer.BLOCK, chunkSource, new BlockLightSectionStorage.BlockDataLayerStorageMap(new Long2ObjectOpenHashMap<>()));
+        super(LightLayer.BLOCK, chunkSource, new BlockLightSectionStorage.BlockDataLayerStorageMap(new Object2ObjectOpenHashMap<>()));
     }
 
     @Override
     protected int getLightValue(final long blockNode) {
-        long sectionNode = SectionPos.blockToSection(blockNode);
+        SectionPos sectionNode = SectionPos.blockToSection(blockNode);
         DataLayer layer = this.getDataLayer(sectionNode, false);
         return layer == null
             ? 0
@@ -26,7 +27,7 @@ public class BlockLightSectionStorage extends LayerLightSectionStorage<BlockLigh
     }
 
     protected static final class BlockDataLayerStorageMap extends DataLayerStorageMap<BlockLightSectionStorage.BlockDataLayerStorageMap> {
-        public BlockDataLayerStorageMap(final Long2ObjectOpenHashMap<DataLayer> map) {
+        public BlockDataLayerStorageMap(final Object2ObjectOpenHashMap<SectionPos,DataLayer> map) {
             super(map);
         }
 

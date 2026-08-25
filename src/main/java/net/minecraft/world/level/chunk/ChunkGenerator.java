@@ -22,6 +22,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
@@ -448,9 +450,9 @@ public abstract class ChunkGenerator {
     public WeightedList<MobSpawnSettings.SpawnerData> getMobsAt(
         final Holder<Biome> biome, final StructureManager structureManager, final MobCategory mobCategory, final BlockPos pos
     ) {
-        Map<Structure, LongSet> structures = structureManager.getAllStructuresAt(pos);
+        Map<Structure, ObjectSet<ChunkPos>> structures = structureManager.getAllStructuresAt(pos);
 
-        for (Entry<Structure, LongSet> entry : structures.entrySet()) {
+        for (Entry<Structure, ObjectSet<ChunkPos>> entry : structures.entrySet()) {
             Structure structure = entry.getKey();
             StructureSpawnOverride override = structure.spawnOverrides().get(mobCategory);
             if (override != null) {
@@ -500,7 +502,7 @@ public abstract class ChunkGenerator {
                         if (featurePlacement.isStructureChunk(state, sourceChunkPos.x().intValueExact(), sourceChunkPos.z().intValueExact())) {
                             if (structures.size() == 1) {
                                 this.tryGenerateStructure(
-                                    structures.get(0),
+                                    structures.getFirst(),
                                     structureManager,
                                     registryAccess,
                                     randomState,
@@ -617,7 +619,7 @@ public abstract class ChunkGenerator {
 
         for (int sourceX = targetX - 8; sourceX <= targetX + 8; sourceX++) {
             for (int sourceZ = targetZ - 8; sourceZ <= targetZ + 8; sourceZ++) {
-                long sourceChunkKey = ChunkPos.pack(sourceX, sourceZ);
+                ChunkPos sourceChunkKey = ChunkPos.of(sourceX, sourceZ);
 
                 for (StructureStart start : level.getChunk(sourceX, sourceZ).getAllStarts().values()) {
                     try {

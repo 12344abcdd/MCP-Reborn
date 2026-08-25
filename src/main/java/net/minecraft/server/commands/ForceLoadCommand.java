@@ -6,6 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
@@ -17,6 +18,7 @@ import net.minecraft.server.level.ColumnPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
+import org.apache.commons.compress.harmony.pack200.CPClass;
 
 public class ForceLoadCommand {
     private static final int MAX_CHUNK_LIMIT = 256;
@@ -106,10 +108,10 @@ public class ForceLoadCommand {
     private static int listForceLoad(final CommandSourceStack source) {
         ServerLevel level = source.getLevel();
         ResourceKey<Level> dimension = level.dimension();
-        LongSet forcedChunks = level.getForceLoadedChunks();
+        ObjectSet<ChunkPos> forcedChunks = level.getForceLoadedChunks();
         int chunkCount = forcedChunks.size();
         if (chunkCount > 0) {
-            String chunkList = Joiner.on(", ").join(forcedChunks.stream().sorted().map(ChunkPos::unpack).map(ChunkPos::toString).iterator());
+            String chunkList = Joiner.on(", ").join(forcedChunks.stream().sorted().map(ChunkPos::toString).iterator());
             if (chunkCount == 1) {
                 source.sendSuccess(
                     () -> Component.translatable("commands.forceload.list.single", Component.translationArg(dimension.identifier()), chunkList), false
@@ -130,7 +132,7 @@ public class ForceLoadCommand {
     private static int removeAll(final CommandSourceStack source) {
         ServerLevel level = source.getLevel();
         ResourceKey<Level> dimension = level.dimension();
-        LongSet forcedChunks = level.getForceLoadedChunks();
+        ObjectSet<ChunkPos> forcedChunks = level.getForceLoadedChunks();
         forcedChunks.forEach(chunk -> level.setChunkForced(ChunkPos.getX(chunk), ChunkPos.getZ(chunk), false));
         source.sendSuccess(() -> Component.translatable("commands.forceload.removed.all", Component.translationArg(dimension.identifier())), true);
         return 0;

@@ -68,7 +68,7 @@ public abstract class DynamicGraphMinFixedPoint<T extends Pos> {
     }
 
     protected void checkEdge(final T from, final T to, final int newLevelFrom, final boolean onlyDecreased) {
-        this.checkEdge(from, to, newLevelFrom, this.getLevel(to), this.computedLevels.get(to) & 255, onlyDecreased);
+        this.checkEdge(from, to, newLevelFrom, this.getLevel(to), this.computedLevels.getByte(to) & 255, onlyDecreased);
         this.hasWork = !this.priorityQueue.isEmpty();
     }
 
@@ -99,13 +99,13 @@ public abstract class DynamicGraphMinFixedPoint<T extends Pos> {
                 this.computedLevels.put(to, (byte)newComputedLevel);
             } else if (!wasConsistent) {
                 this.priorityQueue.dequeue(to, oldPriority, this.levelCount);
-                this.computedLevels.remove(to);
+                this.computedLevels.removeByte(to);
             }
         }
     }
 
     protected final void checkNeighbor(final T from, final T to, final int level, final boolean onlyDecreased) {
-        int storedOldComputedLevel = this.computedLevels.get(to) & 255;
+        int storedOldComputedLevel = this.computedLevels.getByte(to) & 255;
         int levelFrom = Mth.clamp(this.computeLevelFromNeighbor(from, to, level), 0, this.levelCount - 1);
         if (onlyDecreased) {
             this.checkEdge(from, to, levelFrom, this.getLevel(to), storedOldComputedLevel, onlyDecreased);

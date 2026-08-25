@@ -2,6 +2,8 @@ package net.minecraft.client.renderer.debug;
 
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.core.BlockPos;
@@ -35,14 +37,14 @@ public class LightDebugRenderer implements DebugRenderer.SimpleDebugRenderer {
     ) {
         Level level = this.minecraft.level;
         BlockPos playerPos = BlockPos.containing(camX, camY, camZ);
-        LongSet set = new LongOpenHashSet();
+        ObjectSet<SectionPos> set = new ObjectOpenHashSet<>();
 
         for (BlockPos blockPos : BlockPos.betweenClosed(playerPos.offset(-10, -10, -10), playerPos.offset(10, 10, 10))) {
             int skyBrightness = level.getBrightness(LightLayer.SKY, blockPos);
-            long sectionNode = SectionPos.blockToSection(blockPos.asLong());
+            SectionPos sectionNode = SectionPos.blockToSection(blockPos.asLong());
             if (set.add(sectionNode)) {
                 Gizmos.billboardText(
-                    level.getChunkSource().getLightEngine().getDebugData(LightLayer.SKY, SectionPos.of(sectionNode)),
+                    level.getChunkSource().getLightEngine().getDebugData(LightLayer.SKY, sectionNode),
                     new Vec3(
                         SectionPos.sectionToBlockCoord(SectionPos.x(sectionNode), 8),
                         SectionPos.sectionToBlockCoord(SectionPos.y(sectionNode), 8),

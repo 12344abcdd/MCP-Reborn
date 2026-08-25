@@ -613,7 +613,7 @@ public class ChunkMap extends SimpleRegionStorage implements ChunkHolder.PlayerP
     }
 
     @Override
-    public GenerationChunkHolder acquireGeneration(final long chunkNode) {
+    public GenerationChunkHolder acquireGeneration(final ChunkPos chunkNode) {
         ChunkHolder chunkHolder = this.updatingChunkMap.get(chunkNode);
         chunkHolder.increaseGenerationRefCount();
         return chunkHolder;

@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -48,10 +50,10 @@ public class StructureManager {
     }
 
     public List<StructureStart> startsForStructure(final ChunkPos pos, final Predicate<Structure> matcher) {
-        Map<Structure, LongSet> allReferences = this.level.getChunk(pos.x().intValueExact(), pos.z().intValueExact(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
+        Map<Structure, ObjectSet<ChunkPos>> allReferences = this.level.getChunk(pos.x().intValueExact(), pos.z().intValueExact(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
         Builder<StructureStart> result = ImmutableList.builder();
 
-        for (Entry<Structure, LongSet> entry : allReferences.entrySet()) {
+        for (Entry<Structure, ObjectSet<ChunkPos>> entry : allReferences.entrySet()) {
             Structure structure = entry.getKey();
             if (matcher.test(structure)) {
                 this.fillStartsForStructure(structure, entry.getValue(), result::add);
@@ -62,15 +64,15 @@ public class StructureManager {
     }
 
     public List<StructureStart> startsForStructure(final SectionPos pos, final Structure structure) {
-        LongSet referencesForStructure = this.level.getChunk(pos.x(), pos.z(), ChunkStatus.STRUCTURE_REFERENCES).getReferencesForStructure(structure);
+        ObjectSet<ChunkPos> referencesForStructure = this.level.getChunk(pos.x(), pos.z(), ChunkStatus.STRUCTURE_REFERENCES).getReferencesForStructure(structure);
         Builder<StructureStart> result = ImmutableList.builder();
         this.fillStartsForStructure(structure, referencesForStructure, result::add);
         return result.build();
     }
 
-    public void fillStartsForStructure(final Structure structure, final LongSet referencesForStructure, final Consumer<StructureStart> consumer) {
-        for (long key : referencesForStructure) {
-            SectionPos sectionPos = SectionPos.of(ChunkPos.unpack(key), this.level.getMinSectionY());
+    public void fillStartsForStructure(final Structure structure, final ObjectSet<ChunkPos> referencesForStructure, final Consumer<StructureStart> consumer) {
+        for (ChunkPos key : referencesForStructure) {
+            SectionPos sectionPos = SectionPos.of(key, this.level.getMinSectionY());
             StructureStart start = this.getStartForStructure(
                 sectionPos, structure, this.level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_STARTS)
             );
@@ -88,7 +90,7 @@ public class StructureManager {
         chunk.setStartForStructure(structure, start);
     }
 
-    public void addReferenceForStructure(final SectionPos pos, final Structure structure, final long reference, final StructureAccess chunk) {
+    public void addReferenceForStructure(final SectionPos pos, final Structure structure, final ChunkPos reference, final StructureAccess chunk) {
         chunk.addReferenceForStructure(structure, reference);
     }
 
@@ -153,7 +155,7 @@ public class StructureManager {
         return this.level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_REFERENCES).hasAnyStructureReferences();
     }
 
-    public Map<Structure, LongSet> getAllStructuresAt(final BlockPos pos) {
+    public Map<Structure, ObjectSet<ChunkPos>> getAllStructuresAt(final BlockPos pos) {
         SectionPos sectionPos = SectionPos.of(pos);
         return this.level.getChunk(sectionPos.x(), sectionPos.z(), ChunkStatus.STRUCTURE_REFERENCES).getAllReferences();
     }
