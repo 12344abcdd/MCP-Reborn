@@ -137,7 +137,7 @@ public abstract class DistanceManager {
     }
 
     public boolean inEntityTickingRange(final BlockPos pos) {
-        return inEntityTickingRange(ChunkPos.toChunkPos(pos));
+        return inEntityTickingRange(ChunkPos.of(pos));
     }
 
     public boolean inBlockTickingRange(final ChunkPos key) {

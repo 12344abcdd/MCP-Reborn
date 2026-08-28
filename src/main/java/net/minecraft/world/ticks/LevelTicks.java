@@ -68,7 +68,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
 
     @Override
     public void schedule(final ScheduledTick<T> tick) {
-        long chunkKey = ChunkPos.pack(tick.pos());
+        ChunkPos chunkKey = ChunkPos.of(tick.pos());
         LevelChunkTicks<T> tickContainer = this.allContainers.get(chunkKey);
         if (tickContainer == null) {
             Util.logAndPauseIfInIde("Trying to schedule tick in not loaded position " + tick.pos());
@@ -146,7 +146,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
     }
 
     private void updateContainerScheduling(final ScheduledTick<T> nextTick) {
-        this.nextTickForContainer.put(ChunkPos.toChunkPos(nextTick.pos()), nextTick.triggerTick());
+        this.nextTickForContainer.put(ChunkPos.of(nextTick.pos()), nextTick.triggerTick());
     }
 
     private void drainFromCurrentContainer(
@@ -199,7 +199,7 @@ public class LevelTicks<T> implements LevelTickAccess<T> {
 
     @Override
     public boolean hasScheduledTick(final BlockPos pos, final T block) {
-        LevelChunkTicks<T> tickContainer = this.allContainers.get(ChunkPos.pack(pos));
+        LevelChunkTicks<T> tickContainer = this.allContainers.get(ChunkPos.of(pos));
         return tickContainer != null && tickContainer.hasScheduledTick(pos, block);
     }
 
