@@ -18,6 +18,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
+
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -96,10 +99,10 @@ public class LegacyStructureFileFix extends FileFix {
                             levelData.get(),
                             List.of(
                                 new LegacyStructureFileFix.DimensionFixEntry(
-                                    OVERWORLD_KEY, overworldStructureData, overworldChunks, new Long2ObjectOpenHashMap<>()
+                                    OVERWORLD_KEY, overworldStructureData, overworldChunks, new Object2ObjectOpenHashMap<>()
                                 ),
-                                new LegacyStructureFileFix.DimensionFixEntry(NETHER_KEY, netherStructureData, netherChunks, new Long2ObjectOpenHashMap<>()),
-                                new LegacyStructureFileFix.DimensionFixEntry(END_KEY, endStructureData, endChunks, new Long2ObjectOpenHashMap<>())
+                                new LegacyStructureFileFix.DimensionFixEntry(NETHER_KEY, netherStructureData, netherChunks, new Object2ObjectOpenHashMap<>()),
+                                new LegacyStructureFileFix.DimensionFixEntry(END_KEY, endStructureData, endChunks, new Object2ObjectOpenHashMap<>())
                             ),
                             upgradeProgress
                         );
@@ -115,7 +118,7 @@ public class LegacyStructureFileFix extends FileFix {
         upgradeProgress.setStatus(UpgradeProgress.Status.COUNTING);
 
         for (LegacyStructureFileFix.DimensionFixEntry dimensionFixEntry : dimensionFixEntries) {
-            Long2ObjectOpenHashMap<LegacyStructureFileFix.LegacyStructureData> structures = dimensionFixEntry.structures;
+            Object2ObjectOpenHashMap<ChunkPos,LegacyStructureData> structures = dimensionFixEntry.structures;
 
             for (FileAccess<SavedDataNbt> structureDataFileAccess : dimensionFixEntry.structureFileAccess) {
                 SavedDataNbt targetFile = structureDataFileAccess.getOnlyFile();
@@ -160,7 +163,7 @@ public class LegacyStructureFileFix extends FileFix {
     }
 
     private static void extractLegacyStructureData(
-        final Dynamic<Tag> structureData, final Long2ObjectMap<LegacyStructureFileFix.LegacyStructureData> extractedDataContainer
+        final Dynamic<Tag> structureData, final Object2ObjectMap<ChunkPos,LegacyStructureData> extractedDataContainer
     ) {
         OptionalDynamic<Tag> features = structureData.get("Features");
         Map<Dynamic<Tag>, Dynamic<Tag>> map = features.asMap(Function.identity(), Function.identity());
@@ -185,7 +188,7 @@ public class LegacyStructureFileFix extends FileFix {
                         for (int neighborX = ChunkPos.getX(pos) - 8; neighborX <= ChunkPos.getX(pos) + 8; neighborX++) {
                             for (int neighborZ = ChunkPos.getZ(pos) - 8; neighborZ <= ChunkPos.getZ(pos) + 8; neighborZ++) {
                                 extractedDataContainer.computeIfAbsent(
-                                        ChunkPos.pack(neighborX, neighborZ), l -> new LegacyStructureFileFix.LegacyStructureData()
+                                        ChunkPos.of(neighborX, neighborZ), l -> new LegacyStructureFileFix.LegacyStructureData()
                                     )
                                     .addIndex(id, pos);
                             }
@@ -196,14 +199,14 @@ public class LegacyStructureFileFix extends FileFix {
     }
 
     private static void storeLegacyStructureDataToChunks(
-        final Long2ObjectMap<LegacyStructureFileFix.LegacyStructureData> structures,
+        final Object2ObjectMap<ChunkPos,LegacyStructureFileFix.LegacyStructureData> structures,
         final ChunkNbt chunksAccess,
         final CompoundTag dataFixContext,
         final UpgradeProgress upgradeProgress
     ) {
-        List<Entry<LegacyStructureFileFix.LegacyStructureData>> entries = structures.long2ObjectEntrySet()
+        List<Entry<LegacyStructureFileFix.LegacyStructureData>> entries = structures.object2ObjectEntrySet()
             .stream()
-            .sorted(Comparator.comparingLong(entryx -> ChunkPos.pack(ChunkPos.getRegionX(entryx.getLongKey()), ChunkPos.getRegionZ(entryx.getLongKey()))))
+            .sorted(Comparator.comparingLong(entryx -> ChunkPos.pack(ChunkPos.getRegionX(entryx.getKey()), ChunkPos.getRegionZ(entryx.getKey()))))
             .toList();
         LegacyStructureFileFix.IncrementalFutureSequence futures = new LegacyStructureFileFix.IncrementalFutureSequence(8);
 
@@ -237,7 +240,7 @@ public class LegacyStructureFileFix extends FileFix {
         ResourceKey<Level> dimensionKey,
         List<FileAccess<SavedDataNbt>> structureFileAccess,
         FileAccess<ChunkNbt> chunkFileAccess,
-        Long2ObjectOpenHashMap<LegacyStructureFileFix.LegacyStructureData> structures
+        Object2ObjectOpenHashMap<ChunkPos,LegacyStructureFileFix.LegacyStructureData> structures
     ) {
     }
 

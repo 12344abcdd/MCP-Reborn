@@ -295,7 +295,7 @@ public class PersistentEntitySectionManager<T extends EntityAccess> implements A
     }
 
     public boolean canPositionTick(final BlockPos pos) {
-        return this.chunkVisibility.get(ChunkPos.pack(pos)).isTicking();
+        return this.chunkVisibility.get(ChunkPos.of(pos)).isTicking();
     }
 
     public boolean canPositionTick(final ChunkPos pos) {

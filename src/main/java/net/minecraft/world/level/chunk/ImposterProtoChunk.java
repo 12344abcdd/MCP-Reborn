@@ -4,6 +4,8 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
+
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -141,21 +143,21 @@ public class ImposterProtoChunk extends ProtoChunk {
     }
 
     @Override
-    public LongSet getReferencesForStructure(final Structure structure) {
+    public ObjectSet<ChunkPos> getReferencesForStructure(final Structure structure) {
         return this.wrapped.getReferencesForStructure(structure);
     }
 
     @Override
-    public void addReferenceForStructure(final Structure structure, final long reference) {
+    public void addReferenceForStructure(final Structure structure, final ChunkPos reference) {
     }
 
     @Override
-    public Map<Structure, LongSet> getAllReferences() {
+    public Map<Structure, ObjectSet<ChunkPos>> getAllReferences() {
         return this.wrapped.getAllReferences();
     }
 
     @Override
-    public void setAllReferences(final Map<Structure, LongSet> data) {
+    public void setAllReferences(final Map<Structure, ObjectSet<ChunkPos>> data) {
     }
 
     @Override
