@@ -21,6 +21,8 @@ import java.util.function.Function;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
@@ -169,7 +171,7 @@ public class LegacyStructureFileFix extends FileFix {
         Map<Dynamic<Tag>, Dynamic<Tag>> map = features.asMap(Function.identity(), Function.identity());
 
         for (Dynamic<Tag> value : map.values()) {
-            long pos = ChunkPos.pack(value.get("ChunkX").asInt(0), value.get("ChunkZ").asInt(0));
+            ChunkPos pos = ChunkPos.of(value.get("ChunkX").asInt(0), value.get("ChunkZ").asInt(0));
             List<Dynamic<Tag>> childList = value.get("Children").asList(Function.identity());
             if (!childList.isEmpty()) {
                 Optional<String> id = childList.getFirst().get("id").asString().result().map(LEGACY_TO_CURRENT_MAP::get);
@@ -204,26 +206,26 @@ public class LegacyStructureFileFix extends FileFix {
         final CompoundTag dataFixContext,
         final UpgradeProgress upgradeProgress
     ) {
-        List<Entry<LegacyStructureFileFix.LegacyStructureData>> entries = structures.object2ObjectEntrySet()
+        List<Object2ObjectMap.Entry<ChunkPos,LegacyStructureFileFix.LegacyStructureData>> entries = structures.object2ObjectEntrySet()
             .stream()
             .sorted(Comparator.comparingLong(entryx -> ChunkPos.pack(ChunkPos.getRegionX(entryx.getKey()), ChunkPos.getRegionZ(entryx.getKey()))))
             .toList();
         LegacyStructureFileFix.IncrementalFutureSequence futures = new LegacyStructureFileFix.IncrementalFutureSequence(8);
 
-        for (Entry<LegacyStructureFileFix.LegacyStructureData> entry : entries) {
+        for (Object2ObjectMap.Entry<ChunkPos,LegacyStructureFileFix.LegacyStructureData> entry : entries) {
             if (upgradeProgress.isCanceled()) {
                 throw new CanceledFileFixException();
             }
 
-            long pos = entry.getLongKey();
+            ChunkPos pos = entry.getKey();
             LegacyStructureFileFix.LegacyStructureData legacyData = entry.getValue();
-            int finished = futures.push(chunksAccess.updateChunk(ChunkPos.unpack(pos), dataFixContext, tag -> {
+            int finished = futures.push(chunksAccess.updateChunk(pos, dataFixContext, tag -> {
                 CompoundTag levelTag = tag.getCompoundOrEmpty("Level");
                 CompoundTag structureTag = levelTag.getCompoundOrEmpty("Structures");
                 CompoundTag startTag = structureTag.getCompoundOrEmpty("Starts");
                 CompoundTag referencesTag = structureTag.getCompoundOrEmpty("References");
                 legacyData.starts().forEach((id, value) -> startTag.put(id, value.convert(NbtOps.INSTANCE).getValue()));
-                legacyData.indexes().forEach((id, indexes) -> referencesTag.putLongArray(id, indexes.toLongArray()));
+                legacyData.indexes().forEach((id, indexes) -> referencesTag.putString(id, packChunkPosArray(indexes)));
                 structureTag.put("Starts", startTag);
                 structureTag.put("References", referencesTag);
                 levelTag.put("Structures", structureTag);
@@ -234,6 +236,19 @@ public class LegacyStructureFileFix extends FileFix {
         }
 
         upgradeProgress.incrementFinishedOperationsBy(futures.waitForAll());
+    }
+
+    /** 结构引用序列化：ChunkPos 存为 [x0, z0][x1, z1] ... String */
+    private static String packChunkPosArray(final ObjectList<ChunkPos> positions) {
+        StringBuilder builder = new StringBuilder();
+        for (ChunkPos pos : positions) {
+            builder.append("[");
+            builder.append(pos.x());
+            builder.append(",");
+            builder.append(pos.z());
+            builder.append("]");
+        }
+        return builder.toString();
     }
 
     private record DimensionFixEntry(
@@ -278,7 +293,7 @@ public class LegacyStructureFileFix extends FileFix {
         }
     }
 
-    public record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, LongList> indexes) {
+    public record LegacyStructureData(Map<String, Dynamic<?>> starts, Map<String, ObjectList<ChunkPos>> indexes) {
         public LegacyStructureData() {
             this(new HashMap<>(), new HashMap<>());
         }
@@ -287,8 +302,8 @@ public class LegacyStructureFileFix extends FileFix {
             this.starts.put(id, data);
         }
 
-        public void addIndex(final String id, final long sourcePos) {
-            this.indexes.computeIfAbsent(id, l -> new LongArrayList()).add(sourcePos);
+        public void addIndex(final String id, final ChunkPos sourcePos) {
+            this.indexes.computeIfAbsent(id, l -> new ObjectArrayList<>()).add(sourcePos);
         }
     }
 }

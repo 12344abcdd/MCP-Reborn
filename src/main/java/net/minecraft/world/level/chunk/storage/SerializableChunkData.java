@@ -5,6 +5,8 @@ import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.shorts.ShortArrayList;
 import it.unimi.dsi.fastutil.shorts.ShortList;
 import java.util.ArrayList;
@@ -518,7 +520,7 @@ public record SerializableChunkData(
         final StructurePieceSerializationContext context,
         final ChunkPos pos,
         final Map<Structure, StructureStart> starts,
-        final Map<Structure, LongSet> references
+        final Map<Structure, ObjectSet<ChunkPos>> references
     ) {
         CompoundTag outTag = new CompoundTag();
         CompoundTag startsTag = new CompoundTag();
@@ -532,7 +534,7 @@ public record SerializableChunkData(
         outTag.put("starts", startsTag);
         CompoundTag referencesTag = new CompoundTag();
 
-        for (Entry<Structure, LongSet> entry : references.entrySet()) {
+        for (Entry<Structure, ObjectSet<ChunkPos>> entry : references.entrySet()) {
             if (!entry.getValue().isEmpty()) {
                 Identifier key = structuresRegistry.getKey(entry.getKey());
                 referencesTag.putLongArray(key.toString(), entry.getValue().toLongArray());
@@ -564,8 +566,8 @@ public record SerializableChunkData(
         return outmap;
     }
 
-    private static Map<Structure, LongSet> unpackStructureReferences(final RegistryAccess registryAccess, final ChunkPos pos, final CompoundTag tag) {
-        Map<Structure, LongSet> outmap = Maps.newHashMap();
+    private static Map<Structure, ObjectSet<ChunkPos>> unpackStructureReferences(final RegistryAccess registryAccess, final ChunkPos pos, final CompoundTag tag) {
+        Map<Structure, ObjectSet<ChunkPos>> outmap = Maps.newHashMap();
         Registry<Structure> structuresRegistry = registryAccess.lookupOrThrow(Registries.STRUCTURE);
         CompoundTag referencesTag = tag.getCompoundOrEmpty("References");
         referencesTag.forEach((key, entry) -> {
@@ -576,7 +578,7 @@ public record SerializableChunkData(
             } else {
                 Optional<long[]> longArray = entry.asLongArray();
                 if (!longArray.isEmpty()) {
-                    outmap.put(structureType, new LongOpenHashSet(Arrays.stream(longArray.get()).filter(chunkLongPos -> {
+                    outmap.put(structureType, new ObjectOpenHashSet<>(Arrays.stream(longArray.get()).filter(chunkLongPos -> {
                         ChunkPos refPos = ChunkPos.unpack(chunkLongPos);
                         if (refPos.getChessboardDistance(pos) > 8) {
                             LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", structureId, refPos, pos);
