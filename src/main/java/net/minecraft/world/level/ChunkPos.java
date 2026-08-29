@@ -7,6 +7,9 @@ import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
+
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Pos;
 import net.minecraft.core.SectionPos;
@@ -50,6 +53,32 @@ public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
 
     public static ChunkPos containing(final BlockPos pos) {
         return new ChunkPos(SectionPos.blockToSectionCoord(pos.getX()), SectionPos.blockToSectionCoord(pos.getZ()));
+    }
+
+    /** 结构引用序列化：ChunkPos 存为 [x0, z0][x1, z1] ... String */
+    public static String packChunkPosList(final ObjectList<ChunkPos> positions) {
+        StringBuilder builder = new StringBuilder();
+        for (ChunkPos pos : positions) {
+            builder.append("[");
+            builder.append(pos.x());
+            builder.append(",");
+            builder.append(pos.z());
+            builder.append("]");
+        }
+        return builder.toString();
+    }
+
+    /** 结构引用序列化：ChunkPos 存为 [x0, z0][x1, z1] ... String */
+    public static String packChunkPosSet(final ObjectSet<ChunkPos> positions) {
+        StringBuilder builder = new StringBuilder();
+        for (ChunkPos pos : positions) {
+            builder.append("[");
+            builder.append(pos.x());
+            builder.append(",");
+            builder.append(pos.z());
+            builder.append("]");
+        }
+        return builder.toString();
     }
 
     public static ChunkPos unpack(final long key) {

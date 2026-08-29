@@ -537,7 +537,7 @@ public record SerializableChunkData(
         for (Entry<Structure, ObjectSet<ChunkPos>> entry : references.entrySet()) {
             if (!entry.getValue().isEmpty()) {
                 Identifier key = structuresRegistry.getKey(entry.getKey());
-                referencesTag.putLongArray(key.toString(), entry.getValue().toLongArray());
+                referencesTag.putString(key.toString(), ChunkPos.packChunkPosSet(entry.getValue()));
             }
         }
 
@@ -576,17 +576,33 @@ public record SerializableChunkData(
             if (structureType == null) {
                 LOGGER.warn("Found reference to unknown structure '{}' in chunk {}, discarding", structureId, pos);
             } else {
-                Optional<long[]> longArray = entry.asLongArray();
-                if (!longArray.isEmpty()) {
-                    outmap.put(structureType, new ObjectOpenHashSet<>(Arrays.stream(longArray.get()).filter(chunkLongPos -> {
-                        ChunkPos refPos = ChunkPos.unpack(chunkLongPos);
+                Optional<String> chunkSet = entry.asString();
+//                if (!chunkSet.isEmpty()) {
+//                    outmap.put(structureType, new ObjectOpenHashSet<ChunkPos>(Arrays.stream(chunkSet.get()).filter(chunkLongPos -> {
+//                        ChunkPos refPos = ChunkPos.unpack(chunkLongPos);
+//                        if (refPos.getChessboardDistance(pos) > 8) {
+//                            LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", structureId, refPos, pos);
+//                            return false;
+//                        } else {
+//                            return true;
+//                        }
+//                    }).toArray()));
+                if (!chunkSet.isEmpty()) {
+                    ObjectSet<ChunkPos> refs = new ObjectOpenHashSet<>();
+                    StringBuilder arr = new StringBuilder(chunkSet.get());
+                    for (int i = 0; i + 1 < arr.length; i += 2) {
+                        ChunkPos refPos = new ChunkPos(arr[i], arr[i + 1]);
                         if (refPos.getChessboardDistance(pos) > 8) {
                             LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", structureId, refPos, pos);
-                            return false;
                         } else {
-                            return true;
+                            refs.add(refPos);
                         }
-                    }).toArray()));
+                    }
+                    if (!refs.isEmpty()) {
+                        outmap.put(structureType, refs);
+                    }
+                }
+
                 }
             }
         });

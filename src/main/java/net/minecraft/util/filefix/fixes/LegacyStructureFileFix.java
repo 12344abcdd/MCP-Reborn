@@ -225,7 +225,7 @@ public class LegacyStructureFileFix extends FileFix {
                 CompoundTag startTag = structureTag.getCompoundOrEmpty("Starts");
                 CompoundTag referencesTag = structureTag.getCompoundOrEmpty("References");
                 legacyData.starts().forEach((id, value) -> startTag.put(id, value.convert(NbtOps.INSTANCE).getValue()));
-                legacyData.indexes().forEach((id, indexes) -> referencesTag.putString(id, packChunkPosArray(indexes)));
+                legacyData.indexes().forEach((id, indexes) -> referencesTag.putString(id, ChunkPos.packChunkPosList(indexes)));
                 structureTag.put("Starts", startTag);
                 structureTag.put("References", referencesTag);
                 levelTag.put("Structures", structureTag);
@@ -236,19 +236,6 @@ public class LegacyStructureFileFix extends FileFix {
         }
 
         upgradeProgress.incrementFinishedOperationsBy(futures.waitForAll());
-    }
-
-    /** 结构引用序列化：ChunkPos 存为 [x0, z0][x1, z1] ... String */
-    private static String packChunkPosArray(final ObjectList<ChunkPos> positions) {
-        StringBuilder builder = new StringBuilder();
-        for (ChunkPos pos : positions) {
-            builder.append("[");
-            builder.append(pos.x());
-            builder.append(",");
-            builder.append(pos.z());
-            builder.append("]");
-        }
-        return builder.toString();
     }
 
     private record DimensionFixEntry(
