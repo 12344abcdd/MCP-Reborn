@@ -9,6 +9,8 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.shorts.ShortArrayList;
 import it.unimi.dsi.fastutil.shorts.ShortList;
+
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -589,9 +591,9 @@ public record SerializableChunkData(
 //                    }).toArray()));
                 if (!chunkSet.isEmpty()) {
                     ObjectSet<ChunkPos> refs = new ObjectOpenHashSet<>();
-                    StringBuilder arr = new StringBuilder(chunkSet.get());
-                    for (int i = 0; i + 1 < arr.length; i += 2) {
-                        ChunkPos refPos = new ChunkPos(arr[i], arr[i + 1]);
+                    String[] chunks = chunkSet.get().split(",");
+                    for (int i = 0; i + 1 < chunks.length; i += 2) {
+                        ChunkPos refPos = new ChunkPos(new BigInteger(chunks[i]), new BigInteger(chunks[i + 1]));
                         if (refPos.getChessboardDistance(pos) > 8) {
                             LOGGER.warn("Found invalid structure reference [ {} @ {} ] for chunk {}.", structureId, refPos, pos);
                         } else {
@@ -601,8 +603,6 @@ public record SerializableChunkData(
                     if (!refs.isEmpty()) {
                         outmap.put(structureType, refs);
                     }
-                }
-
                 }
             }
         });

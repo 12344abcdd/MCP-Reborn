@@ -59,11 +59,10 @@ public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
     public static String packChunkPosList(final ObjectList<ChunkPos> positions) {
         StringBuilder builder = new StringBuilder();
         for (ChunkPos pos : positions) {
-            builder.append("[");
             builder.append(pos.x());
             builder.append(",");
             builder.append(pos.z());
-            builder.append("]");
+            builder.append(",");
         }
         return builder.toString();
     }
@@ -72,11 +71,10 @@ public record ChunkPos(BigInteger x, BigInteger z)implements Pos {
     public static String packChunkPosSet(final ObjectSet<ChunkPos> positions) {
         StringBuilder builder = new StringBuilder();
         for (ChunkPos pos : positions) {
-            builder.append("[");
             builder.append(pos.x());
             builder.append(",");
             builder.append(pos.z());
-            builder.append("]");
+            builder.append(",");
         }
         return builder.toString();
     }
