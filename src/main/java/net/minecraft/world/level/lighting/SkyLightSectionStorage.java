@@ -17,7 +17,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
         super(
             LightLayer.SKY,
             chunkSource,
-            new SkyLightSectionStorage.SkyDataLayerStorageMap(new Object2ObjectOpenHashMap<>(), new Object2IntOpenHashMap<>(), 0)
+            new SkyLightSectionStorage.SkyDataLayerStorageMap(new Object2ObjectOpenHashMap<>(), new Object2IntOpenHashMap<>(), Integer.MAX_VALUE)
         );
     }
 

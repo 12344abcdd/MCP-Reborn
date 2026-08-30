@@ -47,6 +47,9 @@ public class EntitySectionStorage<T extends EntityAccess> {
         for (int x = xMin; x <= xMax; x++) {
             SectionPos lowestAbsoluteSectionKey = SectionPos.of(x, 0, 0);
             SectionPos highestAbsoluteSectionKey = SectionPos.of(x, -1, -1);
+            if(lowestAbsoluteSectionKey.compareTo(highestAbsoluteSectionKey) > 0) {
+                continue;
+            }
             ObjectIterator<SectionPos> it = this.sectionIds.subSet(lowestAbsoluteSectionKey, highestAbsoluteSectionKey.offset(0,1,0)).iterator();
 
             while (it.hasNext()) {

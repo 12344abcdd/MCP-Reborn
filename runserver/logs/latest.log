@@ -1,9 +1,30 @@
-[308月2026 14:24:07.437] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[308月2026 14:24:07.474] [main/ERROR] [net.minecraft.server.Main/FATAL]: Failed to start the minecraft server
-net.minecraft.util.DirectoryLock$LockException: /root/桌面/MCP-Reborn/runserver/./world/session.lock: already locked (possibly by other Minecraft instance?)
-	at net.minecraft.util.DirectoryLock$LockException.alreadyLocked(DirectoryLock.java:94)
-	at net.minecraft.util.DirectoryLock.create(DirectoryLock.java:29)
-	at net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess.createLock(LevelStorageSource.java:471)
-	at net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess.<init>(LevelStorageSource.java:467)
-	at net.minecraft.world.level.storage.LevelStorageSource.validateAndCreateAccess(LevelStorageSource.java:400)
-	at net.minecraft.server.Main.main(Main.java:131)
+[308月2026 14:38:08.972] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[308月2026 14:38:10.304] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1585 recipes
+[308月2026 14:38:10.325] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1688 advancements
+[308月2026 14:38:10.946] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 26.2
+[308月2026 14:38:10.947] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[308月2026 14:38:10.947] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[308月2026 14:38:10.947] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[308月2026 14:38:11.025] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[308月2026 14:38:11.228] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[308月2026 14:38:11.469] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Loading 0 persistent chunks...
+[308月2026 14:38:11.470] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Preparing spawn area: 100%
+[308月2026 14:38:11.480] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Time elapsed: 12 ms
+[308月2026 14:38:11.480] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (0.253s)! For help, type "help"
+[308月2026 14:38:11.483] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[308月2026 14:38:11.494] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[308月2026 14:38:11.510] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[308月2026 14:38:11.515] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[308月2026 14:38:11.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[308月2026 14:38:11.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[308月2026 14:38:11.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[308月2026 14:38:24.467] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[308月2026 14:38:24.468] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[308月2026 14:38:24.468] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[308月2026 14:38:24.469] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[308月2026 14:38:24.474] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[308月2026 14:38:24.476] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
