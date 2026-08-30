@@ -1,49 +1,27 @@
-[308月2026 17:52:22.338] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[308月2026 17:52:23.393] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1585 recipes
-[308月2026 17:52:23.410] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1688 advancements
-[308月2026 17:52:23.797] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 26.2
-[308月2026 17:52:23.798] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
-[308月2026 17:52:23.799] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: CREATIVE
-[308月2026 17:52:23.799] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[308月2026 17:52:23.888] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
-[308月2026 17:52:24.032] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[308月2026 17:52:24.033] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
-[308月2026 17:52:24.033] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[308月2026 17:52:24.033] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
-[308月2026 17:52:24.043] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
-[308月2026 17:52:24.489] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Loading 0 persistent chunks...
-[308月2026 17:52:24.492] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Preparing spawn area: 100%
-[308月2026 17:52:24.502] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Time elapsed: 15 ms
-[308月2026 17:52:24.503] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (0.460s)! For help, type "help"
-[308月2026 17:52:24.511] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[308月2026 17:52:24.537] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[308月2026 17:52:24.549] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[308月2026 17:52:24.585] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[308月2026 17:52:24.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[308月2026 17:52:24.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[308月2026 17:52:24.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[308月2026 17:53:08.301] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: abcdd[/127.0.0.1:43626] logged in with entity id 1 at (79.5, 63.0, 199.5)
-[308月2026 17:53:08.317] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: abcdd joined the game
-[308月2026 17:53:09.389] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: abcdd lost connection: Disconnected
-[308月2026 17:53:09.389] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: abcdd left the game
-[308月2026 17:53:09.409] [Server thread/ERROR] [net.minecraft.server.MinecraftServer/]: Encountered an unexpected exception
-java.lang.NullPointerException: Cannot invoke "java.lang.Byte.byteValue()" because the return value of "it.unimi.dsi.fastutil.objects.Object2ByteMap.remove(Object)" is null
-	at net.minecraft.server.level.DistanceManager$FixedPlayerDistanceChunkTracker.setLevel(DistanceManager.java:224)
-	at net.minecraft.server.level.DistanceManager$FixedPlayerDistanceChunkTracker.setLevel(DistanceManager.java:200)
-	at net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint.runUpdates(DynamicGraphMinFixedPoint.java:145)
-	at net.minecraft.server.level.DistanceManager$FixedPlayerDistanceChunkTracker.runAllUpdates(DistanceManager.java:246)
-	at net.minecraft.server.level.DistanceManager.runAllUpdates(DistanceManager.java:68)
-	at net.minecraft.server.level.ServerChunkCache.runDistanceManagerUpdates(ServerChunkCache.java:285)
-	at net.minecraft.server.level.ServerChunkCache$MainThreadExecutor.pollTask(ServerChunkCache.java:631)
-	at net.minecraft.server.level.ServerChunkCache.pollTask(ServerChunkCache.java:281)
-	at net.minecraft.server.MinecraftServer.pollTaskInternal(MinecraftServer.java:906)
-	at net.minecraft.server.MinecraftServer.pollTask(MinecraftServer.java:894)
-	at net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:116)
-	at net.minecraft.server.MinecraftServer.waitUntilNextTick(MinecraftServer.java:863)
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:769)
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-[308月2026 17:53:09.497] [Server thread/ERROR] [net.minecraft.server.MinecraftServer/]: This crash report has been saved to: /root/桌面/MCP-Reborn/runserver/crash-reports/crash-2026-08-30_17.53.09-server.txt
-[308月2026 17:53:09.498] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[308月2026 17:53:09.498] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[308月2026 17:53:09.498] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[308月2026 22:34:28.603] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[308月2026 22:34:30.014] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1585 recipes
+[308月2026 22:34:30.026] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1688 advancements
+[308月2026 22:34:30.566] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 26.2
+[308月2026 22:34:30.568] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[308月2026 22:34:30.569] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: CREATIVE
+[308月2026 22:34:30.569] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[308月2026 22:34:30.633] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[308月2026 22:34:30.848] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[308月2026 22:34:30.849] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
+[308月2026 22:34:30.849] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[308月2026 22:34:30.849] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
+[308月2026 22:34:30.860] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[308月2026 22:34:31.400] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Loading 0 persistent chunks...
+[308月2026 22:34:31.411] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Time elapsed: 10 ms
+[308月2026 22:34:31.411] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (0.551s)! For help, type "help"
+[308月2026 22:34:31.414] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[308月2026 22:34:31.428] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[308月2026 22:34:31.433] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[308月2026 22:34:31.447] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[308月2026 22:34:31.448] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[308月2026 22:34:31.448] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[308月2026 22:34:31.448] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[308月2026 22:34:39.570] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: abcdd[/127.0.0.1:48596] logged in with entity id 1 at (79.5, 63.0, 199.5)
+[308月2026 22:34:39.588] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: abcdd joined the game
+[308月2026 22:34:40.650] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: abcdd lost connection: Disconnected
+[308月2026 22:34:40.651] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: abcdd left the game

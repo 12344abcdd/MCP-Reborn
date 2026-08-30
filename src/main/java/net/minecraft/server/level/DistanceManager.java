@@ -221,7 +221,7 @@ public abstract class DistanceManager {
         protected void setLevel(final ChunkPos node, final int level) {
             byte oldLevel;
             if (level > this.maxDistance) {
-                oldLevel = this.chunks.remove(node);
+                oldLevel = this.chunks.removeByte(node);
             } else {
                 oldLevel = this.chunks.put(node, (byte)level);
             }
