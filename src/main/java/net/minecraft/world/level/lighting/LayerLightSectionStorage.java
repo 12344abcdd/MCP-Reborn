@@ -201,7 +201,7 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
     }
 
     protected void updateSectionStatus(final SectionPos sectionNode, final boolean sectionEmpty) {
-        byte state = this.sectionStates.get(sectionNode);
+        byte state = this.sectionStates.getOrDefault(sectionNode,(byte)0);
         byte newState = LayerLightSectionStorage.SectionState.hasData(state, !sectionEmpty);
         if (state != newState) {
             this.putSectionState(sectionNode, newState);
@@ -212,7 +212,7 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
                     for (int offsetZ = -1; offsetZ <= 1; offsetZ++) {
                         if (offsetX != 0 || offsetY != 0 || offsetZ != 0) {
                             SectionPos neighborNode = SectionPos.offset(sectionNode, offsetX, offsetY, offsetZ);
-                            byte neighborState = this.sectionStates.get(neighborNode);
+                            byte neighborState = this.sectionStates.getOrDefault(neighborNode,(byte)0);
                             this.putSectionState(
                                 neighborNode,
                                 LayerLightSectionStorage.SectionState.neighborCount(
@@ -260,10 +260,8 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
         }
 
         if (!this.sectionsAffectedByLightUpdates.isEmpty()) {
-            ObjectIterator<SectionPos> iterator = this.sectionsAffectedByLightUpdates.iterator();
 
-            while (iterator.hasNext()) {
-                SectionPos sectionNode = iterator.next();
+            for (SectionPos sectionNode : this.sectionsAffectedByLightUpdates) {
                 this.chunkSource.onLightUpdate(this.layer, sectionNode);
             }
 
@@ -272,7 +270,7 @@ public abstract class LayerLightSectionStorage<M extends DataLayerStorageMap<M>>
     }
 
     public LayerLightSectionStorage.SectionType getDebugSectionType(final SectionPos sectionNode) {
-        return LayerLightSectionStorage.SectionState.type(this.sectionStates.get(sectionNode));
+        return LayerLightSectionStorage.SectionState.type(this.sectionStates.getOrDefault(sectionNode,(byte)0));
     }
 
     protected static class SectionState {

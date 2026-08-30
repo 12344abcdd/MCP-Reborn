@@ -30,7 +30,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
         SectionPos sectionNode = SectionPos.blockToSection(blockNode);
         int sectionY = SectionPos.y(sectionNode);
         SkyLightSectionStorage.SkyDataLayerStorageMap sections = updating ? this.updatingSectionData : this.visibleSectionData;
-        int topSection = sections.topSections.get(SectionPos.getZeroNode(sectionNode));
+        int topSection = sections.topSections.getOrDefault(SectionPos.getZeroNode(sectionNode),0);
         if (topSection != sections.currentLowestY && sectionY < topSection) {
             DataLayer layer = this.getDataLayer(sections, sectionNode);
             if (layer == null) {
@@ -99,7 +99,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
             return queuedLayer;
         }
 
-        int topSection = this.updatingSectionData.topSections.get(SectionPos.getZeroNode(sectionNode));
+        int topSection = this.updatingSectionData.topSections.getOrDefault(SectionPos.getZeroNode(sectionNode),0);
         if (topSection != this.updatingSectionData.currentLowestY && SectionPos.y(sectionNode) < topSection) {
             SectionPos aboveSection = SectionPos.offset(sectionNode, Direction.UP);
 
