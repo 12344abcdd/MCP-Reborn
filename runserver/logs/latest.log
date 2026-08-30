@@ -1,24 +1,9 @@
-[308月2026 09:38:43.706] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[308月2026 09:38:44.264] [Worker-Main-4/ERROR] [net.minecraft.world.level.storage.LevelStorageSource/]: Unable to read or access the world gen settings file! Falling back to the default settings with a random world seed. ./world/data/minecraft/world_gen_settings.dat
-[308月2026 09:38:44.265] [main/WARN] [net.minecraft.server.Main/]: Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode
-java.util.concurrent.ExecutionException: java.lang.IllegalStateException: Overworld settings missing
-	at java.base/java.util.concurrent.CompletableFuture.wrapInExecutionException(CompletableFuture.java:345)
-	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:440)
-	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2094)
-	at net.minecraft.server.Main.main(Main.java:190)
-Caused by: java.lang.IllegalStateException: Overworld settings missing
-	at net.minecraft.world.level.levelgen.WorldDimensions.<init>(WorldDimensions.java:47)
-	at net.minecraft.world.level.levelgen.WorldDimensions.<init>(WorldDimensions.java:52)
-	at net.minecraft.world.level.storage.LevelStorageSource.lambda$getLevelDataAndDimensions$0(LevelStorageSource.java:162)
-	at com.mojang.serialization.DataResult$Error.mapOrElse(DataResult.java:309)
-	at net.minecraft.world.level.storage.LevelStorageSource.getLevelDataAndDimensions(LevelStorageSource.java:155)
-	at net.minecraft.server.Main.lambda$main$1(Main.java:174)
-	at net.minecraft.server.WorldLoader.lambda$load$2(WorldLoader.java:56)
-	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire$$$capture(CompletableFuture.java:1171)
-	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java)
-	at java.base/java.util.concurrent.CompletableFuture$Completion.exec(CompletableFuture.java:504)
-	at java.base/java.util.concurrent.ForkJoinTask.doExec$$$capture(ForkJoinTask.java:511)
-	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java)
-	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1450)
-	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2019)
-	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+[308月2026 14:24:07.437] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[308月2026 14:24:07.474] [main/ERROR] [net.minecraft.server.Main/FATAL]: Failed to start the minecraft server
+net.minecraft.util.DirectoryLock$LockException: /root/桌面/MCP-Reborn/runserver/./world/session.lock: already locked (possibly by other Minecraft instance?)
+	at net.minecraft.util.DirectoryLock$LockException.alreadyLocked(DirectoryLock.java:94)
+	at net.minecraft.util.DirectoryLock.create(DirectoryLock.java:29)
+	at net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess.createLock(LevelStorageSource.java:471)
+	at net.minecraft.world.level.storage.LevelStorageSource$LevelStorageAccess.<init>(LevelStorageSource.java:467)
+	at net.minecraft.world.level.storage.LevelStorageSource.validateAndCreateAccess(LevelStorageSource.java:400)
+	at net.minecraft.server.Main.main(Main.java:131)

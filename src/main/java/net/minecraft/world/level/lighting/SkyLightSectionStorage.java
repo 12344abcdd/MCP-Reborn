@@ -17,7 +17,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
         super(
             LightLayer.SKY,
             chunkSource,
-            new SkyLightSectionStorage.SkyDataLayerStorageMap(new Object2ObjectOpenHashMap<>(), new Object2IntOpenHashMap<>(), Integer.MAX_VALUE)
+            new SkyLightSectionStorage.SkyDataLayerStorageMap(new Object2ObjectOpenHashMap<>(), new Object2IntOpenHashMap<>(), 0)
         );
     }
 
@@ -65,7 +65,7 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
         }
 
         SectionPos zeroNode = SectionPos.getZeroNode(sectionNode);
-        int oldTop = this.updatingSectionData.topSections.get(zeroNode);
+        int oldTop = this.updatingSectionData.topSections.getOrDefault(zeroNode,this.updatingSectionData.currentLowestY);
         if (oldTop < y + 1) {
             this.updatingSectionData.topSections.put(zeroNode, y + 1);
         }
@@ -75,12 +75,16 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
     protected void onNodeRemoved(final SectionPos sectionNode) {
         SectionPos zeroNode = SectionPos.getZeroNode(sectionNode);
         int y = SectionPos.y(sectionNode);
-        if (this.updatingSectionData.topSections.get(zeroNode) == y + 1) {
+        if (this.updatingSectionData.topSections.getOrDefault(zeroNode,this.updatingSectionData.currentLowestY) == y + 1) {
             SectionPos newTopSection;
             for (newTopSection = sectionNode;
                 !this.storingLightForSection(newTopSection) && this.hasLightDataAtOrBelow(y);
                 newTopSection = SectionPos.offset(newTopSection, Direction.DOWN)
             ) {
+                if(this.updatingSectionData.currentLowestY == Integer.MAX_VALUE){
+                    //已经没有任何光照section，直接终止
+                    break;
+                }
                 y--;
             }
 
@@ -104,8 +108,13 @@ public class SkyLightSectionStorage extends LayerLightSectionStorage<SkyLightSec
             SectionPos aboveSection = SectionPos.offset(sectionNode, Direction.UP);
 
             DataLayer aboveData;
-            while ((aboveData = this.getDataLayer(aboveSection, true)) == null) {
-                aboveSection = SectionPos.offset(aboveSection, Direction.UP);
+            while (((aboveData = this.getDataLayer(aboveSection, true)) == null)) {
+                if(aboveSection.maxBlockY()<=320){
+                    aboveSection = SectionPos.offset(aboveSection, Direction.UP);
+                }
+                else {
+                    return new DataLayer(15);
+                }
             }
 
             return repeatFirstLayer(aboveData);
