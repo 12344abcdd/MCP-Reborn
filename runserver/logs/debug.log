@@ -1,364 +1,364 @@
-[308月2026 14:38:04.559] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
-[308月2026 14:38:04.561] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
-[308月2026 14:38:04.561] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
-[308月2026 14:38:05.209] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/auxv
-[308月2026 14:38:05.209] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/auxv
-[308月2026 14:38:05.214] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/stat
-[308月2026 14:38:05.218] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/core_id
-[308月2026 14:38:05.218] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/core_id
-[308月2026 14:38:05.218] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.218] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/physical_package_id
-[308月2026 14:38:05.218] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/physical_package_id
-[308月2026 14:38:05.218] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.218] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cpu_capacity
-[308月2026 14:38:05.218] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cpu_capacity
-[308月2026 14:38:05.218] [main/TRACE] [oshi.util.FileUtil/]: Read 792
-[308月2026 14:38:05.220] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/level
-[308月2026 14:38:05.220] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/level
-[308月2026 14:38:05.220] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.220] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/type
-[308月2026 14:38:05.220] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/type
-[308月2026 14:38:05.220] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/ways_of_associativity
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/coherency_line_size
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/size
-[308月2026 14:38:05.221] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/level
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/level
-[308月2026 14:38:05.221] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/type
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/type
-[308月2026 14:38:05.221] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/ways_of_associativity
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size
-[308月2026 14:38:05.221] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/size
-[308月2026 14:38:05.221] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.222] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/level
-[308月2026 14:38:05.222] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/level
-[308月2026 14:38:05.223] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.223] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/type
-[308月2026 14:38:05.223] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/type
-[308月2026 14:38:05.223] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.223] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/ways_of_associativity
-[308月2026 14:38:05.223] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/coherency_line_size
-[308月2026 14:38:05.223] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/size
-[308月2026 14:38:05.223] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.223] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/core_id
-[308月2026 14:38:05.224] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/core_id
-[308月2026 14:38:05.224] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.224] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/physical_package_id
-[308月2026 14:38:05.224] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/physical_package_id
-[308月2026 14:38:05.224] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.224] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cpu_capacity
-[308月2026 14:38:05.224] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cpu_capacity
-[308月2026 14:38:05.224] [main/TRACE] [oshi.util.FileUtil/]: Read 792
-[308月2026 14:38:05.224] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/level
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/level
-[308月2026 14:38:05.225] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/type
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/type
-[308月2026 14:38:05.225] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/ways_of_associativity
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/coherency_line_size
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/size
-[308月2026 14:38:05.225] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/level
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/level
-[308月2026 14:38:05.225] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/type
-[308月2026 14:38:05.225] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/type
-[308月2026 14:38:05.226] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/ways_of_associativity
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/coherency_line_size
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/size
-[308月2026 14:38:05.226] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/level
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/level
-[308月2026 14:38:05.226] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/type
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/type
-[308月2026 14:38:05.226] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/ways_of_associativity
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/coherency_line_size
-[308月2026 14:38:05.226] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/size
-[308月2026 14:38:05.227] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/core_id
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/core_id
-[308月2026 14:38:05.227] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/physical_package_id
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/physical_package_id
-[308月2026 14:38:05.227] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cpu_capacity
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cpu_capacity
-[308月2026 14:38:05.227] [main/TRACE] [oshi.util.FileUtil/]: Read 792
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/level
-[308月2026 14:38:05.227] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/level
-[308月2026 14:38:05.228] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/type
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/type
-[308月2026 14:38:05.228] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/ways_of_associativity
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/coherency_line_size
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/size
-[308月2026 14:38:05.228] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/level
-[308月2026 14:38:05.228] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/level
-[308月2026 14:38:05.229] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/type
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/type
-[308月2026 14:38:05.229] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/ways_of_associativity
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/coherency_line_size
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/size
-[308月2026 14:38:05.229] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/level
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/level
-[308月2026 14:38:05.229] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/type
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/type
-[308月2026 14:38:05.229] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/ways_of_associativity
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/coherency_line_size
-[308月2026 14:38:05.229] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/size
-[308月2026 14:38:05.230] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.230] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/core_id
-[308月2026 14:38:05.231] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/core_id
-[308月2026 14:38:05.231] [main/TRACE] [oshi.util.FileUtil/]: Read 3
-[308月2026 14:38:05.231] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/physical_package_id
-[308月2026 14:38:05.231] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/physical_package_id
-[308月2026 14:38:05.232] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.232] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cpu_capacity
-[308月2026 14:38:05.232] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cpu_capacity
-[308月2026 14:38:05.232] [main/TRACE] [oshi.util.FileUtil/]: Read 792
-[308月2026 14:38:05.232] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/level
-[308月2026 14:38:05.232] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/level
-[308月2026 14:38:05.232] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.233] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/type
-[308月2026 14:38:05.233] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/type
-[308月2026 14:38:05.233] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.233] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/ways_of_associativity
-[308月2026 14:38:05.233] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/coherency_line_size
-[308月2026 14:38:05.234] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/size
-[308月2026 14:38:05.234] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.234] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/level
-[308月2026 14:38:05.234] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/level
-[308月2026 14:38:05.234] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/type
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/type
-[308月2026 14:38:05.235] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/ways_of_associativity
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/coherency_line_size
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/size
-[308月2026 14:38:05.235] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/level
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/level
-[308月2026 14:38:05.235] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/type
-[308月2026 14:38:05.235] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/type
-[308月2026 14:38:05.236] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/ways_of_associativity
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/coherency_line_size
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/size
-[308月2026 14:38:05.236] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/core_id
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/core_id
-[308月2026 14:38:05.236] [main/TRACE] [oshi.util.FileUtil/]: Read 4
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/physical_package_id
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/physical_package_id
-[308月2026 14:38:05.236] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cpu_capacity
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cpu_capacity
-[308月2026 14:38:05.236] [main/TRACE] [oshi.util.FileUtil/]: Read 792
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/level
-[308月2026 14:38:05.236] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/level
-[308月2026 14:38:05.237] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/type
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/type
-[308月2026 14:38:05.237] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/ways_of_associativity
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/coherency_line_size
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/size
-[308月2026 14:38:05.237] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/level
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/level
-[308月2026 14:38:05.237] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/type
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/type
-[308月2026 14:38:05.237] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/ways_of_associativity
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/coherency_line_size
-[308月2026 14:38:05.237] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/size
-[308月2026 14:38:05.237] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.238] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/level
-[308月2026 14:38:05.238] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/level
-[308月2026 14:38:05.238] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.238] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/type
-[308月2026 14:38:05.238] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/type
-[308月2026 14:38:05.239] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.239] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/ways_of_associativity
-[308月2026 14:38:05.239] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/coherency_line_size
-[308月2026 14:38:05.239] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/size
-[308月2026 14:38:05.239] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.239] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/core_id
-[308月2026 14:38:05.239] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/core_id
-[308月2026 14:38:05.239] [main/TRACE] [oshi.util.FileUtil/]: Read 5
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/physical_package_id
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/physical_package_id
-[308月2026 14:38:05.240] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cpu_capacity
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cpu_capacity
-[308月2026 14:38:05.240] [main/TRACE] [oshi.util.FileUtil/]: Read 792
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/level
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/level
-[308月2026 14:38:05.240] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/type
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/type
-[308月2026 14:38:05.240] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/ways_of_associativity
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/coherency_line_size
-[308月2026 14:38:05.240] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/size
-[308月2026 14:38:05.241] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/level
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/level
-[308月2026 14:38:05.241] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/type
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/type
-[308月2026 14:38:05.241] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/ways_of_associativity
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/coherency_line_size
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/size
-[308月2026 14:38:05.241] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.241] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/level
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/level
-[308月2026 14:38:05.242] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/type
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/type
-[308月2026 14:38:05.242] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/ways_of_associativity
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/coherency_line_size
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/size
-[308月2026 14:38:05.242] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/core_id
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/core_id
-[308月2026 14:38:05.242] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/physical_package_id
-[308月2026 14:38:05.242] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/physical_package_id
-[308月2026 14:38:05.243] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cpu_capacity
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cpu_capacity
-[308月2026 14:38:05.243] [main/TRACE] [oshi.util.FileUtil/]: Read 1024
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/level
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/level
-[308月2026 14:38:05.243] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/type
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/type
-[308月2026 14:38:05.243] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/ways_of_associativity
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/coherency_line_size
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/size
-[308月2026 14:38:05.243] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/level
-[308月2026 14:38:05.243] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/level
-[308月2026 14:38:05.244] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/type
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/type
-[308月2026 14:38:05.244] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/ways_of_associativity
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/coherency_line_size
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/size
-[308月2026 14:38:05.244] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/level
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/level
-[308月2026 14:38:05.244] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/type
-[308月2026 14:38:05.244] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/type
-[308月2026 14:38:05.245] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.245] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/ways_of_associativity
-[308月2026 14:38:05.245] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/coherency_line_size
-[308月2026 14:38:05.245] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/size
-[308月2026 14:38:05.245] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.245] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/core_id
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/core_id
-[308月2026 14:38:05.246] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/physical_package_id
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/physical_package_id
-[308月2026 14:38:05.246] [main/TRACE] [oshi.util.FileUtil/]: Read 0
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cpu_capacity
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cpu_capacity
-[308月2026 14:38:05.246] [main/TRACE] [oshi.util.FileUtil/]: Read 1024
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/level
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/level
-[308月2026 14:38:05.246] [main/TRACE] [oshi.util.FileUtil/]: Read 2
-[308月2026 14:38:05.246] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/type
-[308月2026 14:38:05.247] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/type
-[308月2026 14:38:05.247] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
-[308月2026 14:38:05.247] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/ways_of_associativity
-[308月2026 14:38:05.247] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/coherency_line_size
-[308月2026 14:38:05.247] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/size
-[308月2026 14:38:05.247] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/level
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/level
-[308月2026 14:38:05.248] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/type
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/type
-[308月2026 14:38:05.248] [main/TRACE] [oshi.util.FileUtil/]: Read Data
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/ways_of_associativity
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/coherency_line_size
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/size
-[308月2026 14:38:05.248] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/level
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/level
-[308月2026 14:38:05.248] [main/TRACE] [oshi.util.FileUtil/]: Read 1
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/type
-[308月2026 14:38:05.248] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/type
-[308月2026 14:38:05.249] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
-[308月2026 14:38:05.249] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/ways_of_associativity
-[308月2026 14:38:05.249] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/coherency_line_size
-[308月2026 14:38:05.249] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/size
-[308月2026 14:38:05.249] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
-[308月2026 14:38:05.252] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
-[308月2026 14:38:05.252] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
-[308月2026 14:38:05.254] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/device-tree/model
-[308月2026 14:38:05.254] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/device-tree/model
-[308月2026 14:38:05.254] [main/TRACE] [oshi.util.FileUtil/]: Read Qualcomm Technologies, Inc. Warsaw based on SM8750 
-[308月2026 14:38:05.261] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -C, system]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
-[308月2026 14:38:05.263] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -class, processor]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
-[308月2026 14:38:05.268] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [cpuid, -1r]: Cannot run program "cpuid": Exec failed, error: 2 (没有那个文件或目录) 
-[308月2026 14:38:05.299] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -C, display]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
-[308月2026 14:38:05.303] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
-[308月2026 14:38:05.304] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
-[308月2026 14:38:05.309] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /etc/os-release
-[308月2026 14:38:05.309] [main/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: NAME="Ubuntu"
-[308月2026 14:38:05.309] [main/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: VERSION_ID="24.04"
-[308月2026 14:38:05.309] [main/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: VERSION="24.04.4 LTS (Noble Numbat)"
-[308月2026 14:38:05.309] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/version
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/866/io
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/866/io
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/866/status
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/866/status
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/866/stat
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/866/stat
-[308月2026 14:38:05.313] [main/TRACE] [oshi.util.FileUtil/]: Read 866 (java) S 28390 28390 28390 0 -1 4194304 76637 4452 10 17 249 73 1 0 10 -10 35 0 1490794 8039923712 53375 18446744073709551615 372619935744 372619939416 549227445360 0 0 0 0 0 16800975 0 0 0 17 4 0 0 0 0 0 372620066088 372620066832 372958908416 549227449685 549227462847 549227462847 549227466700 0
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/stat
-[308月2026 14:38:05.313] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/stat
-[308月2026 14:38:05.313] [main/TRACE] [oshi.util.FileUtil/]: Read 866 (java) S 28390 28390 28390 0 -1 4194304 76643 4452 10 17 249 73 1 0 10 -10 35 0 1490794 8039923712 53375 18446744073709551615 372619935744 372619939416 549227445360 0 0 0 0 0 16800975 0 0 0 17 4 0 0 0 0 0 372620066088 372620066832 372958908416 549227449685 549227462847 549227462847 549227466700 0
-[308月2026 14:38:08.972] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
-[308月2026 14:38:10.304] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1585 recipes
-[308月2026 14:38:10.325] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1688 advancements
-[308月2026 14:38:10.946] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 26.2
-[308月2026 14:38:10.947] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
-[308月2026 14:38:10.947] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
-[308月2026 14:38:10.947] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[308月2026 14:38:11.025] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
-[308月2026 14:38:11.043] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: Java version: 25
-[308月2026 14:38:11.043] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: -Dio.netty.noUnsafe: false
-[308月2026 14:38:11.043] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe: unavailable (io.netty.noUnsafe=true by default on Java 25+)
-[308月2026 14:38:11.044] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
-[308月2026 14:38:11.045] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: maxDirectMemory: 3963617280 bytes (maybe)
-[308月2026 14:38:11.045] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
-[308月2026 14:38:11.045] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)
-[308月2026 14:38:11.045] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.maxDirectMemory: 3963617280 bytes
-[308月2026 14:38:11.045] [Server thread/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): unavailable
+[308月2026 17:52:18.487] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
+[308月2026 17:52:18.488] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
+[308月2026 17:52:18.488] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
+[308月2026 17:52:18.957] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/auxv
+[308月2026 17:52:18.957] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/auxv
+[308月2026 17:52:18.959] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/stat
+[308月2026 17:52:18.962] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/core_id
+[308月2026 17:52:18.962] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/core_id
+[308月2026 17:52:18.962] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.962] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/physical_package_id
+[308月2026 17:52:18.962] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/physical_package_id
+[308月2026 17:52:18.962] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.963] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cpu_capacity
+[308月2026 17:52:18.963] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cpu_capacity
+[308月2026 17:52:18.963] [main/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:52:18.964] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/level
+[308月2026 17:52:18.964] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/level
+[308月2026 17:52:18.964] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.964] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/type
+[308月2026 17:52:18.964] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/type
+[308月2026 17:52:18.964] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.964] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/ways_of_associativity
+[308月2026 17:52:18.965] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/coherency_line_size
+[308月2026 17:52:18.965] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/size
+[308月2026 17:52:18.965] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.965] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/level
+[308月2026 17:52:18.965] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/level
+[308月2026 17:52:18.965] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.965] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/type
+[308月2026 17:52:18.965] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/type
+[308月2026 17:52:18.965] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/ways_of_associativity
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/size
+[308月2026 17:52:18.966] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/level
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/level
+[308月2026 17:52:18.966] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/type
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/type
+[308月2026 17:52:18.966] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/ways_of_associativity
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/coherency_line_size
+[308月2026 17:52:18.966] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/size
+[308月2026 17:52:18.966] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/core_id
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/core_id
+[308月2026 17:52:18.967] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/physical_package_id
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/physical_package_id
+[308月2026 17:52:18.967] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cpu_capacity
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cpu_capacity
+[308月2026 17:52:18.967] [main/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/level
+[308月2026 17:52:18.967] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/level
+[308月2026 17:52:18.967] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/type
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/type
+[308月2026 17:52:18.968] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/ways_of_associativity
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/coherency_line_size
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/size
+[308月2026 17:52:18.968] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/level
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/level
+[308月2026 17:52:18.968] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/type
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/type
+[308月2026 17:52:18.968] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/ways_of_associativity
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/coherency_line_size
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/size
+[308月2026 17:52:18.968] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/level
+[308月2026 17:52:18.968] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/level
+[308月2026 17:52:18.969] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/type
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/type
+[308月2026 17:52:18.969] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/ways_of_associativity
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/coherency_line_size
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/size
+[308月2026 17:52:18.969] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/core_id
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/core_id
+[308月2026 17:52:18.969] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/physical_package_id
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/physical_package_id
+[308月2026 17:52:18.969] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cpu_capacity
+[308月2026 17:52:18.969] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cpu_capacity
+[308月2026 17:52:18.969] [main/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/level
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/level
+[308月2026 17:52:18.970] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/type
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/type
+[308月2026 17:52:18.970] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/ways_of_associativity
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/coherency_line_size
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/size
+[308月2026 17:52:18.970] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/level
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/level
+[308月2026 17:52:18.970] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/type
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/type
+[308月2026 17:52:18.970] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/ways_of_associativity
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/coherency_line_size
+[308月2026 17:52:18.970] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/size
+[308月2026 17:52:18.971] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/level
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/level
+[308月2026 17:52:18.971] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/type
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/type
+[308月2026 17:52:18.971] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/ways_of_associativity
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/coherency_line_size
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/size
+[308月2026 17:52:18.971] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/core_id
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/core_id
+[308月2026 17:52:18.971] [main/TRACE] [oshi.util.FileUtil/]: Read 3
+[308月2026 17:52:18.971] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/physical_package_id
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/physical_package_id
+[308月2026 17:52:18.972] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cpu_capacity
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cpu_capacity
+[308月2026 17:52:18.972] [main/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/level
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/level
+[308月2026 17:52:18.972] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/type
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/type
+[308月2026 17:52:18.972] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/ways_of_associativity
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/coherency_line_size
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/size
+[308月2026 17:52:18.972] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/level
+[308月2026 17:52:18.972] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/level
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/type
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/type
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/ways_of_associativity
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/coherency_line_size
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/size
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/level
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/level
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/type
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/type
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/ways_of_associativity
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/coherency_line_size
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/size
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/core_id
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/core_id
+[308月2026 17:52:18.973] [main/TRACE] [oshi.util.FileUtil/]: Read 4
+[308月2026 17:52:18.973] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/physical_package_id
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/physical_package_id
+[308月2026 17:52:18.974] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cpu_capacity
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cpu_capacity
+[308月2026 17:52:18.974] [main/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/level
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/level
+[308月2026 17:52:18.974] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/type
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/type
+[308月2026 17:52:18.974] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/ways_of_associativity
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/coherency_line_size
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/size
+[308月2026 17:52:18.974] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/level
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/level
+[308月2026 17:52:18.974] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/type
+[308月2026 17:52:18.974] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/type
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/ways_of_associativity
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/coherency_line_size
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/size
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/level
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/level
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/type
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/type
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/ways_of_associativity
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/coherency_line_size
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/size
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/core_id
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/core_id
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.FileUtil/]: Read 5
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/physical_package_id
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/physical_package_id
+[308月2026 17:52:18.975] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cpu_capacity
+[308月2026 17:52:18.975] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cpu_capacity
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/level
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/level
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/type
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/type
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/ways_of_associativity
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/coherency_line_size
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/size
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/level
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/level
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/type
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/type
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/ways_of_associativity
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/coherency_line_size
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/size
+[308月2026 17:52:18.976] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.976] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/level
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/level
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/type
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/type
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/ways_of_associativity
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/coherency_line_size
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/size
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/core_id
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/core_id
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/physical_package_id
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/physical_package_id
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cpu_capacity
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cpu_capacity
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.FileUtil/]: Read 1024
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/level
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/level
+[308月2026 17:52:18.977] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/type
+[308月2026 17:52:18.977] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/type
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/ways_of_associativity
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/coherency_line_size
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/size
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/level
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/level
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/type
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/type
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/ways_of_associativity
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/coherency_line_size
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/size
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/level
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/level
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/type
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/type
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/ways_of_associativity
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/coherency_line_size
+[308月2026 17:52:18.978] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/size
+[308月2026 17:52:18.978] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/core_id
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/core_id
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/physical_package_id
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/physical_package_id
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cpu_capacity
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cpu_capacity
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read 1024
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/level
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/level
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/type
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/type
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/ways_of_associativity
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/coherency_line_size
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/size
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/level
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/level
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/type
+[308月2026 17:52:18.979] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/type
+[308月2026 17:52:18.979] [main/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/ways_of_associativity
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/coherency_line_size
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/size
+[308月2026 17:52:18.980] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/level
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/level
+[308月2026 17:52:18.980] [main/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/type
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/type
+[308月2026 17:52:18.980] [main/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/ways_of_associativity
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/coherency_line_size
+[308月2026 17:52:18.980] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/size
+[308月2026 17:52:18.980] [main/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:52:18.981] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
+[308月2026 17:52:18.982] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
+[308月2026 17:52:18.982] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/device-tree/model
+[308月2026 17:52:18.982] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/device-tree/model
+[308月2026 17:52:18.982] [main/TRACE] [oshi.util.FileUtil/]: Read Qualcomm Technologies, Inc. Warsaw based on SM8750 
+[308月2026 17:52:18.986] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -C, system]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:52:18.987] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -class, processor]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:52:18.989] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [cpuid, -1r]: Cannot run program "cpuid": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:52:19.014] [main/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -C, display]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:52:19.020] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
+[308月2026 17:52:19.021] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
+[308月2026 17:52:19.026] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /etc/os-release
+[308月2026 17:52:19.026] [main/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: NAME="Ubuntu"
+[308月2026 17:52:19.027] [main/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: VERSION_ID="24.04"
+[308月2026 17:52:19.027] [main/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: VERSION="24.04.4 LTS (Noble Numbat)"
+[308月2026 17:52:19.027] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/version
+[308月2026 17:52:19.032] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/io
+[308月2026 17:52:19.032] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/io
+[308月2026 17:52:19.032] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/status
+[308月2026 17:52:19.032] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/status
+[308月2026 17:52:19.033] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/stat
+[308月2026 17:52:19.033] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/stat
+[308月2026 17:52:19.033] [main/TRACE] [oshi.util.FileUtil/]: Read 25444 (java) S 4707 4707 4707 0 -1 4194304 73907 4465 1 3 234 47 1 1 10 -10 34 0 2656210 7970660352 51937 18446744073709551615 391669743616 391669747288 549590368864 0 0 0 0 0 16800975 0 0 0 17 3 0 0 0 0 0 391669873960 391669874704 392501047296 549590371669 549590384831 549590384831 549590388684 0
+[308月2026 17:52:19.033] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/stat
+[308月2026 17:52:19.033] [main/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/self/stat
+[308月2026 17:52:19.033] [main/TRACE] [oshi.util.FileUtil/]: Read 25444 (java) S 4707 4707 4707 0 -1 4194304 73913 4465 1 3 234 47 1 1 10 -10 34 0 2656210 7970660352 51937 18446744073709551615 391669743616 391669747288 549590368864 0 0 0 0 0 16800975 0 0 0 17 3 0 0 0 0 0 391669873960 391669874704 392501047296 549590371669 549590384831 549590384831 549590388684 0
+[308月2026 17:52:22.338] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[308月2026 17:52:23.393] [main/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 1585 recipes
+[308月2026 17:52:23.410] [main/INFO] [net.minecraft.advancements.AdvancementTree/]: Loaded 1688 advancements
+[308月2026 17:52:23.797] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 26.2
+[308月2026 17:52:23.798] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[308月2026 17:52:23.799] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: CREATIVE
+[308月2026 17:52:23.799] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[308月2026 17:52:23.888] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[308月2026 17:52:23.902] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: Java version: 25
+[308月2026 17:52:23.902] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: -Dio.netty.noUnsafe: false
+[308月2026 17:52:23.902] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe: unavailable (io.netty.noUnsafe=true by default on Java 25+)
+[308月2026 17:52:23.903] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+[308月2026 17:52:23.903] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: maxDirectMemory: 3963617280 bytes (maybe)
+[308月2026 17:52:23.904] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+[308月2026 17:52:23.904] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)
+[308月2026 17:52:23.904] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.maxDirectMemory: 3963617280 bytes
+[308月2026 17:52:23.904] [Server thread/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): unavailable
 java.lang.UnsupportedOperationException: sun.misc.Unsafe unavailable
 	at io.netty.util.internal.CleanerJava9.<clinit>(CleanerJava9.java:70)
 	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:209)
@@ -371,13 +371,13 @@ java.lang.UnsupportedOperationException: sun.misc.Unsafe unavailable
 	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:724)
 	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-[308月2026 14:38:11.105] [Server thread/DEBUG] [io.netty.util.internal.CleanerJava24Linker/]: java.nio.ByteBuffer.cleaner(): available
-[308月2026 14:38:11.106] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
-[308月2026 14:38:11.106] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.ignoreExpensiveClean: false
-[308月2026 14:38:11.106] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.jfr.enabled: true
-[308月2026 14:38:11.107] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: java.lang.invoke.VarHandle: available
-[308月2026 14:38:11.107] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.varHandle.enabled: true
-[308月2026 14:38:11.108] [Server thread/DEBUG] [io.netty.channel.kqueue.KQueue/]: KQueue support is not available
+[308月2026 17:52:23.932] [Server thread/DEBUG] [io.netty.util.internal.CleanerJava24Linker/]: java.nio.ByteBuffer.cleaner(): available
+[308月2026 17:52:23.932] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
+[308月2026 17:52:23.932] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.ignoreExpensiveClean: false
+[308月2026 17:52:23.933] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.jfr.enabled: true
+[308月2026 17:52:23.934] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: java.lang.invoke.VarHandle: available
+[308月2026 17:52:23.934] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.varHandle.enabled: true
+[308月2026 17:52:23.934] [Server thread/DEBUG] [io.netty.channel.kqueue.KQueue/]: KQueue support is not available
 java.lang.ExceptionInInitializerError
 	at io.netty.channel.kqueue.KQueue.<clinit>(KQueue.java:38)
 	at net.minecraft.server.network.EventLoopGroupHolder.remote(EventLoopGroupHolder.java:58)
@@ -390,52 +390,408 @@ Caused by: java.lang.IllegalStateException: Only supported on OSX/BSD
 	at io.netty.channel.kqueue.Native.loadNativeLibrary(Native.java:159)
 	at io.netty.channel.kqueue.Native.<clinit>(Native.java:76)
 	... 7 more
-[308月2026 14:38:11.121] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.workdir: /tmp (io.netty.tmpdir)
-[308月2026 14:38:11.121] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.deleteLibAfterLoading: true
-[308月2026 14:38:11.121] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.tryPatchShadedId: true
-[308月2026 14:38:11.121] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.detectNativeLibraryDuplicates: true
-[308月2026 14:38:11.129] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: Successfully loaded the library /tmp/libnetty_transport_native_epoll_aarch_644101726214423037146.so
-[308月2026 14:38:11.132] [Server thread/DEBUG] [io.netty.util.NetUtil/]: -Djava.net.preferIPv4Stack: false
-[308月2026 14:38:11.133] [Server thread/DEBUG] [io.netty.util.NetUtil/]: -Djava.net.preferIPv6Addresses: false
-[308月2026 14:38:11.134] [Server thread/DEBUG] [io.netty.util.NetUtilInitializations/]: Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
-[308月2026 14:38:11.134] [Server thread/DEBUG] [io.netty.util.NetUtil/]: /proc/sys/net/core/somaxconn: 4096
-[308月2026 14:38:11.146] [Server thread/DEBUG] [io.netty.channel.MultithreadEventLoopGroup/]: -Dio.netty.eventLoopThreads: 16
-[308月2026 14:38:11.156] [Server thread/DEBUG] [io.netty.util.concurrent.GlobalEventExecutor/]: -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
-[308月2026 14:38:11.161] [Server thread/DEBUG] [io.netty.util.internal.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
-[308月2026 14:38:11.161] [Server thread/DEBUG] [io.netty.util.internal.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
-[308月2026 14:38:11.165] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: unavailable
-[308月2026 14:38:11.174] [Server thread/DEBUG] [io.netty.channel.DefaultChannelId/]: -Dio.netty.processId: 866 (auto-detected)
-[308月2026 14:38:11.175] [Server thread/DEBUG] [io.netty.channel.DefaultChannelId/]: -Dio.netty.machineId: ca:75:e7:ff:fe:b0:0a:cb (auto-detected)
-[308月2026 14:38:11.193] [Server thread/DEBUG] [io.netty.buffer.AdaptiveByteBufAllocator/]: -Dio.netty.allocator.useCachedMagazinesForNonEventLoopThreads: false
-[308月2026 14:38:11.200] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.maxCapacityPerThread: 4096
-[308月2026 14:38:11.200] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.ratio: 8
-[308月2026 14:38:11.200] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.chunkSize: 32
-[308月2026 14:38:11.200] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.blocking: false
-[308月2026 14:38:11.200] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.batchFastThreadLocalOnly: true
-[308月2026 14:38:11.206] [Server thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.allocator.type: adaptive
-[308月2026 14:38:11.206] [Server thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.threadLocalDirectBufferSize: 0
-[308月2026 14:38:11.206] [Server thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.maxThreadLocalCharBufferSize: 16384
-[308月2026 14:38:11.208] [Server thread/DEBUG] [io.netty.bootstrap.ChannelInitializerExtensions/]: -Dio.netty.bootstrap.extensions: null
-[308月2026 14:38:11.228] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
-[308月2026 14:38:11.237] [Server thread/DEBUG] [io.netty.util.internal.ThreadLocalRandom/]: -Dio.netty.initialSeedUniquifier: 0x0f4c4b75782cab73
-[308月2026 14:38:11.469] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Loading 0 persistent chunks...
-[308月2026 14:38:11.470] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Preparing spawn area: 100%
-[308月2026 14:38:11.480] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Time elapsed: 12 ms
-[308月2026 14:38:11.480] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (0.253s)! For help, type "help"
-[308月2026 14:38:11.483] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[308月2026 14:38:11.494] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[308月2026 14:38:11.510] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[308月2026 14:38:11.515] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[308月2026 14:38:11.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[308月2026 14:38:11.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[308月2026 14:38:11.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[308月2026 14:38:24.467] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[308月2026 14:38:24.468] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[308月2026 14:38:24.468] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[308月2026 14:38:24.469] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[308月2026 14:38:24.474] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[308月2026 14:38:24.476] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[308月2026 14:38:24.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[308月2026 17:52:23.941] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.workdir: /tmp (io.netty.tmpdir)
+[308月2026 17:52:23.942] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.deleteLibAfterLoading: true
+[308月2026 17:52:23.942] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.tryPatchShadedId: true
+[308月2026 17:52:23.942] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: -Dio.netty.native.detectNativeLibraryDuplicates: true
+[308月2026 17:52:23.947] [Server thread/DEBUG] [io.netty.util.internal.NativeLibraryLoader/]: Successfully loaded the library /tmp/libnetty_transport_native_epoll_aarch_6416082292177132289173.so
+[308月2026 17:52:23.949] [Server thread/DEBUG] [io.netty.util.NetUtil/]: -Djava.net.preferIPv4Stack: false
+[308月2026 17:52:23.950] [Server thread/DEBUG] [io.netty.util.NetUtil/]: -Djava.net.preferIPv6Addresses: false
+[308月2026 17:52:23.950] [Server thread/DEBUG] [io.netty.util.NetUtilInitializations/]: Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+[308月2026 17:52:23.951] [Server thread/DEBUG] [io.netty.util.NetUtil/]: /proc/sys/net/core/somaxconn: 4096
+[308月2026 17:52:23.958] [Server thread/DEBUG] [io.netty.channel.MultithreadEventLoopGroup/]: -Dio.netty.eventLoopThreads: 16
+[308月2026 17:52:23.962] [Server thread/DEBUG] [io.netty.util.concurrent.GlobalEventExecutor/]: -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+[308月2026 17:52:23.965] [Server thread/DEBUG] [io.netty.util.internal.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+[308月2026 17:52:23.965] [Server thread/DEBUG] [io.netty.util.internal.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+[308月2026 17:52:23.968] [Server thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: unavailable
+[308月2026 17:52:23.976] [Server thread/DEBUG] [io.netty.channel.DefaultChannelId/]: -Dio.netty.processId: 25444 (auto-detected)
+[308月2026 17:52:23.977] [Server thread/DEBUG] [io.netty.channel.DefaultChannelId/]: -Dio.netty.machineId: ca:75:e7:ff:fe:b0:0a:cb (auto-detected)
+[308月2026 17:52:24.003] [Server thread/DEBUG] [io.netty.buffer.AdaptiveByteBufAllocator/]: -Dio.netty.allocator.useCachedMagazinesForNonEventLoopThreads: false
+[308月2026 17:52:24.011] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.maxCapacityPerThread: 4096
+[308月2026 17:52:24.011] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.ratio: 8
+[308月2026 17:52:24.011] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.chunkSize: 32
+[308月2026 17:52:24.011] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.blocking: false
+[308月2026 17:52:24.011] [Server thread/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.batchFastThreadLocalOnly: true
+[308月2026 17:52:24.019] [Server thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.allocator.type: adaptive
+[308月2026 17:52:24.019] [Server thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.threadLocalDirectBufferSize: 0
+[308月2026 17:52:24.019] [Server thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.maxThreadLocalCharBufferSize: 16384
+[308月2026 17:52:24.021] [Server thread/DEBUG] [io.netty.bootstrap.ChannelInitializerExtensions/]: -Dio.netty.bootstrap.extensions: null
+[308月2026 17:52:24.032] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[308月2026 17:52:24.033] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: The server will make no attempt to authenticate usernames. Beware.
+[308月2026 17:52:24.033] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[308月2026 17:52:24.033] [Server thread/WARN] [net.minecraft.server.dedicated.DedicatedServer/]: To change this, set "online-mode" to "true" in the server.properties file.
+[308月2026 17:52:24.043] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[308月2026 17:52:24.056] [Server thread/DEBUG] [io.netty.util.internal.ThreadLocalRandom/]: -Dio.netty.initialSeedUniquifier: 0xa0f98417e450c2cb
+[308月2026 17:52:24.489] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Loading 0 persistent chunks...
+[308月2026 17:52:24.492] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Preparing spawn area: 100%
+[308月2026 17:52:24.502] [Server thread/INFO] [net.minecraft.server.level.progress.LoggingLevelLoadListener/]: Time elapsed: 15 ms
+[308月2026 17:52:24.503] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (0.460s)! For help, type "help"
+[308月2026 17:52:24.511] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[308月2026 17:52:24.537] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[308月2026 17:52:24.549] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[308月2026 17:52:24.585] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[308月2026 17:52:24.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[308月2026 17:52:24.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[308月2026 17:52:24.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[308月2026 17:53:07.212] [Netty Epoll IO #2/DEBUG] [io.netty.buffer.AbstractByteBuf/]: -Dio.netty.buffer.checkAccessible: true
+[308月2026 17:53:07.213] [Netty Epoll IO #2/DEBUG] [io.netty.buffer.AbstractByteBuf/]: -Dio.netty.buffer.checkBounds: true
+[308月2026 17:53:07.214] [Netty Epoll IO #2/DEBUG] [io.netty.util.ResourceLeakDetectorFactory/]: Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@75774788
+[308月2026 17:53:08.301] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: abcdd[/127.0.0.1:43626] logged in with entity id 1 at (79.5, 63.0, 199.5)
+[308月2026 17:53:08.317] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: abcdd joined the game
+[308月2026 17:53:09.389] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: abcdd lost connection: Disconnected
+[308月2026 17:53:09.389] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: abcdd left the game
+[308月2026 17:53:09.409] [Server thread/ERROR] [net.minecraft.server.MinecraftServer/]: Encountered an unexpected exception
+java.lang.NullPointerException: Cannot invoke "java.lang.Byte.byteValue()" because the return value of "it.unimi.dsi.fastutil.objects.Object2ByteMap.remove(Object)" is null
+	at net.minecraft.server.level.DistanceManager$FixedPlayerDistanceChunkTracker.setLevel(DistanceManager.java:224)
+	at net.minecraft.server.level.DistanceManager$FixedPlayerDistanceChunkTracker.setLevel(DistanceManager.java:200)
+	at net.minecraft.world.level.lighting.DynamicGraphMinFixedPoint.runUpdates(DynamicGraphMinFixedPoint.java:145)
+	at net.minecraft.server.level.DistanceManager$FixedPlayerDistanceChunkTracker.runAllUpdates(DistanceManager.java:246)
+	at net.minecraft.server.level.DistanceManager.runAllUpdates(DistanceManager.java:68)
+	at net.minecraft.server.level.ServerChunkCache.runDistanceManagerUpdates(ServerChunkCache.java:285)
+	at net.minecraft.server.level.ServerChunkCache$MainThreadExecutor.pollTask(ServerChunkCache.java:631)
+	at net.minecraft.server.level.ServerChunkCache.pollTask(ServerChunkCache.java:281)
+	at net.minecraft.server.MinecraftServer.pollTaskInternal(MinecraftServer.java:906)
+	at net.minecraft.server.MinecraftServer.pollTask(MinecraftServer.java:894)
+	at net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:116)
+	at net.minecraft.server.MinecraftServer.waitUntilNextTick(MinecraftServer.java:863)
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:769)
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+[308月2026 17:53:09.420] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/core_id
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/core_id
+[308月2026 17:53:09.421] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/physical_package_id
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/topology/physical_package_id
+[308月2026 17:53:09.421] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cpu_capacity
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cpu_capacity
+[308月2026 17:53:09.421] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/level
+[308月2026 17:53:09.421] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/level
+[308月2026 17:53:09.421] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/type
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/type
+[308月2026 17:53:09.422] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/ways_of_associativity
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/coherency_line_size
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index2/size
+[308月2026 17:53:09.422] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/level
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/level
+[308月2026 17:53:09.422] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/type
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/type
+[308月2026 17:53:09.422] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.422] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/ways_of_associativity
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/coherency_line_size
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index0/size
+[308月2026 17:53:09.423] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/level
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/level
+[308月2026 17:53:09.423] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/type
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/type
+[308月2026 17:53:09.423] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/ways_of_associativity
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/coherency_line_size
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu0/cache/index1/size
+[308月2026 17:53:09.423] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/core_id
+[308月2026 17:53:09.423] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/core_id
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/physical_package_id
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/topology/physical_package_id
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cpu_capacity
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cpu_capacity
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/level
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/level
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/type
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/type
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/ways_of_associativity
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/coherency_line_size
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index2/size
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/level
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/level
+[308月2026 17:53:09.424] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.424] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/type
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/type
+[308月2026 17:53:09.425] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/ways_of_associativity
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/coherency_line_size
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index0/size
+[308月2026 17:53:09.425] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/level
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/level
+[308月2026 17:53:09.425] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/type
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/type
+[308月2026 17:53:09.425] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/ways_of_associativity
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/coherency_line_size
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu1/cache/index1/size
+[308月2026 17:53:09.425] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/core_id
+[308月2026 17:53:09.425] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/core_id
+[308月2026 17:53:09.425] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/physical_package_id
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/topology/physical_package_id
+[308月2026 17:53:09.426] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cpu_capacity
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cpu_capacity
+[308月2026 17:53:09.426] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/level
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/level
+[308月2026 17:53:09.426] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/type
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/type
+[308月2026 17:53:09.426] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/ways_of_associativity
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/coherency_line_size
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index2/size
+[308月2026 17:53:09.426] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.426] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/level
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/level
+[308月2026 17:53:09.427] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/type
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/type
+[308月2026 17:53:09.427] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/ways_of_associativity
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/coherency_line_size
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index0/size
+[308月2026 17:53:09.427] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/level
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/level
+[308月2026 17:53:09.427] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/type
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/type
+[308月2026 17:53:09.427] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/ways_of_associativity
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/coherency_line_size
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu2/cache/index1/size
+[308月2026 17:53:09.427] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/core_id
+[308月2026 17:53:09.427] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/core_id
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 3
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/physical_package_id
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/topology/physical_package_id
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cpu_capacity
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cpu_capacity
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/level
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/level
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/type
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/type
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/ways_of_associativity
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/coherency_line_size
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index2/size
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/level
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/level
+[308月2026 17:53:09.428] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.428] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/type
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/type
+[308月2026 17:53:09.429] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/ways_of_associativity
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/coherency_line_size
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index0/size
+[308月2026 17:53:09.429] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/level
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/level
+[308月2026 17:53:09.429] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/type
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/type
+[308月2026 17:53:09.429] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/ways_of_associativity
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/coherency_line_size
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu3/cache/index1/size
+[308月2026 17:53:09.429] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.429] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/core_id
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/core_id
+[308月2026 17:53:09.430] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 4
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/physical_package_id
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/topology/physical_package_id
+[308月2026 17:53:09.430] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cpu_capacity
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cpu_capacity
+[308月2026 17:53:09.430] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/level
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/level
+[308月2026 17:53:09.430] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/type
+[308月2026 17:53:09.430] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/type
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/ways_of_associativity
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/coherency_line_size
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index2/size
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/level
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/level
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/type
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/type
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/ways_of_associativity
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/coherency_line_size
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index0/size
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/level
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/level
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/type
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/type
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/ways_of_associativity
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/coherency_line_size
+[308月2026 17:53:09.431] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu4/cache/index1/size
+[308月2026 17:53:09.431] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/core_id
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/core_id
+[308月2026 17:53:09.432] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 5
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/physical_package_id
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/topology/physical_package_id
+[308月2026 17:53:09.432] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cpu_capacity
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cpu_capacity
+[308月2026 17:53:09.432] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 792
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/level
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/level
+[308月2026 17:53:09.432] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/type
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/type
+[308月2026 17:53:09.432] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/ways_of_associativity
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/coherency_line_size
+[308月2026 17:53:09.432] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index2/size
+[308月2026 17:53:09.432] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/level
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/level
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/type
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/type
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/ways_of_associativity
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/coherency_line_size
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index0/size
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/level
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/level
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/type
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/type
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/ways_of_associativity
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/coherency_line_size
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu5/cache/index1/size
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/core_id
+[308月2026 17:53:09.433] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/core_id
+[308月2026 17:53:09.433] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/physical_package_id
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/topology/physical_package_id
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cpu_capacity
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cpu_capacity
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1024
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/level
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/level
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/type
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/type
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/ways_of_associativity
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/coherency_line_size
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index2/size
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/level
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/level
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/type
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/type
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/ways_of_associativity
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/coherency_line_size
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index0/size
+[308月2026 17:53:09.434] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.434] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/level
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/level
+[308月2026 17:53:09.435] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/type
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/type
+[308月2026 17:53:09.435] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/ways_of_associativity
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/coherency_line_size
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu6/cache/index1/size
+[308月2026 17:53:09.435] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/core_id
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/core_id
+[308月2026 17:53:09.435] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/physical_package_id
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/topology/physical_package_id
+[308月2026 17:53:09.435] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 0
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cpu_capacity
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cpu_capacity
+[308月2026 17:53:09.435] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1024
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/level
+[308月2026 17:53:09.435] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/level
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 2
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/type
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/type
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Unified
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/ways_of_associativity
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/coherency_line_size
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index2/size
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/level
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/level
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/type
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/type
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Data
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/ways_of_associativity
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/coherency_line_size
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index0/size
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/level
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/level
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 1
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/type
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/type
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Instruction
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/ways_of_associativity
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/coherency_line_size
+[308月2026 17:53:09.436] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /sys/devices/system/cpu/cpu7/cache/index1/size
+[308月2026 17:53:09.436] [Server thread/TRACE] [oshi.util.ParseUtil/]:  didn't parse. Returning default. java.lang.NumberFormatException: For input string: ""
+[308月2026 17:53:09.437] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
+[308月2026 17:53:09.437] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/cpuinfo
+[308月2026 17:53:09.437] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/device-tree/model
+[308月2026 17:53:09.437] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/device-tree/model
+[308月2026 17:53:09.437] [Server thread/TRACE] [oshi.util.FileUtil/]: Read Qualcomm Technologies, Inc. Warsaw based on SM8750 
+[308月2026 17:53:09.443] [Server thread/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -class, processor]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:53:09.448] [Server thread/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [cpuid, -1r]: Cannot run program "cpuid": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:53:09.487] [Server thread/TRACE] [oshi.util.ExecutingCommand/]: Couldn't run command [lshw, -C, display]: Cannot run program "lshw": Exec failed, error: 2 (没有那个文件或目录) 
+[308月2026 17:53:09.489] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
+[308月2026 17:53:09.489] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/meminfo
+[308月2026 17:53:09.492] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /etc/os-release
+[308月2026 17:53:09.492] [Server thread/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: NAME="Ubuntu"
+[308月2026 17:53:09.492] [Server thread/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: VERSION_ID="24.04"
+[308月2026 17:53:09.492] [Server thread/DEBUG] [oshi.software.os.linux.LinuxOperatingSystem/]: os-release: VERSION="24.04.4 LTS (Noble Numbat)"
+[308月2026 17:53:09.492] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/version
+[308月2026 17:53:09.493] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/io
+[308月2026 17:53:09.493] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/io
+[308月2026 17:53:09.493] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/status
+[308月2026 17:53:09.493] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/status
+[308月2026 17:53:09.493] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/stat
+[308月2026 17:53:09.493] [Server thread/DEBUG] [oshi.util.FileUtil/]: Reading file /proc/25444/stat
+[308月2026 17:53:09.493] [Server thread/TRACE] [oshi.util.FileUtil/]: Read 25444 (java) S 4707 4707 4707 0 -1 4194304 229825 7493 46 23 2921 410 2 3 10 -10 58 0 2656210 9810640896 203505 18446744073709551615 391669743616 391669747288 549590368864 0 0 0 0 0 16800975 0 0 0 17 3 0 0 0 0 0 391669873960 391669874704 392501047296 549590371669 549590384831 549590384831 549590388684 0
+[308月2026 17:53:09.497] [Server thread/ERROR] [net.minecraft.server.MinecraftServer/]: This crash report has been saved to: /root/桌面/MCP-Reborn/runserver/crash-reports/crash-2026-08-30_17.53.09-server.txt
+[308月2026 17:53:09.498] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[308月2026 17:53:09.498] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[308月2026 17:53:09.498] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
